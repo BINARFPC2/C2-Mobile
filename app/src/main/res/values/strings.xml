@@ -2,4 +2,11 @@
     <string name="app_name">Tiketku</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="masuk">Masuk</string>
+    <string name="email_nomor_telepon">Email/Nomor Telepon</string>
+    <string name="contoh_joendhoe_gmail_com">Contoh:joendhoe@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="masukkan_password">Masukkan password</string>
+    <string name="lupa_kata_sandi">Lupa Kata Sandi</string>
+    <string name="masuk_btn">Masuk</string>
 </resources>

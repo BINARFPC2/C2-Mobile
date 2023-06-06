@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    android:padding="23dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login.LoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        style="@style/TextHeading24Bold"
+        android:text="@string/masuk"
+        android:layout_marginTop="83dp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <TextView
+        style="@style/TextBody12Medium"
+        android:text="@string/email_nomor_telepon"
+        android:textColor="@color/black"
+        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/etEmailLogin"
+        style="@style/EditText"
+        android:hint="@string/contoh_joendhoe_gmail_com"
+        android:background="@drawable/shape_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TextBody12Medium"
+            android:text="@string/password"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtLupaPassword"
+            style="@style/TextBody12Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/lupa_kata_sandi"
+            android:textColor="@color/darkblue_04" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etPasswordLogin"
+            style="@style/EditText"
+            android:hint="@string/masukkan_password"
+            android:background="@drawable/shape_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+        
+        <ImageView
+            android:id="@+id/btnEye"
+            android:src="@drawable/eye"
+            android:layout_gravity="end"
+            android:layout_marginVertical="12dp"
+            android:layout_marginEnd="14dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+        
+    </FrameLayout>
+    
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/ButtonPrimary"
+        android:backgroundTint="@color/darkblue_04"
+        android:text="@string/masuk_btn"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="bottom|center"
+        android:layout_marginBottom="43dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            style="@style/TextBody14Regular"
+            android:text="Belum punya akun? "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtDaftar"
+            style="@style/TextBody14Bold"
+            android:text="Daftar di sini"
+            android:textColor="@color/darkblue_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -12,4 +12,10 @@
     <string name="reset_password">Reset Password</string>
     <string name="masukkan_password_baru">Masukkan Password Baru</string>
     <string name="btn_simpan">Simpan</string>
+    <string name="btn_Masuk">Masuk</string>
+    <string name="maaf_anda_harus_login_terlebih_dahulu">Maaf, Anda harus login terlebih dahulu!</string>
+    <string name="masukkan_kota_atau_negara">Masukkan Kota atau Negara</string>
+    <string name="masukkankota">Masukkan Kota atau Negara</string>
+    <string name="jkt">Jakarta</string>
+    <string name="bandung">Bandung</string>
 </resources>

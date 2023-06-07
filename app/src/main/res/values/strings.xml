@@ -9,4 +9,7 @@
     <string name="masukkan_password">Masukkan password</string>
     <string name="lupa_kata_sandi">Lupa Kata Sandi</string>
     <string name="masuk_btn">Masuk</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="masukkan_password_baru">Masukkan Password Baru</string>
+    <string name="btn_simpan">Simpan</string>
 </resources>

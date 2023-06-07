@@ -51,7 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
-                        android:hint="@string/masukkankota" />
+                        android:hint="Masukan Kota" />
 
                     <ImageView
                         android:layout_width="25dp"
@@ -110,7 +110,7 @@
             android:layout_marginTop="40dp"
             android:gravity="top"
             android:textColor="@color/black"
-            android:hint="@string/jkt" />
+            android:hint="Jakarta" />
 
         <EditText
             android:id="@+id/etBndung"
@@ -120,7 +120,7 @@
             android:layout_marginTop="90dp"
             android:gravity="top"
             android:textColor="@color/black"
-            android:hint="@string/bandung" />
+            android:hint="Bandung" />
 
 
         <ImageView

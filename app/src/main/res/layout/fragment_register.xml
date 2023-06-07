@@ -16,7 +16,7 @@
 
     <TextView
         style="@style/TextHeading24Bold"
-        android:text="@string/daftar"
+        android:text="Daftar"
         android:layout_marginTop="58dp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
 
     <TextView
         style="@style/TextBody12Medium"
-        android:text="@string/nama"
+        android:text="Nama"
         android:textColor="@color/black"
         android:layout_marginTop="24dp"
         android:layout_width="wrap_content"
@@ -33,14 +33,14 @@
     <EditText
         android:id="@+id/etNama"
         style="@style/EditText"
-        android:hint="@string/nama_lengkap"
+        android:hint="Nama Lengkap"
         android:background="@drawable/shape_rectangle"
         android:layout_width="match_parent"
         android:layout_height="48dp"/>
 
     <TextView
         style="@style/TextBody12Medium"
-        android:text="@string/email"
+        android:text="Email"
         android:textColor="@color/black"
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
 
     <TextView
         style="@style/TextBody12Medium"
-        android:text="@string/nomor_telepon"
+        android:text="Nomor telepon"
         android:textColor="@color/black"
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
     <EditText
         android:id="@+id/etNomorTlp"
         style="@style/EditText"
-        android:hint="@string/_62"
+        android:hint="+62"
         android:background="@drawable/shape_rectangle"
         android:layout_width="match_parent"
         android:layout_height="48dp"/>
@@ -73,7 +73,7 @@
         <TextView
             style="@style/TextBody12Medium"
             android:layout_marginTop="16dp"
-            android:text="@string/buat_password"
+            android:text="Buat Password"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -105,7 +105,7 @@
         android:id="@+id/btnRegist"
         style="@style/ButtonPrimary"
         android:backgroundTint="@color/darkblue_04"
-        android:text="@string/daftar_btn"
+        android:text="Daftar"
         android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -119,14 +119,14 @@
 
         <TextView
             style="@style/TextBody14Regular"
-            android:text="@string/sudah_punya_akun"
+            android:text="Sudah punya akun "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/txtLogin"
             style="@style/TextBody14Bold"
-            android:text="@string/masuk_di_sini"
+            android:text="Masuk di sini"
             android:textColor="@color/darkblue_04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

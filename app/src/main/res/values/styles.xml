@@ -183,7 +183,14 @@
         <item name="minHeight">36dp</item>
     </style>
 
-
+<!--Edit Text-->
+    <style name="EditText">
+        <item name="background">@drawable/shape_rectangle</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">14dp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
 
 </resources>

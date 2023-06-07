@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.riwayat.RiwayatFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_riwayat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/tv_jumlah_barang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fragment Riwayat"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_no_login"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="18dp"
+        android:paddingHorizontal="25dp"
+        android:layout_height="match_parent">
+        
+        <TextView
+            style="@style/TextHeading24Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Riwayat Pesanan"
+            android:textColor="@color/black" />
+
+        <TextView
+            style="@style/TextBody14Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maaf, Anda harus login terlebih dahulu"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginTop="107dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="290dp"
+            android:src="@drawable/ic_no_login"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Masuk"
+            android:backgroundTint="@color/darkblue_04"
+
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

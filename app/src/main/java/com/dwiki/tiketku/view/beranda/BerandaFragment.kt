@@ -1,4 +1,4 @@
-package com.dwiki.tiketku.beranda
+package com.dwiki.tiketku.view.beranda
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

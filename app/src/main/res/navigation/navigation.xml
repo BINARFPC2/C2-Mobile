@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/berandaFragment">
+
+    <fragment
+        android:id="@+id/berandaFragment"
+        android:name="com.dwiki.tiketku.view.beranda.BerandaFragment"
+        android:label="fragment_beranda"
+        tools:layout="@layout/fragment_beranda" />
+    <fragment
+        android:id="@+id/riwayatFragment"
+        android:name="com.dwiki.tiketku.view.riwayat.RiwayatFragment"
+        android:label="fragment_riwayat2"
+        tools:layout="@layout/fragment_riwayat2" >
+        <action
+            android:id="@+id/action_riwayatFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/akunFragment"
+        android:name="com.dwiki.tiketku.view.akun.AkunFragment"
+        android:label="fragment_akun2"
+        tools:layout="@layout/fragment_akun2" >
+        <action
+            android:id="@+id/action_akunFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.dwiki.tiketku.view.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+</navigation>

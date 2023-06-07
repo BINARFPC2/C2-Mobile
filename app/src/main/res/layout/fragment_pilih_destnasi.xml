@@ -88,7 +88,7 @@
             android:id="@+id/etPencarianTerkini"
             android:layout_width="281dp"
             android:layout_height="24dp"
-            android:text="Pencarian terkini"
+            android:text="@string/pencarian_terkini"
             style="@style/TextTitle16Medium"
             android:textColor="@color/black"
             android:gravity="top"/>

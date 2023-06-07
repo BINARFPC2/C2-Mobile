@@ -9,7 +9,11 @@
         android:id="@+id/berandaFragment"
         android:name="com.dwiki.tiketku.view.beranda.BerandaFragment"
         android:label="fragment_beranda"
-        tools:layout="@layout/fragment_beranda" />
+        tools:layout="@layout/fragment_beranda" >
+        <action
+            android:id="@+id/action_berandaFragment_to_bottomSheetKelasFragment2"
+            app:destination="@id/bottomSheetKelasFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/riwayatFragment"
         android:name="com.dwiki.tiketku.view.riwayat.RiwayatFragment"
@@ -36,4 +40,9 @@
         android:name="com.dwiki.tiketku.view.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <dialog
+        android:id="@+id/bottomSheetKelasFragment2"
+        android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetKelasFragment"
+        android:label="fragment_bottom_sheet_kelas"
+        tools:layout="@layout/fragment_bottom_sheet_kelas" />
 </navigation>

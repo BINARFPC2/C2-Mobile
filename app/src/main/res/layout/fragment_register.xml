@@ -1,14 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    android:padding="24dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.register.RegisterFragment">
+    
+    <ImageView
+        android:id="@+id/btnBack"
+        android:src="@drawable/arrow_left"
+        android:layout_width="24dp"
+        android:layout_height="24dp"/>
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        style="@style/TextHeading24Bold"
+        android:text="@string/daftar"
+        android:layout_marginTop="58dp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <TextView
+        style="@style/TextBody12Medium"
+        android:text="@string/nama"
+        android:textColor="@color/black"
+        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/etNama"
+        style="@style/EditText"
+        android:hint="@string/nama_lengkap"
+        android:background="@drawable/shape_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <TextView
+        style="@style/TextBody12Medium"
+        android:text="@string/email"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/etEmailRegist"
+        style="@style/EditText"
+        android:hint="@string/contoh_joendhoe_gmail_com"
+        android:background="@drawable/shape_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <TextView
+        style="@style/TextBody12Medium"
+        android:text="@string/nomor_telepon"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/etNomorTlp"
+        style="@style/EditText"
+        android:hint="@string/_62"
+        android:background="@drawable/shape_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+        <TextView
+            style="@style/TextBody12Medium"
+            android:layout_marginTop="16dp"
+            android:text="@string/buat_password"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etPasswordRegist"
+            style="@style/EditText"
+            android:hint="@string/masukkan_password"
+            android:background="@drawable/shape_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <ImageView
+            android:id="@+id/btnEye"
+            android:src="@drawable/eye"
+            android:layout_gravity="end"
+            android:layout_marginVertical="12dp"
+            android:layout_marginEnd="14dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnRegist"
+        style="@style/ButtonPrimary"
+        android:backgroundTint="@color/darkblue_04"
+        android:text="@string/daftar_btn"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="bottom|center"
+        android:layout_marginBottom="43dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            style="@style/TextBody14Regular"
+            android:text="@string/sudah_punya_akun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtLogin"
+            style="@style/TextBody14Bold"
+            android:text="@string/masuk_di_sini"
+            android:textColor="@color/darkblue_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

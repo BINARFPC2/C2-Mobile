@@ -12,4 +12,14 @@
     <string name="reset_password">Reset Password</string>
     <string name="masukkan_password_baru">Masukkan Password Baru</string>
     <string name="btn_simpan">Simpan</string>
+    <string name="daftar">Daftar</string>
+    <string name="nama">Nama</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="_62">+62</string>
+    <string name="buat_password">Buat Password</string>
+    <string name="daftar_btn">Daftar</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="masuk_di_sini">Masuk di sini</string>
 </resources>

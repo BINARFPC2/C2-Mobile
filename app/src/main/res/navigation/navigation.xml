@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_berandaFragment_to_bottomSheetSetPenumpang"
             app:destination="@id/bottomSheetSetPenumpang" />
+        <action
+            android:id="@+id/action_berandaFragment_to_bottomSheetKelasFragment"
+            app:destination="@id/bottomSheetKelasFragment" />
     </fragment>
     <fragment
         android:id="@+id/riwayatFragment"
@@ -45,4 +48,9 @@
         android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetSetPenumpang"
         android:label="fragment_bottom_sheet_set_penumpang"
         tools:layout="@layout/fragment_bottom_sheet_set_penumpang" />
+    <dialog
+        android:id="@+id/bottomSheetKelasFragment"
+        android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetKelasFragment"
+        android:label="fragment_bottom_sheet_kelas"
+        tools:layout="@layout/fragment_bottom_sheet_kelas" />
 </navigation>

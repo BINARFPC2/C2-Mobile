@@ -29,6 +29,10 @@ class BerandaFragment : Fragment() {
         binding.tvPenumpang.setOnClickListener {
             findNavController().navigate(R.id.action_berandaFragment_to_bottomSheetSetPenumpang)
         }
+
+        binding.tvClass.setOnClickListener {
+            findNavController().navigate(R.id.action_berandaFragment_to_bottomSheetKelasFragment)
+        }
     }
 
 }

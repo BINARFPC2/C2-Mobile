@@ -363,7 +363,7 @@
                                     android:textColor="#8A8A8A"/>
 
                                 <TextView
-                                    android:id="@+id/tvBusiness"
+                                    android:id="@+id/tvClass"
                                     style="@style/TextBody14Medium"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"

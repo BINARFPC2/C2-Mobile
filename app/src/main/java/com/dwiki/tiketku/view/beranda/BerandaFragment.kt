@@ -25,8 +25,13 @@ class BerandaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvSeatClass.setOnClickListener {
-            findNavController().navigate(R.id.action_berandaFragment_to_bottomSheetKelasFragment2)
+
+        binding.tvPenumpang.setOnClickListener {
+            findNavController().navigate(R.id.action_berandaFragment_to_bottomSheetSetPenumpang)
+        }
+
+        binding.tvClass.setOnClickListener {
+            findNavController().navigate(R.id.action_berandaFragment_to_bottomSheetKelasFragment)
         }
     }
 

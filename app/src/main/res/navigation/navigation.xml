@@ -11,8 +11,11 @@
         android:label="fragment_beranda"
         tools:layout="@layout/fragment_beranda" >
         <action
-            android:id="@+id/action_berandaFragment_to_bottomSheetKelasFragment2"
-            app:destination="@id/bottomSheetKelasFragment2" />
+            android:id="@+id/action_berandaFragment_to_bottomSheetSetPenumpang"
+            app:destination="@id/bottomSheetSetPenumpang" />
+        <action
+            android:id="@+id/action_berandaFragment_to_bottomSheetKelasFragment"
+            app:destination="@id/bottomSheetKelasFragment" />
     </fragment>
     <fragment
         android:id="@+id/riwayatFragment"
@@ -41,7 +44,12 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <dialog
-        android:id="@+id/bottomSheetKelasFragment2"
+        android:id="@+id/bottomSheetSetPenumpang"
+        android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetSetPenumpang"
+        android:label="fragment_bottom_sheet_set_penumpang"
+        tools:layout="@layout/fragment_bottom_sheet_set_penumpang" />
+    <dialog
+        android:id="@+id/bottomSheetKelasFragment"
         android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetKelasFragment"
         android:label="fragment_bottom_sheet_kelas"
         tools:layout="@layout/fragment_bottom_sheet_kelas" />

@@ -16,11 +16,4 @@
     <string name="jkt">Jakarta</string>
     <string name="bandung">Bandung</string>
     <string name="pencarian_terkini">Pencarian terkini</string>
-    <string name="pilih">Pilih</string>
-    <string name="belum_punya_akun">Belum punya akun?</string>
-    <string name="daftar_di_sini">Daftar di sini</string>
-    <string name="total">Total</string>
-    <string name="idr_4_950_000">IDR 4.950.000/pax</string>
-    <string name="info">Jet Air - Economy\nJT - 203\n\nInformasi:\nBaggage 20 kg\nCabin baggage 7 kg\nIn Flight Entertainment
-    </string>
 </resources>

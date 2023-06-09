@@ -97,14 +97,14 @@
 
         <TextView
             style="@style/TextBody14Regular"
-            android:text="Belum punya akun? "
+            android:text="@string/belum_punya_akun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/txtDaftar"
             style="@style/TextBody14Bold"
-            android:text="Daftar di sini"
+            android:text="@string/daftar_di_sini"
             android:textColor="@color/darkblue_04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

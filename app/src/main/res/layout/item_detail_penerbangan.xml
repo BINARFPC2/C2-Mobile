@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:padding="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtKeberangkatan"
+            android:text="Jakarta"
+            style="@style/TextBody14Bold"
+            android:textSize="16sp"
+            android:textColor="@color/darkblue_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text=" -> "
+            style="@style/TextBody14Bold"
+            android:textSize="16sp"
+            android:textColor="@color/darkblue_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtKedatangan"
+            android:text="Melbourne"
+            style="@style/TextBody14Bold"
+            android:textSize="16sp"
+            android:textColor="@color/darkblue_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtLamaPerjalanan"
+            android:text="(4h 0m)"
+            style="@style/TextBody14Bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+<!--    <TextView-->
+<!--        android:id="@+id/txtArahKebrangkatan"-->
+<!--        android:text="Jakarta -> Melbourne (4h 0m)"-->
+<!--        style="@style/TextBody14Bold"-->
+<!--        android:textSize="16sp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:textColor="@color/darkblue_04"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layoutDate"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtJamBerangkat"
+                    style="@style/TextBody14Bold"
+                    android:text="07.00"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/txtTanggalBerangkat"
+                    style="@style/TextBody14Regular"
+                    android:text="3 Maret 2023"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/txtBandaraAwal"
+                    style="@style/TextBody14Medium"
+                    android:text="Soekarno Hatta - Terminal 1A Domestik"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:text="Keberangkatan"
+                style="@style/TextBody12Bold"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/darkblue_04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="360dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/neutral_02" />
+
+            <RelativeLayout
+                android:paddingVertical="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                
+                <ImageView
+                    android:id="@+id/imgLogoMaskapai"
+                    android:src="@drawable/logo_maskapai"
+                    android:layout_marginEnd="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"/>
+
+                <TextView
+                    android:id="@+id/txtInfo"
+                    style="@style/TextBody14Regular"
+                    android:layout_toRightOf="@id/imgLogoMaskapai"
+                    android:textColor="@color/black"
+                    android:text="@string/info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="360dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/neutral_02" />
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtJamDatang"
+                        style="@style/TextBody14Bold"
+                        android:text="11.00"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/txtTanggalDatang"
+                        style="@style/TextBody14Regular"
+                        android:text="3 Maret 2023"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/txtBandaraTujuan"
+                        style="@style/TextBody14Medium"
+                        android:text="Melbourne International Airport"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:text="Kedatangan"
+                    style="@style/TextBody12Bold"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/darkblue_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

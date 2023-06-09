@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.loading.LoadingFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp">
+
+        <ImageView
+            android:id="@+id/btnFilter"
+            android:layout_marginLeft="15dp"
+            android:layout_width="102dp"
+            android:layout_height="47dp"
+            android:src="@drawable/btnpth" />
+
+        <ImageView
+            android:id="@+id/btnTermurah"
+            android:layout_marginRight="15dp"
+            android:layout_width="121dp"
+            android:layout_height="47dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/btnungu" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="271dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="260dp"
+        android:src="@drawable/loading"/>
+
+    <TextView
+        android:id="@+id/tvLoading"
+        style="@style/TextBody14Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="Mencari penerbangan terbaik"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="390dp"/>
+
+
+</FrameLayout>

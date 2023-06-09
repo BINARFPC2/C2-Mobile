@@ -12,7 +12,7 @@
         android:id="@+id/layout_set_kelas"
         android:paddingHorizontal="18dp"
         android:paddingVertical="10dp"
-        tools:background="@color/darkblue_05"
+        tools:background="@color/neutral_01"
         android:foreground="@drawable/selectable_view"
         android:clickable="true"
         android:orientation="horizontal"
@@ -29,7 +29,7 @@
             <TextView
                 android:id="@+id/tv_class"
                 style="@style/TextBody14Bold"
-                android:textColor="@color/neutral_01"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Economy" />
@@ -37,7 +37,7 @@
             <TextView
                 android:id="@+id/tv_price"
                 style="@style/TextBody14Medium"
-                android:textColor="@color/neutral_01"
+                android:textColor="@color/darkblue_05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"

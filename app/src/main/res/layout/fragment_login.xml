@@ -27,6 +27,7 @@
     <EditText
         android:id="@+id/etEmailLogin"
         style="@style/EditText"
+        android:layout_marginTop="10dp"
         android:hint="@string/contoh_joendhoe_gmail_com"
         android:background="@drawable/shape_rectangle"
         android:layout_width="match_parent"
@@ -48,6 +49,7 @@
         <TextView
             android:id="@+id/txtLupaPassword"
             style="@style/TextBody12Medium"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
@@ -58,7 +60,9 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
 
         <EditText
             android:id="@+id/etPasswordLogin"

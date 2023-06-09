@@ -1,6 +1,7 @@
 package com.dwiki.tiketku.model
 
 data class DummyKelas(
-    val kelas:String,
-    val harga:String
+    var kelas:String,
+    var harga:String,
+    var isSelected:Boolean = false
 )

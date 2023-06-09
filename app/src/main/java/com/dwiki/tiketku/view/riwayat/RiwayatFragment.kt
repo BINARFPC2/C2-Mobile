@@ -30,7 +30,9 @@ class RiwayatFragment : Fragment() {
     }
 
     private fun login() {
-
+        binding.btnLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_riwayatFragment_to_loginFragment)
+        }
     }
 
 }

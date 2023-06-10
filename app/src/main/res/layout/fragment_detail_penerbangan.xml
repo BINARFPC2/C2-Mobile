@@ -27,7 +27,7 @@
          <TextView
              style="@style/TextBody14Bold"
              android:textSize="16sp"
-             android:text="@string/total"
+             android:text="Total"
              android:textColor="@color/black"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"/>
@@ -37,7 +37,7 @@
              style="@style/TextBody14Bold"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="@string/idr_4_950_000"
+             android:text="IDR 4.500.000"
              android:textColor="@color/darkblue_04"
              android:textSize="18sp"
              android:layout_alignParentEnd="true"/>
@@ -52,7 +52,7 @@
           android:layout_alignParentBottom="true"
           android:layout_marginBottom="48dp"
           android:backgroundTint="@color/darkblue_04"
-          android:text="@string/pilih" />
+          android:text="Pilih" />
 
    </LinearLayout>
 

@@ -142,7 +142,7 @@
                     style="@style/TextBody14Regular"
                     android:layout_toRightOf="@id/imgLogoMaskapai"
                     android:textColor="@color/black"
-                    android:text="@string/info"
+                    android:text="Info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

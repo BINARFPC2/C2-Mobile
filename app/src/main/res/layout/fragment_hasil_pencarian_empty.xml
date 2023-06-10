@@ -48,7 +48,7 @@
         android:backgroundTint ="@color/darkblue_04"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ubah_pencarian"
+        android:text="Ubah Pencarian"
         android:layout_marginTop="630dp"
         android:layout_marginBottom="10dp"
         android:layout_marginHorizontal="15dp" />

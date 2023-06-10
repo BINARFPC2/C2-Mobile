@@ -75,8 +75,6 @@ class BottomSheetKelasFragment : BottomSheetDialogFragment(), SetKelasAdapter.On
            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<TextView>(R.id.tv_class).setTextColor(resources.getColor(R.color.white))
             rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<TextView>(R.id.tv_price).setTextColor(resources.getColor(R.color.white))
 
-
-
             //soon update using save args
             binding.btnSimpan.setOnClickListener {
 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.hasilpencarianempty.HasilPencarianFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout_toolbar"
+        android:layout_height="40dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:padding="10dp"
+            android:background="@color/darkblue_05"
+            android:minHeight="?attr/actionBarSize">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="30dp"
+                />
+
+            <TextView
+                style="@style/TextBody14Medium"
+                android:textColor="@color/white"
+                android:layout_marginStart="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JKT > MLB  - 2 Penumpang - Economy" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/btnFilter"
+            android:layout_marginLeft="15dp"
+            android:layout_width="102dp"
+            android:layout_height="47dp"
+            android:src="@drawable/btnpth" />
+
+        <ImageView
+            android:id="@+id/btnTermurah"
+            android:layout_marginRight="15dp"
+            android:layout_width="121dp"
+            android:layout_height="47dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/btnungu" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:listitem="@layout/item_hasil_pencarian"
+        />
+
+</LinearLayout>

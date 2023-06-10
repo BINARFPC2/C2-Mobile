@@ -73,7 +73,7 @@ class BerandaFragment : Fragment() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(
-                requireContext(),
+                requireContext(),R.style.DateDialogTheme,
                 { _, year, month, dayOfMonth ->
                     val bulan =nameMonth[month]
                     tanggalPergi = "$dayOfMonth $bulan $year"

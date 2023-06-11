@@ -64,6 +64,7 @@
                     android:lineSpacingExtra="-1sp"
                     android:gravity="top"/>
                 <TextView
+                    android:id="@+id/dewasa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(12 tahun keatas)"
@@ -85,8 +86,7 @@
                     android:background="@drawable/background_border_button"
                     android:minWidth="40dp"
                     android:minHeight="40dp"
-                    android:src="@drawable/ic_decrease"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    android:src="@drawable/ic_decrease" />
                 <TextView
                     android:id="@+id/tv_passenger"
                     android:layout_width="60dp"

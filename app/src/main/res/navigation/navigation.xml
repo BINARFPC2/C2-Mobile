@@ -54,7 +54,11 @@
         android:id="@+id/bottomSheetSetPenumpang"
         android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetSetPenumpang"
         android:label="fragment_bottom_sheet_set_penumpang"
-        tools:layout="@layout/fragment_bottom_sheet_set_penumpang" />
+        tools:layout="@layout/fragment_bottom_sheet_set_penumpang" >
+        <action
+            android:id="@+id/action_bottomSheetSetPenumpang_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+    </dialog>
     <dialog
         android:id="@+id/bottomSheetKelasFragment"
         android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetKelasFragment"

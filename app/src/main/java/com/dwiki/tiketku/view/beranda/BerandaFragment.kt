@@ -18,7 +18,8 @@ class BerandaFragment : Fragment() {
 
     private lateinit var binding: FragmentBerandaBinding
     private var kelas:String? = null
-    private var tanggalKembali:String = "Tanggal"
+    private var jumlahPenumpang:Int? = null
+    private var tanggalKembali:String? = null
     private var tanggalPergi:String? = null
     
 
@@ -46,6 +47,8 @@ class BerandaFragment : Fragment() {
 
         getKelasPenerbangan()
         getTanggalKembali()
+        getTanggalBerangkat()
+        getSetPenumpang()
         datePickerReturn()
         datePickerDeparture()
 
@@ -77,21 +80,14 @@ class BerandaFragment : Fragment() {
                 { _, year, month, dayOfMonth ->
                     val bulan =nameMonth[month]
                     tanggalPergi = "$dayOfMonth $bulan $year"
-                    binding.tvPilihTanggal.setText(tanggalPergi)
+                    binding.tvDepartureDate.setText(tanggalPergi)
+                    binding.tvDepartureDate.setTextColor(resources.getColor(R.color.black))
                 },
                 year, month, day,
             )
             datePickerDialog.show()
-        }
-    }
-
-
-    private fun getTanggalKembali() {
-        if (tanggalKembali == null) {
-            binding.tvPilihTanggal.setText("Pilih Tanggal")
-        } else {
-            binding.tvPilihTanggal.setText(tanggalKembali)
-            binding.tvPilihTanggal.setTextColor(resources.getColor(R.color.black))
+            datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.darkblue_05))
+            datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.darkblue_05))
         }
     }
 
@@ -117,17 +113,45 @@ class BerandaFragment : Fragment() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(
-                requireContext(),
+                requireContext(),R.style.DateDialogTheme,
                 { _, year, month, dayOfMonth ->
                     val bulan =nameMonth[month]
                     tanggalKembali = "$dayOfMonth $bulan $year"
                     binding.tvPilihTanggal.setText(tanggalKembali)
+                    binding.tvPilihTanggal.setTextColor(resources.getColor(R.color.black))
                 },
                 year, month, day,
             )
             datePickerDialog.show()
+            datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.darkblue_05))
+            datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.darkblue_05))
         }
     }
+
+
+    private fun getTanggalKembali() {
+        if (tanggalKembali == null) {
+            binding.tvPilihTanggal.setText("Pilih Tanggal")
+            binding.tvDepartureDate.setTextColor(resources.getColor(R.color.darkblue_05))
+        } else {
+            binding.tvPilihTanggal.setText(tanggalKembali)
+            binding.tvPenumpang.setTextColor(resources.getColor(R.color.black))
+
+        }
+    }
+
+    private fun getTanggalBerangkat() {
+        if (tanggalPergi == null) {
+            binding.tvDepartureDate.setText("Pilih Tanggal")
+            binding.tvDepartureDate.setTextColor(resources.getColor(R.color.darkblue_05))
+        } else {
+            binding.tvDepartureDate.setText(tanggalPergi)
+            binding.tvPenumpang.setTextColor(resources.getColor(R.color.black))
+
+        }
+    }
+
+
 
     private fun getKelasPenerbangan(){
         kelas = arguments?.getString("kelas")
@@ -137,6 +161,17 @@ class BerandaFragment : Fragment() {
         } else {
             binding.tvClass.text = kelas
             binding.tvClass.setTextColor(resources.getColor(R.color.black))
+        }
+    }
+
+    private fun getSetPenumpang(){
+        jumlahPenumpang = arguments?.getInt("dewasa")
+        if (jumlahPenumpang == 0) {
+            binding.tvPenumpang.text = "Jumlah Penumpang"
+
+        } else {
+            binding.tvPenumpang.text = "$jumlahPenumpang Penumpang "
+            binding.tvPenumpang.setTextColor(resources.getColor(R.color.black))
         }
     }
 

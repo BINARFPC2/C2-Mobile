@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,12 +21,17 @@ import com.dwiki.tiketku.adapter.SetKelasAdapter
 import com.dwiki.tiketku.databinding.FragmentBottomSheetKelasBinding
 import com.dwiki.tiketku.model.DummyKelas
 import com.dwiki.tiketku.model.KelasPenerbangan
+import com.dwiki.tiketku.viewmodel.BerandaViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class BottomSheetKelasFragment : BottomSheetDialogFragment(), SetKelasAdapter.OnItemClickListener {
 
 
     private lateinit var binding: FragmentBottomSheetKelasBinding
+    private val berandaViewModel: BerandaViewModel by viewModels()
     private lateinit var kelasList:ArrayList<DummyKelas>
     private lateinit var kelasAdapter:SetKelasAdapter
 
@@ -66,9 +72,9 @@ class BottomSheetKelasFragment : BottomSheetDialogFragment(), SetKelasAdapter.On
     }
 
     override fun onItemClick(position: Int, adapter: SetKelasAdapter, v: View) {
+        val rvKelas = binding.rvKelas
         val itemClicked: DummyKelas = kelasList[position]
         itemClicked.isSelected = !itemClicked.isSelected
-        val rvKelas = binding.rvKelas
         if (itemClicked.isSelected){
            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<ConstraintLayout>(R.id.layout_set_kelas).setBackgroundResource(R.drawable.curved_bg_set_kelas)
            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<ImageView>(R.id.succes_klik).visibility = View.VISIBLE
@@ -78,11 +84,8 @@ class BottomSheetKelasFragment : BottomSheetDialogFragment(), SetKelasAdapter.On
             //soon update using save args
             binding.btnSimpan.setOnClickListener {
 
-                val bundle = Bundle()
-                bundle.putString("kelas", itemClicked.kelas)
-                bundle.putString("harga",itemClicked.harga)
-
-                findNavController().navigate(R.id.action_bottomSheetKelasFragment_to_berandaFragment,bundle)
+                berandaViewModel.saveKelasPreferences(itemClicked.kelas,2000,itemClicked.isSelected)
+                findNavController().navigate(R.id.action_bottomSheetKelasFragment_to_berandaFragment)
             }
 
             Log.d("Harga",itemClicked.harga)

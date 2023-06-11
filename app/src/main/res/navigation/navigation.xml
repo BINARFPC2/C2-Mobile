@@ -20,6 +20,9 @@
             android:name="tanggal_kembali"
             app:argType="string"
             android:defaultValue="tanggal" />
+        <action
+            android:id="@+id/action_berandaFragment_to_datePickerDialog"
+            app:destination="@id/datePickerDialog" />
     </fragment>
     <fragment
         android:id="@+id/riwayatFragment"
@@ -73,4 +76,8 @@
         android:name="com.dwiki.tiketku.view.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <dialog
+        android:id="@+id/datePickerDialog"
+        android:name="com.dwiki.tiketku.view.dialog.DatePickerDialog"
+        android:label="DatePickerDialog" />
 </navigation>

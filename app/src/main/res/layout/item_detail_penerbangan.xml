@@ -32,7 +32,7 @@
 
         <TextView
             android:id="@+id/txtKedatangan"
-            android:text="Melbourne"
+            android:text="Melbourne "
             style="@style/TextBody14Bold"
             android:textSize="16sp"
             android:textColor="@color/darkblue_04"

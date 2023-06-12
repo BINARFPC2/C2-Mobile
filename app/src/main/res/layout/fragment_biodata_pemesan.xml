@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.biodatapemesan.BiodataPemesanFragment">
+
+    <RelativeLayout
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/listitem" />
+
+    <RelativeLayout
+        android:layout_width="384dp"
+        android:layout_height="459dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/shape_rectangle_ungu">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:text="Nama Lengkap"
+            android:textSize="16dp"
+            android:textColor="@color/darkblue_05"
+            style="@style/TextBody14Bold" />
+
+        <RelativeLayout
+            android:background="@drawable/rectangle"
+            android:layout_width="311dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:id="@+id/tvNamaLengkapPemesan"
+                android:layout_marginTop="5dp"
+                style="@style/TextTitle16Medium"
+                android:layout_width="91dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:text="Harry"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="311dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="95dp">
+
+            <TextView
+                android:id="@+id/tvPulangPergi"
+                style="@style/TextBody14Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text="Punya nama keluarga"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:checked="true"
+                app:thumbTint="@color/white"
+                app:trackTint="@color/darkblue_05" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="145dp"
+            android:text="Nama Keluarga"
+            android:textSize="16dp"
+            android:textColor="@color/darkblue_05"
+            style="@style/TextBody14Bold"/>
+
+        <RelativeLayout
+            android:background="@drawable/rectangle"
+            android:layout_width="311dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="175dp">
+
+            <TextView
+                android:id="@+id/tvNamaKeluargaPemesan"
+                android:layout_marginTop="5dp"
+                style="@style/TextTitle16Medium"
+                android:layout_width="91dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:text="Potter"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="225dp"
+            android:text="Nomor Telepon"
+            android:textSize="16dp"
+            android:textColor="@color/darkblue_05"
+            style="@style/TextBody14Bold"/>
+
+        <RelativeLayout
+            android:background="@drawable/rectangle"
+            android:layout_width="311dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="255dp">
+
+            <TextView
+                android:id="@+id/tvNoTelfonPemesan"
+                android:layout_marginTop="5dp"
+                style="@style/TextTitle16Medium"
+                android:layout_width="91dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:text="Potter"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="305dp"
+            android:text="Email"
+            android:textSize="16dp"
+            android:textColor="@color/darkblue_05"
+            style="@style/TextBody14Bold"/>
+
+        <RelativeLayout
+            android:background="@drawable/rectangle"
+            android:layout_width="311dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="335dp">
+
+            <TextView
+                android:id="@+id/tvEmailPemesan"
+                style="@style/TextBody14Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="17dp"
+                android:text="Contoh: johndoe@gmail.com"
+                android:textColor="@color/neutral_03"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

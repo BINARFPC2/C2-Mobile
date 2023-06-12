@@ -1,13 +1,14 @@
 package com.dwiki.tiketku.viewmodel
 
+import android.content.SharedPreferences
 import android.util.JsonToken
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.dwiki.tiketku.model.datastore.PreferenceManager
 import com.dwiki.tiketku.model.user.ResponseUserLogin
 import com.dwiki.tiketku.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,7 +17,11 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val api:ApiService):ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val api:ApiService,
+    private val prefManager: PreferenceManager,
+    private val sharedPreferences: SharedPreferences
+    ):ViewModel() {
 
     //set up loading
     private val _isLoading = MutableLiveData<Boolean>()
@@ -53,6 +58,43 @@ class LoginViewModel @Inject constructor(private val api:ApiService):ViewModel()
 
         })
     }
+
+    //get login state
+    fun getLoginState(): LiveData<Boolean> {
+        return prefManager.getLoginState().asLiveData()
+    }
+
+    fun saveLoginState(state:Boolean){
+        viewModelScope.launch {
+            prefManager.saveLoginState(state)
+        }
+    }
+
+    //save token
+    fun saveTokenPreferences(value: String){
+        val editor = sharedPreferences.edit()
+        editor.putString("token",value)
+        editor.apply()
+    }
+
+    //get token
+    fun getTokenPreferences():String?{
+        return sharedPreferences.getString("token","token kosong")
+    }
+
+    //logout
+    fun logout(){
+        viewModelScope.launch {
+            prefManager.logout()
+        }
+    }
+
+    fun logoutPref(){
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
+
     companion object{
         private const val TAG = "LoginViewModel"
     }

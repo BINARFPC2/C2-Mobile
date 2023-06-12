@@ -47,6 +47,12 @@ class BerandaViewModel @Inject constructor(
         editor.apply()
     }
 
+    fun saveDepartureDate(date: String){
+        val editor = sharedPreferences.edit()
+        editor.putString("departure",date)
+        editor.apply()
+    }
+
     fun getPenumpangDewasa():Int{
         return sharedPreferences.getInt("dewasa",2)
     }
@@ -82,6 +88,30 @@ class BerandaViewModel @Inject constructor(
        val defaultTanggal = "$day $bulan $year"
        return sharedPreferences.getString("date",defaultTanggal)
    }
+
+    fun getDepartureDate():String?{
+        val nameMonth = ArrayList<String>()
+        nameMonth.add("Januari")
+        nameMonth.add("Februari")
+        nameMonth.add("Maret")
+        nameMonth.add("April")
+        nameMonth.add("Mei")
+        nameMonth.add("Juni")
+        nameMonth.add("Juli")
+        nameMonth.add("Agustus")
+        nameMonth.add("September")
+        nameMonth.add("Oktober")
+        nameMonth.add("November")
+        nameMonth.add("Desember")
+
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val bulan = nameMonth[month]
+        val defaultTanggal = "$day $bulan $year"
+        return sharedPreferences.getString("departure",defaultTanggal)
+    }
 
     fun getNamaKelas():String?{
         return sharedPreferences.getString("kelas","Kelas 1")

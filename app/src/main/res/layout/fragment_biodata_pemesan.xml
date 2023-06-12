@@ -30,25 +30,19 @@
             android:textColor="@color/darkblue_05"
             android:textSize="16dp" />
 
-        <RelativeLayout
+        <EditText
+            android:paddingLeft="15dp"
+            android:id="@+id/tvNamaLengkapPemesan"
+            style="@style/TextTitle16Medium"
+            android:hint="Harry"
+            android:textColorHint="@color/black"
+            android:textSize="18dp"
             android:layout_width="311dp"
             android:layout_height="40dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/rectangle">
+            android:background="@drawable/rectangle"/>
 
-            <TextView
-                android:id="@+id/tvNamaLengkapPemesan"
-                style="@style/TextTitle16Medium"
-                android:layout_width="91dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:gravity="center_horizontal"
-                android:text="Harry"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="311dp"
@@ -89,25 +83,20 @@
             android:textColor="@color/darkblue_05"
             android:textSize="16dp" />
 
-        <RelativeLayout
+        <EditText
+            android:paddingLeft="15dp"
+            android:id="@+id/tvNamaKeluargaPemesan"
+            style="@style/TextTitle16Medium"
+            android:hint="Potter"
+            android:textColorHint="@color/black"
+            android:textSize="18dp"
             android:layout_width="311dp"
             android:layout_height="40dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="175dp"
-            android:background="@drawable/rectangle">
+            android:background="@drawable/rectangle"/>
 
-            <TextView
-                android:id="@+id/tvNamaKeluargaPemesan"
-                style="@style/TextTitle16Medium"
-                android:layout_width="91dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:gravity="center_horizontal"
-                android:text="Potter"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
 
-        </RelativeLayout>
 
         <TextView
             style="@style/TextBody14Bold"
@@ -119,25 +108,20 @@
             android:textColor="@color/darkblue_05"
             android:textSize="16dp" />
 
-        <RelativeLayout
+        <EditText
+            android:paddingLeft="15dp"
+            android:id="@+id/tvNoTelfonPemesan"
+            style="@style/TextTitle16Medium"
+            android:hint="Potter"
+            android:textColorHint="@color/black"
+            android:textSize="18dp"
             android:layout_width="311dp"
             android:layout_height="40dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="255dp"
-            android:background="@drawable/rectangle">
+            android:background="@drawable/rectangle"/>
 
-            <TextView
-                android:id="@+id/tvNoTelfonPemesan"
-                style="@style/TextTitle16Medium"
-                android:layout_width="91dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:gravity="center_horizontal"
-                android:text="Potter"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
 
-        </RelativeLayout>
 
 
         <TextView
@@ -150,25 +134,21 @@
             android:textColor="@color/darkblue_05"
             android:textSize="16dp" />
 
-        <RelativeLayout
+        <EditText
+            android:paddingLeft="15dp"
+            android:id="@+id/tvEmailPemesan"
             android:layout_width="311dp"
             android:layout_height="40dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="335dp"
-            android:background="@drawable/rectangle">
+            android:background="@drawable/rectangle"
+            style="@style/TextBody14Regular"
+            android:text="Contoh: johndoe@gmail.com"
+            android:textColor="@color/neutral_03"
+            android:textSize="14dp"/>
 
-            <TextView
-                android:id="@+id/tvEmailPemesan"
-                style="@style/TextBody14Regular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="5dp"
-                android:text="Contoh: johndoe@gmail.com"
-                android:textColor="@color/neutral_03"
-                android:textSize="16dp" />
 
-        </RelativeLayout>
+
 
     </RelativeLayout>
 

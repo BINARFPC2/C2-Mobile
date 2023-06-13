@@ -3,6 +3,7 @@ package com.dwiki.tiketku.viewmodel
 import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.*
+import com.dwiki.tiketku.SingleLiveEvent
 import com.dwiki.tiketku.model.KelasPenumpang
 import com.dwiki.tiketku.model.Penumpang
 import com.dwiki.tiketku.model.datastore.KelasManager
@@ -13,6 +14,9 @@ import com.dwiki.tiketku.network.ApiService
 import com.dwiki.tiketku.util.Resources
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
@@ -24,27 +28,54 @@ class BerandaViewModel @Inject constructor(
     private val sharedPreferences: SharedPreferences
     ): ViewModel() {
 
-
-   init {
-       destinasiFavResult()
-   }
-
-    fun destinasiFavResult():LiveData<Resources<ResponseDestinasiFavorit>> = liveData {
-        emit(Resources.loading(null))
-        try {
-            val response = apiService.getDestinasiFavorit()
-            if (response.isSuccessful){
-                emit(Resources.success(response.body()))
-                Log.d(TAG,"success get list favorit: ${response.message()}")
-            } else{
-                emit(Resources.error(response.errorBody().toString(),null))
-                Log.e(TAG,"error get list favorit: ${response.errorBody()?.string()}")
-            }
-        } catch (e:Exception){
-            Log.e(TAG,"error get list favorit: ${e.message}")
-            emit(Resources.error(e.cause.toString(),null))
-        }
+    init {
+        getdestinasiFavResult()
     }
+
+    private val _destinasiResult = MutableLiveData<ResponseDestinasiFavorit>()
+    val destinasiResult:LiveData<ResponseDestinasiFavorit> = _destinasiResult
+
+    fun getdestinasiFavResult(){
+        apiService.getDestinasiFavorit().enqueue(object : Callback<ResponseDestinasiFavorit>{
+            override fun onResponse(
+                call: Call<ResponseDestinasiFavorit>,
+                response: Response<ResponseDestinasiFavorit>
+            ) {
+                if (response.isSuccessful){
+                    _destinasiResult.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseDestinasiFavorit>, t: Throwable) {
+                Log.e(TAG,"error get list favorit: ${t.message}")
+            }
+
+        })
+    }
+
+
+//    fun destinasiFavResult():LiveData<Resources<ResponseDestinasiFavorit>> = liveData {
+//
+//
+//            emit(Resources.loading(null))
+//            try {
+//                val response = apiService.getDestinasiFavorit()
+//                if (response.isSuccessful){
+//                    emit(Resources.success(response.body()))
+//                    Log.d(TAG,"success get list favorit: ${response.message()}")
+//                } else{
+//                    emit(Resources.error(response.errorBody().toString(),null))
+//                    Log.e(TAG,"error get list favorit: ${response.errorBody()?.string()}")
+//                }
+//            } catch (e:Exception){
+//                Log.e(TAG,"error get list favorit: ${e.message}")
+//                emit(Resources.error(e.cause.toString(),null))
+//            }
+//
+//    }
+
+
+
 
     fun clearData(){
             viewModelScope.launch {

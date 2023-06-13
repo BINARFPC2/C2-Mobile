@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiki.tiketku.R
@@ -31,6 +32,8 @@ class BerandaFragment : Fragment() {
     private var tanggalKembali = "Tanggal"
     private var tanggalPergi:String? = null
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,23 +45,32 @@ class BerandaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        berandaViewModel.destinasiFavResult().observe(requireActivity()){
-            when(it.status){
-                Status.SUCCESS->{
-                    binding.rvDestinasiFavorit.apply {
+        berandaViewModel.destinasiResult.observe(viewLifecycleOwner){ data ->
+            binding.rvDestinasiFavorit.apply {
                         layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                        adapterfavDestinasi = DestinasiFavoritAdapter(it.data?.data ?: emptyList())
+                        adapterfavDestinasi = DestinasiFavoritAdapter(data.data ?: emptyList())
                         adapter = adapterfavDestinasi
                     }
-                }
-                Status.LOADING ->{
-                    Log.d("Beranda Fragment","Loading")
-                }
-                Status.ERROR ->{
-                    Log.d("Beranda Fragment","Error")
-                }
-            }
         }
+
+
+//        berandaViewModel.destinasiFavResult().observe(requireActivity()){
+//            when(it.status){
+//                Status.SUCCESS->{
+//                    binding.rvDestinasiFavorit.apply {
+//                        layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+//                        adapterfavDestinasi = DestinasiFavoritAdapter(it.data?.data ?: emptyList())
+//                        adapter = adapterfavDestinasi
+//                    }
+//                }
+//                Status.LOADING ->{
+//                    Log.d("Beranda Fragment","Loading")
+//                }
+//                Status.ERROR ->{
+//                    Log.d("Beranda Fragment","Error")
+//                }
+//            }
+//        }
 
         //get date
         val dateNowReturn = berandaViewModel.getDatePref()
@@ -208,6 +220,18 @@ class BerandaFragment : Fragment() {
         return nameMonth
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        berandaViewModel.destinasiResult.observe(viewLifecycleOwner){ data ->
+            binding.rvDestinasiFavorit.apply {
+                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+                adapterfavDestinasi = DestinasiFavoritAdapter(data.data ?: emptyList())
+                adapter = adapterfavDestinasi
+            }
+        }
+
+    }
 
 
 }

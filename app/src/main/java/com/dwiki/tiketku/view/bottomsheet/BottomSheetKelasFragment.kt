@@ -57,9 +57,10 @@ class BottomSheetKelasFragment : BottomSheetDialogFragment(), SetKelasAdapter.On
         }
 
         kelasList = ArrayList()
-        kelasList.add(DummyKelas("Kelas 1","Rp.20000"))
-        kelasList.add(DummyKelas("Kelas 2","Rp.20000"))
-        kelasList.add(DummyKelas("Kelas 3","Rp.20000"))
+        kelasList.add(DummyKelas("Economy","Rp.20000"))
+        kelasList.add(DummyKelas("Premium Economy","Rp.20000"))
+        kelasList.add(DummyKelas("Business","Rp.20000"))
+        kelasList.add(DummyKelas("First Class","Rp.20000"))
 
         binding.rvKelas.apply {
             layoutManager =LinearLayoutManager(requireContext())

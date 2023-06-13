@@ -20,6 +20,6 @@ interface ApiService {
     ): Response<ResponseUserLogin>
 
    @GET("destfavorite")
-   suspend fun getDestinasiFavorit(): Response<ResponseDestinasiFavorit>
+   fun getDestinasiFavorit(): Call<ResponseDestinasiFavorit>
 
 }

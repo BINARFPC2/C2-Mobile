@@ -10,6 +10,9 @@ import com.dwiki.tiketku.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
+import com.dwiki.tiketku.util.Resources
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,29 +38,24 @@ class LoginViewModel @Inject constructor(
     val error:LiveData<String> = _error
 
 
-    fun getUserLogin(email:String, password:String){
-        _isLoading.value = true
-        api.loginUser(email,password).enqueue(object : Callback<ResponseUserLogin> {
-            override fun onResponse(
-                call: Call<ResponseUserLogin>,
-                response: Response<ResponseUserLogin>
-            ) {
-                if (response.isSuccessful){
-                    _isLoading.value = false
-                    _userItemLogin.value = response.body()
-                }else{
-                    _isLoading.value = false
-                    _error.value = response.errorBody()?.string()
-                }
+    //get user login
+    fun loginResult(email: String,password: String):LiveData<Resources<ResponseUserLogin>> = liveData {
+        emit(Resources.loading(null))
+        try {
+            val response = api.loginUser(email,password)
+            if (response.isSuccessful){
+                emit(Resources.success(response.body()))
+                Log.d(TAG,"success login: ${response.message()}")
+            }else{
+                emit(Resources.error(response.errorBody()?.string(),null))
+                Log.e(TAG,"Error login : ${response.errorBody()?.string()}")
             }
-
-            override fun onFailure(call: Call<ResponseUserLogin>, t: Throwable) {
-                _isLoading.value = false
-                Log.e(TAG, t.message.toString())
-            }
-
-        })
+        } catch (e:Exception){
+            emit(Resources.error(e.message.toString(),null))
+            Log.e(TAG,"Error Exception login : ${e.cause.toString()}")
+        }
     }
+
 
     //get login state
     fun getLoginState(): LiveData<Boolean> {

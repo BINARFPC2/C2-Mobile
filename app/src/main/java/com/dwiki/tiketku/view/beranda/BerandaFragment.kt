@@ -7,12 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiki.tiketku.R
+import com.dwiki.tiketku.adapter.DestinasiFavoritAdapter
 import com.dwiki.tiketku.databinding.FragmentBerandaBinding
-import com.dwiki.tiketku.databinding.FragmentRiwayat2Binding
+import com.dwiki.tiketku.util.Status
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
@@ -24,11 +25,11 @@ class BerandaFragment : Fragment() {
 
     private lateinit var binding: FragmentBerandaBinding
     private val berandaViewModel:BerandaViewModel by viewModels()
+    private lateinit var adapterfavDestinasi:DestinasiFavoritAdapter
     private var kelas:String? = null
     private var jumlahPenumpang:Int? = null
     private var tanggalKembali = "Tanggal"
     private var tanggalPergi:String? = null
-    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +42,23 @@ class BerandaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        berandaViewModel.destinasiFavResult().observe(requireActivity()){
+            when(it.status){
+                Status.SUCCESS->{
+                    binding.rvDestinasiFavorit.apply {
+                        layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+                        adapterfavDestinasi = DestinasiFavoritAdapter(it.data?.data ?: emptyList())
+                        adapter = adapterfavDestinasi
+                    }
+                }
+                Status.LOADING ->{
+                    Log.d("Beranda Fragment","Loading")
+                }
+                Status.ERROR ->{
+                    Log.d("Beranda Fragment","Error")
+                }
+            }
+        }
 
         //get date
         val dateNowReturn = berandaViewModel.getDatePref()
@@ -58,6 +76,10 @@ class BerandaFragment : Fragment() {
             findNavController().navigate(R.id.action_berandaFragment_to_bottomSheetKelasFragment)
         }
 
+
+
+
+
         binding.btnCari.setOnClickListener {
             //test get data
             val departureDate = berandaViewModel.getDepartureDate()
@@ -73,7 +95,6 @@ class BerandaFragment : Fragment() {
             Log.d("Beranda Fragment","$departureDate $returnDate $passengers $kelas")
         }
 
-
         flipLokasi()
         getKelasPenerbangan()
         getSetPenumpang()
@@ -81,6 +102,8 @@ class BerandaFragment : Fragment() {
         datePickerDeparture()
 
     }
+
+
 
     private fun flipLokasi() {
         binding.btnFlip.setOnClickListener {
@@ -184,6 +207,7 @@ class BerandaFragment : Fragment() {
         nameMonth.add("Desember")
         return nameMonth
     }
+
 
 
 }

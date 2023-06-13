@@ -1,11 +1,16 @@
 package com.dwiki.tiketku.viewmodel
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.*
 import com.dwiki.tiketku.model.KelasPenumpang
 import com.dwiki.tiketku.model.Penumpang
 import com.dwiki.tiketku.model.datastore.KelasManager
 import com.dwiki.tiketku.model.datastore.PenumpangManager
+import com.dwiki.tiketku.model.destinasifavorit.DataItem
+import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
+import com.dwiki.tiketku.network.ApiService
+import com.dwiki.tiketku.util.Resources
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.*
@@ -15,9 +20,31 @@ import kotlin.collections.ArrayList
 @HiltViewModel
 class BerandaViewModel @Inject constructor(
     private val kelasManager:KelasManager,
+    private val apiService: ApiService,
     private val sharedPreferences: SharedPreferences
     ): ViewModel() {
 
+
+   init {
+       destinasiFavResult()
+   }
+
+    fun destinasiFavResult():LiveData<Resources<ResponseDestinasiFavorit>> = liveData {
+        emit(Resources.loading(null))
+        try {
+            val response = apiService.getDestinasiFavorit()
+            if (response.isSuccessful){
+                emit(Resources.success(response.body()))
+                Log.d(TAG,"success get list favorit: ${response.message()}")
+            } else{
+                emit(Resources.error(response.errorBody().toString(),null))
+                Log.e(TAG,"error get list favorit: ${response.errorBody()?.string()}")
+            }
+        } catch (e:Exception){
+            Log.e(TAG,"error get list favorit: ${e.message}")
+            emit(Resources.error(e.cause.toString(),null))
+        }
+    }
 
     fun clearData(){
             viewModelScope.launch {
@@ -132,6 +159,10 @@ class BerandaViewModel @Inject constructor(
         editor.apply()
     }
 
+
+    companion object{
+        private const val TAG = "DestinasiViewModel"
+    }
 
 
 }

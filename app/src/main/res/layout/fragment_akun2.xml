@@ -27,10 +27,10 @@
     <LinearLayout
         android:id="@+id/layout_no_login"
         android:layout_width="match_parent"
+        android:layout_height="648dp"
         android:orientation="vertical"
-        android:paddingTop="18dp"
         android:paddingHorizontal="25dp"
-        android:layout_height="match_parent">
+        android:paddingTop="18dp">
 
         <TextView
             style="@style/TextHeading24Bold"
@@ -43,17 +43,17 @@
             style="@style/TextBody14Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Maaf, Anda harus login terlebih dahulu"
-            android:textColor="@color/black"
             android:layout_gravity="center"
-            android:layout_marginTop="107dp" />
+            android:layout_marginTop="107dp"
+            android:text="Maaf, Anda harus login terlebih dahulu"
+            android:textColor="@color/black" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="290dp"
-            android:src="@drawable/ic_no_login"
+            android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:layout_gravity="center" />
+            android:src="@drawable/ic_no_login" />
 
         <Button
             android:id="@+id/btn_login"
@@ -61,9 +61,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Masuk"
-            android:backgroundTint="@color/darkblue_04" />
+            android:backgroundTint="@color/darkblue_04"
+            android:text="Masuk" />
+
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="670dp">
+
+        <ImageView
+            android:layout_width="104dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/btnhome" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/btnprofilungu" />
+
+        <ImageView
+            android:layout_width="107dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="210dp"
+            android:src="@drawable/btnnotifikasi" />
+
+        <ImageView
+            android:layout_width="107dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="105dp"
+            android:src="@drawable/btnriwayat" />
+
+
+
+
+
+    </RelativeLayout>
+
 
 </FrameLayout>

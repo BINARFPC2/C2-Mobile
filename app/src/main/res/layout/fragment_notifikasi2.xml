@@ -40,7 +40,7 @@
             android:text="20 Maret,14:04"
             android:textColor="@color/neutral_03"
             style="@style/TextBody10Regular"
-            android:layout_marginLeft="250dp"/>
+            android:layout_marginLeft="285dp"/>
 
         <ImageView
             android:layout_width="15dp"
@@ -70,40 +70,6 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true">
-
-        <ImageView
-            android:layout_width="104dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/btnhome" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/btnprofil" />
-
-        <ImageView
-            android:layout_width="107dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="210dp"
-            android:src="@drawable/btnnotifikasiungu" />
-
-        <ImageView
-            android:layout_width="107dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="105dp"
-            android:src="@drawable/btnriwayat" />
-
-        
-        
-        
-        
-    </RelativeLayout>
         
 
 </RelativeLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.notifikasi.NotifikasiFragment">
+
+
+    <TextView
+        android:id="@+id/tvNotifikasiLogin"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="25dp"
+        style="@style/TextHeading24Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notifikasi"
+        android:textColor="@color/black" />
+
+    <RelativeLayout
+        android:layout_width="383dp"
+        android:layout_height="288dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="103dp">
+
+        <ImageView
+            android:id="@id/ivNotifikasi"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:src="@drawable/notifikasi" />
+
+        <TextView
+            style="@style/TextBody10Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:text="Promosi"
+            android:textColor="@color/neutral_03" />
+
+        <TextView
+            style="@style/TextBody10Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="285dp"
+            android:text="20 Maret,14:04"
+            android:textColor="@color/neutral_03" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/bulet_ijo" />
+
+        <TextView
+            android:id="@+id/tvDapatkanPotonganTiket"
+            style="@style/TextBody14Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="15dp"
+            android:text="Dapatkan Potongan 50% Tiket"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvSyaratdanKetentuanBerlaku"
+            style="@style/TextBody10Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="35dp"
+            android:text="Syarat dan Ketentuan berlaku!"
+            android:textColor="@color/neutral_03" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/garis"
+            android:layout_marginTop="70dp"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="187dp"
+            android:layout_marginTop="103dp">
+
+            <ImageView
+                android:id="@+id/ivNotifikasi"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:src="@drawable/notifikasi" />
+
+            <TextView
+                style="@style/TextBody10Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:text="Notifikasi"
+                android:textColor="@color/neutral_03" />
+
+            <TextView
+                style="@style/TextBody10Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="285dp"
+                android:text="5 Maret,14:04"
+                android:textColor="@color/neutral_03" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="0dp"
+                android:src="@drawable/buletmerah" />
+
+            <TextView
+                android:id="@+id/tvCekJadwalNotif"
+                style="@style/TextBody14Regular"
+                android:layout_width="269dp"
+                android:layout_height="78dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="15dp"
+                android:text="Terdapat pada perubahan jadwal
+                penerbangan kode booking 45GT6. Cek jadwal penerbangan Anda disini!"
+                android:textColor="@color/black" />
+
+
+
+        </RelativeLayout>
+
+
+
+</RelativeLayout>

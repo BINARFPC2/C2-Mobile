@@ -410,7 +410,7 @@
                 style="@style/TextTitle16Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Destination Favorit"
+                android:text="Destinasi Favorit"
                 android:textColor="@color/black"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp" />

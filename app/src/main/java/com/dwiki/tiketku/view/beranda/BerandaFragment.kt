@@ -16,8 +16,10 @@ import com.dwiki.tiketku.adapter.DestinasiFavoritAdapter
 import com.dwiki.tiketku.databinding.FragmentBerandaBinding
 import com.dwiki.tiketku.util.Status
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
+import com.dwiki.tiketku.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
+import kotlin.math.log
 
 
 @AndroidEntryPoint
@@ -26,6 +28,7 @@ class BerandaFragment : Fragment() {
 
     private lateinit var binding: FragmentBerandaBinding
     private val berandaViewModel:BerandaViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var adapterfavDestinasi:DestinasiFavoritAdapter
     private var kelas:String? = null
     private var jumlahPenumpang:Int? = null
@@ -45,6 +48,7 @@ class BerandaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        berandaViewModel.getdestinasiFavResult()
         berandaViewModel.destinasiResult.observe(viewLifecycleOwner){ data ->
             binding.rvDestinasiFavorit.apply {
                         layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
@@ -53,24 +57,11 @@ class BerandaFragment : Fragment() {
                     }
         }
 
-
-//        berandaViewModel.destinasiFavResult().observe(requireActivity()){
-//            when(it.status){
-//                Status.SUCCESS->{
-//                    binding.rvDestinasiFavorit.apply {
-//                        layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-//                        adapterfavDestinasi = DestinasiFavoritAdapter(it.data?.data ?: emptyList())
-//                        adapter = adapterfavDestinasi
-//                    }
-//                }
-//                Status.LOADING ->{
-//                    Log.d("Beranda Fragment","Loading")
-//                }
-//                Status.ERROR ->{
-//                    Log.d("Beranda Fragment","Error")
-//                }
-//            }
-//        }
+        val token  = loginViewModel.getTokenPreferences()
+        loginViewModel.getLoginState().observe(viewLifecycleOwner){
+            Log.d("Beranda Fragment","$it")
+        }
+        Log.d("Beranda Fragment","$token")
 
         //get date
         val dateNowReturn = berandaViewModel.getDatePref()
@@ -86,6 +77,18 @@ class BerandaFragment : Fragment() {
 
         binding.tvClass.setOnClickListener {
             findNavController().navigate(R.id.action_berandaFragment_to_bottomSheetKelasFragment)
+        }
+
+        binding.layoutDeparture.setOnClickListener {
+            val bundle =Bundle()
+            bundle.putString("from","from")
+            findNavController().navigate(R.id.action_berandaFragment_to_pilihDestnasiFragment,bundle)
+        }
+
+        binding.layoutTujuan.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("to","to")
+            findNavController().navigate(R.id.action_berandaFragment_to_pilihDestnasiFragment,bundle)
         }
 
 
@@ -110,11 +113,23 @@ class BerandaFragment : Fragment() {
         flipLokasi()
         getKelasPenerbangan()
         getSetPenumpang()
+        getCityFrom()
+        getCityTo()
         datePickerReturn()
         datePickerDeparture()
 
+
     }
 
+    private fun getCityTo() {
+        val destination = berandaViewModel.getCityTo()
+        binding.tvTujuan.text = destination
+    }
+
+    private fun getCityFrom() {
+        val departure = berandaViewModel.getCityFrom()
+        binding.tvDeparture.text =  departure
+    }
 
 
     private fun flipLokasi() {

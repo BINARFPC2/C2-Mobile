@@ -10,6 +10,8 @@ import com.dwiki.tiketku.model.datastore.KelasManager
 import com.dwiki.tiketku.model.datastore.PenumpangManager
 import com.dwiki.tiketku.model.destinasifavorit.DataItem
 import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
+import com.dwiki.tiketku.model.ticket.DataItemTicket
+import com.dwiki.tiketku.model.ticket.ResponseTicket
 import com.dwiki.tiketku.network.ApiService
 import com.dwiki.tiketku.util.Resources
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +22,7 @@ import retrofit2.Response
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
+import kotlin.collections.List
 
 @HiltViewModel
 class BerandaViewModel @Inject constructor(
@@ -28,14 +31,25 @@ class BerandaViewModel @Inject constructor(
     private val sharedPreferences: SharedPreferences
     ): ViewModel() {
 
-    init {
-        getdestinasiFavResult()
-    }
+
+
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading:LiveData<Boolean> = _isLoading
+
 
     private val _destinasiResult = MutableLiveData<ResponseDestinasiFavorit>()
     val destinasiResult:LiveData<ResponseDestinasiFavorit> = _destinasiResult
 
+    private val _getCityFrom = MutableLiveData<List<DataItemTicket>>()
+    val getCityFrom:LiveData<List<DataItemTicket>> = _getCityFrom
+
+    private val _getCityTo = MutableLiveData<List<DataItemTicket>>()
+    val getCityTo:LiveData<List<DataItemTicket>> = _getCityTo
+
+
     fun getdestinasiFavResult(){
+        _isLoading.value = true
         apiService.getDestinasiFavorit().enqueue(object : Callback<ResponseDestinasiFavorit>{
             override fun onResponse(
                 call: Call<ResponseDestinasiFavorit>,
@@ -43,6 +57,8 @@ class BerandaViewModel @Inject constructor(
             ) {
                 if (response.isSuccessful){
                     _destinasiResult.value = response.body()
+                } else {
+                    Log.d("error", response.errorBody()!!.string())
                 }
             }
 
@@ -53,27 +69,51 @@ class BerandaViewModel @Inject constructor(
         })
     }
 
+    fun cityFrom(){
+        apiService.getTickets().enqueue(object : Callback<ResponseTicket>{
+            override fun onResponse(
+                call: Call<ResponseTicket>,
+                response: Response<ResponseTicket>
+            ) {
+                if (response.isSuccessful){
+                    _isLoading.value = true
+                    _getCityFrom.value = response.body()?.data
 
-//    fun destinasiFavResult():LiveData<Resources<ResponseDestinasiFavorit>> = liveData {
-//
-//
-//            emit(Resources.loading(null))
-//            try {
-//                val response = apiService.getDestinasiFavorit()
-//                if (response.isSuccessful){
-//                    emit(Resources.success(response.body()))
-//                    Log.d(TAG,"success get list favorit: ${response.message()}")
-//                } else{
-//                    emit(Resources.error(response.errorBody().toString(),null))
-//                    Log.e(TAG,"error get list favorit: ${response.errorBody()?.string()}")
-//                }
-//            } catch (e:Exception){
-//                Log.e(TAG,"error get list favorit: ${e.message}")
-//                emit(Resources.error(e.cause.toString(),null))
-//            }
-//
-//    }
+                } else {
+                    _isLoading.value = true
+                    Log.d("error get city form", response.errorBody()!!.string())
+                }
+            }
 
+            override fun onFailure(call: Call<ResponseTicket>, t: Throwable) {
+                Log.e(TAG,"error get list Tikcet: ${t.message}")
+            }
+
+        })
+    }
+
+    fun cityTo(){
+        apiService.getTickets().enqueue(object : Callback<ResponseTicket>{
+            override fun onResponse(
+                call: Call<ResponseTicket>,
+                response: Response<ResponseTicket>
+            ) {
+                if (response.isSuccessful){
+                    _isLoading.value = true
+                    _getCityTo.value = response.body()?.data
+
+                } else {
+                    _isLoading.value = true
+                    Log.d("error get city To", response.errorBody()!!.string())
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseTicket>, t: Throwable) {
+                Log.e(TAG,"error get list Tikcet: ${t.message}")
+            }
+
+        })
+    }
 
 
 
@@ -111,6 +151,18 @@ class BerandaViewModel @Inject constructor(
         editor.apply()
     }
 
+    fun saveCityFrom(city:String){
+        val editor = sharedPreferences.edit()
+        editor.putString("from",city)
+        editor.apply()
+    }
+
+    fun saveCityTo(city:String){
+        val editor = sharedPreferences.edit()
+        editor.putString("to",city)
+        editor.apply()
+    }
+
     fun getPenumpangDewasa():Int{
         return sharedPreferences.getInt("dewasa",2)
     }
@@ -121,6 +173,14 @@ class BerandaViewModel @Inject constructor(
 
     fun getPenumpangBayi():Int{
         return sharedPreferences.getInt("bayi",0)
+    }
+
+    fun getCityFrom():String?{
+        return sharedPreferences.getString("from","Jakarta")
+    }
+
+    fun getCityTo():String?{
+        return sharedPreferences.getString("to","Jakarta")
     }
 
    fun getDatePref(): String? {
@@ -186,9 +246,18 @@ class BerandaViewModel @Inject constructor(
 
     fun deletePref(){
         val editor = sharedPreferences.edit()
-        editor.clear()
+        editor.remove("dewasa")
+        editor.remove("anak")
+        editor.remove("bayi")
+        editor.remove("date")
+        editor.remove("kelas")
+        editor.remove("harga")
+        editor.remove("isSelected")
+        editor.remove("departure")
         editor.apply()
     }
+
+
 
 
     companion object{

@@ -6,142 +6,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.pilihdestinasi.PilihDestnasiFragment"
     android:orientation="vertical"
+    android:paddingHorizontal="20dp"
     tools:ignore="ExtraText">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:id="@+id/searchView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:iconifiedByDefault="false"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@drawable/shape_rectangle"-->
+<!--        app:queryBackground="@android:color/transparent"-->
+<!--        app:queryHint="Masukan nama kota atau negara" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputPassword"
         android:layout_width="match_parent"
-        android:layout_height="152dp"
-        android:background="@drawable/background_beranda">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:minHeight="48dp"
+        app:hintEnabled="false"
+        app:hintAnimationEnabled="false"
+        app:boxBackgroundMode="outline">
 
-        <TextView
-            android:id="@+id/tv_tittle"
-            style="@style/TextHeading24Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="32dp"
-            android:text="Hei, Mau kemana?"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:hint="Masukan Kota atau negara"
+            android:padding="15dp"
+            android:background="@drawable/shape_rectangle"
+            android:layout_height="match_parent" />
 
-        <RelativeLayout
-            android:layout_width="414dp"
-            android:layout_height="653dp"
-            android:background="@color/white"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="-2dp"
-            tools:layout_editor_absoluteY="74dp">
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="68dp">
+    <TextView
+        android:id="@+id/tv_title_hasil_pencarian"
+        style="@style/TextTitle16Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hasil Pencarian"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="331dp"
-                    android:layout_height="48dp"
-                    android:layout_marginHorizontal="25dp"
-                    android:layout_marginTop="15dp"
-                    app:strokeColor="@color/neutral_03"
-                    app:strokeWidth="1dp">
-
-                    <TextView
-                        android:id="@+id/etCariKota"
-                        style="@style/EditText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:hint="Masukan Kota" />
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="3dp"
-                        android:src="@drawable/search" />
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <ImageView
-                    android:id="@+id/imgX"
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
-                    android:layout_marginLeft="365dp"
-                    android:layout_marginTop="19dp"
-                    android:src="@drawable/x" />
-
-            </RelativeLayout>
-
-
-        </RelativeLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <RelativeLayout
+    <ListView
+        android:id="@+id/rv_hasil_pencarian"
         android:layout_width="match_parent"
-        android:layout_height="196dp"
-        android:layout_marginLeft="22dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        tools:listitem="@layout/item_pencarian_kota"
+        />
 
-        <TextView
-            android:id="@+id/etPencarianTerkini"
-            android:layout_width="281dp"
-            android:layout_height="24dp"
-            android:text="@string/pencarian_terkini"
-            style="@style/TextTitle16Medium"
-            android:textColor="@color/black"
-            android:gravity="top"/>
-        
-        <TextView
-            android:id="@+id/tvHapus"
-            android:layout_width="46dp"
-            android:layout_height="24dp"
-            android:text="Hapus"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/red_danger"
-            android:layout_marginRight="3dp"/>
-
-        <EditText
-            android:id="@+id/etJakarta"
-            style="@style/TextBody14Regular"
-            android:layout_width="343dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="top"
-            android:textColor="@color/black"
-            android:hint="Jakarta" />
-
-        <EditText
-            android:id="@+id/etBndung"
-            style="@style/TextBody14Regular"
-            android:layout_width="343dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:gravity="top"
-            android:textColor="@color/black"
-            android:hint="Bandung" />
-
-
-        <ImageView
-            android:id="@+id/imgXkcl"
-            android:layout_width="24dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="43dp"
-            android:layout_marginRight="16dp"
-            android:src="@drawable/xkecil" />
-
-        <ImageView
-            android:id="@+id/imgXkecil"
-            android:layout_width="24dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="93dp"
-            android:layout_marginRight="16dp"
-            android:src="@drawable/xkecil"
-            tools:ignore="InvalidId" />
-
-
-    </RelativeLayout>
 </LinearLayout>

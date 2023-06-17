@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        berandaViewModel.deletePref()
+//        berandaViewModel.deletePref()
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
         navController = navHostFragment!!.findNavController()
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
       navController.addOnDestinationChangedListener{ _, destination, _ ->
           when(destination.id){
-                R.id.loginFragment -> {
+                R.id.loginFragment, R.id.registerFragment -> {
                    binding.bottomNav.visibility = View.GONE
                 }
               else ->{
@@ -46,7 +46,5 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d("Main","ON Destroy")
-
-
     }
 }

@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_berandaFragment_to_datePickerDialog"
             app:destination="@id/datePickerDialog" />
+        <action
+            android:id="@+id/action_berandaFragment_to_pilihDestnasiFragment"
+            app:destination="@id/pilihDestnasiFragment" />
     </fragment>
     <fragment
         android:id="@+id/riwayatFragment"
@@ -83,4 +86,13 @@
         android:id="@+id/datePickerDialog"
         android:name="com.dwiki.tiketku.view.dialog.DatePickerDialog"
         android:label="DatePickerDialog" />
+    <fragment
+        android:id="@+id/pilihDestnasiFragment"
+        android:name="com.dwiki.tiketku.view.pilihdestinasi.PilihDestnasiFragment"
+        android:label="fragment_pilih_destnasi"
+        tools:layout="@layout/fragment_pilih_destnasi" >
+        <action
+            android:id="@+id/action_pilihDestnasiFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+    </fragment>
 </navigation>

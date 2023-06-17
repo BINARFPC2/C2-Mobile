@@ -73,6 +73,10 @@ class LoginFragment : Fragment() {
                 }
             }
         }
+
+        binding.txtDaftar.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
     }
 
     fun errorLogin(view: EditText){

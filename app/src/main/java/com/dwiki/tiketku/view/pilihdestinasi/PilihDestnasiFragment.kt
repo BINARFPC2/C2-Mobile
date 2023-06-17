@@ -1,60 +1,179 @@
 package com.dwiki.tiketku.view.pilihdestinasi
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiki.tiketku.R
+import com.dwiki.tiketku.adapter.PencarianFromAdapter
+import com.dwiki.tiketku.databinding.FragmentPilihDestnasiBinding
+import com.dwiki.tiketku.model.DummyKelas
+import com.dwiki.tiketku.model.ticket.DataItemTicket
+import com.dwiki.tiketku.model.ticket.HasilKota
+import com.dwiki.tiketku.viewmodel.BerandaViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PilihDestnasiFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class PilihDestnasiFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding:FragmentPilihDestnasiBinding
+    private val berandaViewModel: BerandaViewModel by viewModels()
+    private lateinit var adapterPencarian: PencarianFromAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pilih_destnasi, container, false)
+        binding = FragmentPilihDestnasiBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PilihDestnasiFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PilihDestnasiFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val fromCity = arguments?.getString("from")
+
+        if (fromCity != null){
+            berandaViewModel.cityFrom()
+            berandaViewModel.getCityFrom.observe(viewLifecycleOwner){
+                val cityList : java.util.ArrayList<String> = ArrayList()
+                for (i in it.indices){
+                    cityList.add(it[i].cityFrom)
                 }
+                val list = cityList.filter { element -> it.count { it.cityFrom == element  } > 1 }.distinct()
+                val cityAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_pendaftaran, list)
+                binding.rvHasilPencarian.adapter = cityAdapter
+                binding.rvHasilPencarian.setOnItemClickListener{ parent, view, position, id ->
+                    val selectedCity =  cityAdapter.getItem(position)
+                    berandaViewModel.saveCityFrom(selectedCity!!)
+                    findNavController().navigate(R.id.action_pilihDestnasiFragment_to_berandaFragment)
+                }
+
+
+                binding.etSearch.addTextChangedListener(object : TextWatcher{
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        cityAdapter.filter.filter(p0)
+                        if (p0?.isEmpty()!!){
+                            binding.rvHasilPencarian.visibility = View.GONE
+                        } else {
+                            binding.rvHasilPencarian.visibility = View.VISIBLE
+                        }
+
+                    }
+
+                    override fun afterTextChanged(p0: Editable?) {}
+
+                })
             }
+        } else {
+            berandaViewModel.cityTo()
+            berandaViewModel.getCityTo.observe(viewLifecycleOwner){
+                val cityList : java.util.ArrayList<String> = ArrayList()
+                for (i in it.indices){
+                    cityList.add(it[i].cityFrom)
+                }
+                val list = cityList.filter { element -> it.count { it.cityFrom == element  } > 1 }.distinct()
+                val cityAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_pendaftaran, list)
+                binding.rvHasilPencarian.adapter = cityAdapter
+                binding.rvHasilPencarian.setOnItemClickListener{ parent, view, position, id ->
+                    val selectedCity =  cityAdapter.getItem(position)
+                    berandaViewModel.saveCityTo(selectedCity!!)
+                    findNavController().navigate(R.id.action_pilihDestnasiFragment_to_berandaFragment)
+                }
+
+
+                binding.etSearch.addTextChangedListener(object : TextWatcher{
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        cityAdapter.filter.filter(p0)
+                        if (p0?.isEmpty()!!){
+                            binding.rvHasilPencarian.visibility = View.GONE
+                        } else {
+                            binding.rvHasilPencarian.visibility = View.VISIBLE
+                        }
+
+                    }
+
+                    override fun afterTextChanged(p0: Editable?) {}
+
+                })
+            }
+        }
+
+
+//        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+////                if (query != null) {
+////                    berandaViewModel.cityFrom()
+////                    berandaViewModel.getCityFrom.observe(viewLifecycleOwner){
+////                        val list = it
+////                        kotaList = ArrayList()
+////                        for (i in list.indices){
+////                            if (list[i].cityFrom == query){
+////                                Log.d("city",query)
+////                                kotaList.add(HasilKota(query))
+////                                break
+////                            }
+////                        }
+////
+////                        if (kotaList.size  > 0){
+////                            binding.rvHasilPencarian.apply {
+////                                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+////                                adapterPencarian = PencarianFromAdapter(kotaList)
+////                                adapter = adapterPencarian
+////                            }
+////                        } else {
+////                            Toast.makeText(requireContext(), "Hasil Pencarian Tidak ditemuka", Toast.LENGTH_SHORT).show()
+////                        }
+////                    }
+////                }
+//                return false
+//            }
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                if (newText != null) {
+//                    berandaViewModel.cityFrom()
+//                    berandaViewModel.getCityFrom.observe(viewLifecycleOwner){
+//                        val list = it
+//                        kotaList = ArrayList()
+//                        for (i in list.indices){
+//                            if (list[i].cityFrom == newText){
+//                                Log.d("city",newText)
+//                                kotaList.add(HasilKota(newText))
+//                                break
+//                            } else {
+//                                Toast.makeText(requireContext(), "Hasil tidak ditemukan", Toast.LENGTH_SHORT).show()
+//                            }
+//                        }
+//
+//                        if (kotaList.isNotEmpty()){
+//                            binding.rvHasilPencarian.apply {
+//                                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+//                                adapterPencarian = PencarianFromAdapter(kotaList)
+//                                adapter = adapterPencarian
+//                            }
+//                        }
+//                    }
+//                }
+//                return true
+//            }
+//        })
+
+
     }
+
 }

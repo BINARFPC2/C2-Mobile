@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentDetailPenerbanganBinding
+import com.dwiki.tiketku.model.ticket.DataItemTicket
+import com.dwiki.tiketku.model.ticket.DetailTicket
 import com.dwiki.tiketku.util.Status
 import com.dwiki.tiketku.util.Utill
 import com.dwiki.tiketku.viewmodel.DetailViewModel
@@ -32,36 +34,33 @@ class DetailPenerbangan : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = arguments?.getString("id")
-        detailViewModel.getDetailTicket(id!!).observe(viewLifecycleOwner){
-            when(it.status){
-                Status.LOADING->{
-                    Log.d("Detail Fragment","Loading")
-                }
-                Status.SUCCESS->{
-                    val detailTicket = it.data
-                    if (detailTicket != null){
-                        binding.apply {
-                            txtBandaraAwal.text = detailTicket.airportFrom
-                            txtBandaraTujuan.text = detailTicket.airportTo
-                            txtKeberangkatan.text = detailTicket.cityFrom
-                            txtTujuan.text = detailTicket.cityTo
-                            txtJamBerangkat.text = detailTicket.dateTakeoff
-                            txtTanggalBerangkat.text = detailTicket.dateDeparture
-                            tvPesawat.text = detailTicket.airlines
-                            tvInformasi.text = detailTicket.information
-                            txtJamDatang.text = detailTicket.dateLanding
-                            txtTanggalSampai.text = detailTicket.dateReturn
-                            val price = Utill.getPriceIdFormat(detailTicket.price)
-                            txtHargaTotal.text = "$price/pax"
-                        }
-                    }
+        detailViewModel.detailTicket(id!!)
+        detailViewModel.getDetailTicket.observe(viewLifecycleOwner) { detailTicket ->
 
+            val getDetail = detailTicket.data
+            if (getDetail != null){
+                binding.layoutCvDetail.visibility = View.VISIBLE
+                binding.layoutTotal.visibility = View.VISIBLE
+                Log.d("DetailPenerbangan","Berhasil get data")
+                binding.apply {
+                    tvAirplaneCode.visibility = View.GONE
+                    txtBandaraAwal.text = getDetail!!.airportFrom
+                    txtBandaraTujuan.text = getDetail.airportTo
+                    txtKeberangkatan.text = getDetail.cityFrom
+                    txtTujuan.text = getDetail.cityTo
+                    txtJamBerangkat.text = getDetail.dateTakeoff
+                    txtTanggalBerangkat.text = getDetail.dateDeparture
+                    tvPesawat.text = getDetail.airlines
+                    tvInformasi.text = getDetail.information
+                    txtJamDatang.text = getDetail.dateLanding
+                    txtTanggalSampai.text = getDetail.dateReturn
+                    val price = Utill.getPriceIdFormat(getDetail.price!!)
+                    txtHargaTotal.text = "$price/pax"
                 }
-                Status.ERROR->{
-                    Log.e("Detail Fragment",it.message.toString())
-                }
+            } else {
+                Log.e("DetailPenerbangan", "detailTicket is null")
             }
+
         }
     }
-
 }

@@ -2,80 +2,77 @@ package com.dwiki.tiketku.model.ticket
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseTicket(
+data class ResponseDetailTicket(
 
 	@field:SerializedName("data")
-	val data: List<DataItemTicket>,
+	val data: Data? = null,
 
 	@field:SerializedName("message")
-	val message: String,
+	val message: String? = null,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String? = null
 )
 
-data class DataItemTicket(
+data class Data(
 
 	@field:SerializedName("booking_code")
-	val bookingCode: String?,
+	val bookingCode: String? = null,
 
 	@field:SerializedName("airport_to")
-	val airportTo: String,
+	val airportTo: String? = null,
 
 	@field:SerializedName("child_price")
-	val childPrice: Any?,
+	val childPrice: Any? = null,
 
 	@field:SerializedName("adult_price")
-	val adultPrice: Any?,
+	val adultPrice: Any? = null,
 
 	@field:SerializedName("available")
-	val available: Boolean,
-
-	@field:SerializedName("dateEnd")
-	val dateEnd: String,
+	val available: Boolean? = null,
 
 	@field:SerializedName("total_passenger")
-	val totalPassenger: Any,
+	val totalPassenger: Any? = null,
 
 	@field:SerializedName("dateReturn")
-	val dateReturn: String,
+	val dateReturn: String? = null,
 
 	@field:SerializedName("createdAt")
-	val createdAt: String,
+	val createdAt: String? = null,
 
 	@field:SerializedName("city_from")
-	val cityFrom: String,
+	val cityFrom: String? = null,
 
 	@field:SerializedName("dateLanding")
-	val dateLanding: String,
+	val dateLanding: String? = null,
 
 	@field:SerializedName("price")
-	val price: Int,
+	val price: Int? = null,
 
 	@field:SerializedName("airlines")
-	val airlines: String,
+	val airlines: String? = null,
 
 	@field:SerializedName("airport_from")
-	val airportFrom: String,
+	val airportFrom: String? = null,
 
 	@field:SerializedName("information")
-	val information: String,
+	val information: String? = null,
 
 	@field:SerializedName("id")
-	val id: String,
+	val id: String? = null,
 
 	@field:SerializedName("dateTakeoff")
-	val dateTakeoff: String,
+	val dateTakeoff: String? = null,
 
 	@field:SerializedName("type_seat")
-	val typeSeat: String,
+	val typeSeat: String? = null,
 
 	@field:SerializedName("city_to")
-	val cityTo: String,
+	val cityTo: String? = null,
 
 	@field:SerializedName("dateDeparture")
-	val dateDeparture: String,
+	val dateDeparture: String? = null,
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String
+	val updatedAt: String? = null
 )

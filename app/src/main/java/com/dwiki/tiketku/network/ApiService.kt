@@ -3,6 +3,7 @@ package com.dwiki.tiketku.network
 import com.dwiki.tiketku.model.destinasifavorit.DataItem
 import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
 import com.dwiki.tiketku.model.ticket.DataItemTicket
+import com.dwiki.tiketku.model.ticket.ResponseDetailTicket
 import com.dwiki.tiketku.model.ticket.ResponseTicket
 import com.dwiki.tiketku.model.ticket.ResponseUpdateTicket
 import com.dwiki.tiketku.model.user.ResponseUserLogin
@@ -58,9 +59,9 @@ interface ApiService {
    ):Call<ResponseUpdateTicket>
 
    @GET("tickets/{id}")
-   suspend fun getTicketById(
+    fun getTicketById(
        @Path("id") id:String
-   ):Response<DataItemTicket>
+   ):Call<ResponseDetailTicket>
 
 
 }

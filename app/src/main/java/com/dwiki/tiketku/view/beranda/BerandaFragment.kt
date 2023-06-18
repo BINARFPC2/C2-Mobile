@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -47,6 +49,7 @@ class BerandaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.window!!.statusBarColor = ContextCompat.getColor(requireContext(),R.color.darkblue_02)
 
         berandaViewModel.getdestinasiFavResult()
         berandaViewModel.destinasiResult.observe(viewLifecycleOwner){ data ->
@@ -96,18 +99,40 @@ class BerandaFragment : Fragment() {
 
 
         binding.btnCari.setOnClickListener {
-            //test get data
-            val departureDate = berandaViewModel.getDepartureDate()
-            val returnDate = berandaViewModel.getDatePref()
-            //get berdasarkan jenis passengers
-            val dewasa = berandaViewModel.getPenumpangDewasa()
-            val anak = berandaViewModel.getPenumpangAnak()
-            val bayi = berandaViewModel.getPenumpangBayi()
-            val total = dewasa + anak + bayi
 
-            val passengers = total
-            val kelas = berandaViewModel.getNamaKelas()
-            Log.d("Beranda Fragment","$departureDate $returnDate $passengers $kelas")
+            val cityFrom = berandaViewModel.getCityFrom()
+            val cityTo = berandaViewModel.getCityTo()
+            val typeSeat = berandaViewModel.getNamaKelas()
+
+            berandaViewModel.ticketsBeranda(cityFrom!!,cityTo!!,typeSeat!!)
+            berandaViewModel.getTicketsBeranda.observe(viewLifecycleOwner){tickets ->
+                val listTicket = tickets.size
+                if (listTicket != 0){
+                    val dewasa = berandaViewModel.getPenumpangDewasa()
+                    val anak = berandaViewModel.getPenumpangAnak()
+                    val bayi = berandaViewModel.getPenumpangBayi()
+                    val totalPassengers = dewasa + anak + bayi
+
+                    for (ticket in tickets.indices){
+                        val idTicket = tickets[ticket].id
+                        val dateDeparture = berandaViewModel.getDepartureDate()
+                        val dateReturn = berandaViewModel.getDatePref()
+                        berandaViewModel.updateTicket(tickets[ticket].id,dateDeparture!!,dateReturn!!,totalPassengers)
+                        berandaViewModel.getResponseUpdateTicket.observe(viewLifecycleOwner){
+                            if (it == "Update Data Ticket Successfully") {
+                                if (findNavController().currentDestination?.id == R.id.berandaFragment){
+                                    findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianFragment)
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianEmptyFragment)
+                }
+            }
+
+
+
         }
 
         flipLokasi()
@@ -161,9 +186,10 @@ class BerandaFragment : Fragment() {
             datePickerDialog.show()
             datePickerDialog.setOnDateSetListener { datePicker, _, _, _ ->
                 val bulanDeparture = nameMonth[datePicker.month]
+                val month = datePicker.month
                 val tahunDeparture = datePicker.year
                 val hariDeparture = datePicker.dayOfMonth
-                val tanggalDeparture = "$hariDeparture $bulanDeparture $tahunDeparture"
+                val tanggalDeparture = "$tahunDeparture-$month-$hariDeparture"
                 berandaViewModel.saveDepartureDate(tanggalDeparture)
                 findNavController().navigate(R.id.berandaFragment)
             }
@@ -193,9 +219,10 @@ class BerandaFragment : Fragment() {
             datePickerDialog.setOnDateSetListener { datePicker, _, _, _ ->
                 val nameMonth = namaMonth()
                 val bulan =nameMonth[datePicker.month]
+                val month = datePicker.month
                 val tahun = datePicker.year
                 val hari = datePicker.dayOfMonth
-                val tanggalPilihan = "$hari $bulan $tahun"
+                val tanggalPilihan = "$tahun-$month-$hari"
                 berandaViewModel.saveDatePref(tanggalPilihan)
                 findNavController().navigate(R.id.berandaFragment)
             }

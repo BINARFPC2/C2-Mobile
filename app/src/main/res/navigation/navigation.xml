@@ -26,6 +26,12 @@
         <action
             android:id="@+id/action_berandaFragment_to_pilihDestnasiFragment"
             app:destination="@id/pilihDestnasiFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_hasilPencarianEmptyFragment"
+            app:destination="@id/hasilPencarianEmptyFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_hasilPencarianFragment"
+            app:destination="@id/hasilPencarianFragment" />
     </fragment>
     <fragment
         android:id="@+id/riwayatFragment"
@@ -46,6 +52,9 @@
         <action
             android:id="@+id/action_akunFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_akunFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -95,4 +104,27 @@
             android:id="@+id/action_pilihDestnasiFragment_to_berandaFragment"
             app:destination="@id/berandaFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/hasilPencarianEmptyFragment"
+        android:name="com.dwiki.tiketku.view.hasilpencarianempty.HasilPencarianEmptyFragment"
+        android:label="fragment_hasil_pencarian_empty"
+        tools:layout="@layout/fragment_hasil_pencarian_empty" >
+        <action
+            android:id="@+id/action_hasilPencarianEmptyFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hasilPencarianFragment"
+        android:name="com.dwiki.tiketku.view.hasilpencarianempty.HasilPencarianFragment"
+        android:label="fragment_hasil_pencarian"
+        tools:layout="@layout/fragment_hasil_pencarian" >
+        <action
+            android:id="@+id/action_hasilPencarianFragment_to_detailPenerbangan"
+            app:destination="@id/detailPenerbangan" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailPenerbangan"
+        android:name="com.dwiki.tiketku.view.detail.DetailPenerbangan"
+        android:label="fragment_detail_penerbangan"
+        tools:layout="@layout/fragment_detail_penerbangan" />
 </navigation>

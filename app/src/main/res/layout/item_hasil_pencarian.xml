@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_hasil_pencarian"
     app:cardCornerRadius="12dp"
     android:layout_margin="10dp"
     app:cardElevation="5dp">
@@ -53,7 +54,7 @@
             app:layout_constraintLeft_toRightOf="@id/layout_keberangkatan">
 
             <TextView
-                android:id="@+id/tv_duras"
+                android:id="@+id/tv_durasi"
                 style="@style/TextBody12Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -122,7 +123,7 @@
             />
 
         <View
-            android:id="@+id/grid_lin"
+            android:id="@+id/grid_line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
            android:layout_marginTop="10dp"
@@ -135,7 +136,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/logo_maskapai"
-            app:layout_constraintTop_toBottomOf="@id/grid_lin"
+            app:layout_constraintTop_toBottomOf="@id/grid_line"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="20dp"
             />
@@ -148,7 +149,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginStart="10dp"
-            app:layout_constraintTop_toBottomOf="@id/grid_lin"
+            app:layout_constraintTop_toBottomOf="@id/grid_line"
             app:layout_constraintLeft_toRightOf="@id/iv_maskapain">
 
             <TextView
@@ -172,7 +173,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_expand"
-            app:layout_constraintTop_toBottomOf="@id/grid_lin"
+            app:layout_constraintTop_toBottomOf="@id/grid_line"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="20dp"
             />

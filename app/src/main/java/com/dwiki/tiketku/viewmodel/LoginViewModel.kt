@@ -89,7 +89,7 @@ class LoginViewModel @Inject constructor(
 
     fun logoutPref(){
         val editor = sharedPreferences.edit()
-        editor.clear()
+        editor.remove("token")
         editor.apply()
     }
 

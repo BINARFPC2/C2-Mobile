@@ -9,22 +9,13 @@
     android:paddingHorizontal="20dp"
     tools:ignore="ExtraText">
 
-<!--    <androidx.appcompat.widget.SearchView-->
-<!--        android:id="@+id/searchView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:iconifiedByDefault="false"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:background="@drawable/shape_rectangle"-->
-<!--        app:queryBackground="@android:color/transparent"-->
-<!--        app:queryHint="Masukan nama kota atau negara" />-->
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:minHeight="48dp"
+        app:startIconDrawable="@drawable/search"
         app:hintEnabled="false"
         app:hintAnimationEnabled="false"
         app:boxBackgroundMode="outline">

@@ -2,7 +2,9 @@ package com.dwiki.tiketku.network
 
 import com.dwiki.tiketku.model.destinasifavorit.DataItem
 import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
+import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.ResponseTicket
+import com.dwiki.tiketku.model.ticket.ResponseUpdateTicket
 import com.dwiki.tiketku.model.user.ResponseUserLogin
 import com.dwiki.tiketku.model.user.ResponseUserRegister
 import retrofit2.Call
@@ -11,6 +13,9 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -35,5 +40,27 @@ interface ApiService {
 
    @GET("tickets")
    fun getTickets():Call<ResponseTicket>
+
+   @GET("tickets")
+   fun getTicketsBeranda(
+       @Query("city_from") city_from:String,
+       @Query("city_to") city_to:String,
+       @Query("type_seat") type_seat:String
+   ):Call<ResponseTicket>
+
+   @FormUrlEncoded
+   @PUT("tickets/{id}")
+   fun updateTicket(
+       @Path("id") id:String,
+       @Field("dateDeparture") dateDeparture:String,
+       @Field("dateReturn") dateReturn:String,
+       @Field("total_passenger") total_passenger:Int
+   ):Call<ResponseUpdateTicket>
+
+   @GET("tickets/{id}")
+   suspend fun getTicketById(
+       @Path("id") id:String
+   ):Response<DataItemTicket>
+
 
 }

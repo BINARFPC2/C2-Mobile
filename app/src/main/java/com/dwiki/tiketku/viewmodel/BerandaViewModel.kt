@@ -12,6 +12,7 @@ import com.dwiki.tiketku.model.destinasifavorit.DataItem
 import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
 import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.ResponseTicket
+import com.dwiki.tiketku.model.ticket.ResponseUpdateTicket
 import com.dwiki.tiketku.network.ApiService
 import com.dwiki.tiketku.util.Resources
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,11 +33,8 @@ class BerandaViewModel @Inject constructor(
     ): ViewModel() {
 
 
-
-
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading:LiveData<Boolean> = _isLoading
-
 
     private val _destinasiResult = MutableLiveData<ResponseDestinasiFavorit>()
     val destinasiResult:LiveData<ResponseDestinasiFavorit> = _destinasiResult
@@ -47,6 +45,54 @@ class BerandaViewModel @Inject constructor(
     private val _getCityTo = MutableLiveData<List<DataItemTicket>>()
     val getCityTo:LiveData<List<DataItemTicket>> = _getCityTo
 
+    private val _getTicketsBeranda = MutableLiveData<List<DataItemTicket>>()
+    val getTicketsBeranda:LiveData<List<DataItemTicket>> = _getTicketsBeranda
+
+    private val _getResponseUpdateTicket = MutableLiveData<String>()
+    val getResponseUpdateTicket:LiveData<String> = _getResponseUpdateTicket
+
+
+
+    fun ticketsBeranda(cityFrom:String,cityTo:String,typeSeat:String){
+        apiService.getTicketsBeranda(cityFrom,cityTo,typeSeat).enqueue(object :Callback<ResponseTicket>{
+            override fun onResponse(
+                call: Call<ResponseTicket>,
+                response: Response<ResponseTicket>
+            ) {
+                if (response.isSuccessful){
+                    _getTicketsBeranda.value = response.body()?.data
+                } else {
+                    Log.d("error get ticket beranda", response.errorBody()!!.string())
+                }
+
+            }
+
+            override fun onFailure(call: Call<ResponseTicket>, t: Throwable) {
+                Log.d("failure get ticket beranda",t.cause.toString())
+            }
+
+        })
+    }
+
+    fun updateTicket(id:String,dateDeparture:String,dateReturn:String,totalPassenger:Int){
+        apiService.updateTicket(id,dateDeparture,dateReturn,totalPassenger).enqueue(object : Callback<ResponseUpdateTicket>{
+            override fun onResponse(
+                call: Call<ResponseUpdateTicket>,
+                response: Response<ResponseUpdateTicket>
+            ) {
+                if (response.isSuccessful){
+                    _getResponseUpdateTicket.value = response.body()?.message
+                } else {
+                    Log.d("error updater ticket beranda", response.errorBody()!!.string())
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseUpdateTicket>, t: Throwable) {
+                Log.d("failure update ticket beranda",t.cause.toString())
+            }
+
+        })
+    }
 
     fun getdestinasiFavResult(){
         _isLoading.value = true
@@ -58,12 +104,12 @@ class BerandaViewModel @Inject constructor(
                 if (response.isSuccessful){
                     _destinasiResult.value = response.body()
                 } else {
-                    Log.d("error", response.errorBody()!!.string())
+                    Log.d("error get list", response.errorBody()!!.string())
                 }
             }
 
             override fun onFailure(call: Call<ResponseDestinasiFavorit>, t: Throwable) {
-                Log.e(TAG,"error get list favorit: ${t.message}")
+                Log.e(TAG,"failure get list favorit: ${t.message}")
             }
 
         })
@@ -164,7 +210,7 @@ class BerandaViewModel @Inject constructor(
     }
 
     fun getPenumpangDewasa():Int{
-        return sharedPreferences.getInt("dewasa",2)
+        return sharedPreferences.getInt("dewasa",1)
     }
 
     fun getPenumpangAnak():Int{
@@ -203,7 +249,7 @@ class BerandaViewModel @Inject constructor(
        val month = c.get(Calendar.MONTH)
        val day = c.get(Calendar.DAY_OF_MONTH)
        val bulan = nameMonth[month]
-       val defaultTanggal = "$day $bulan $year"
+       val defaultTanggal = "$year-$month-$day"
        return sharedPreferences.getString("date",defaultTanggal)
    }
 
@@ -227,12 +273,12 @@ class BerandaViewModel @Inject constructor(
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
         val bulan = nameMonth[month]
-        val defaultTanggal = "$day $bulan $year"
+        val defaultTanggal = "$year-$month-$day"
         return sharedPreferences.getString("departure",defaultTanggal)
     }
 
     fun getNamaKelas():String?{
-        return sharedPreferences.getString("kelas","Kelas 1")
+        return sharedPreferences.getString("kelas","Economy")
     }
 
     fun getHargaKelas():Int{

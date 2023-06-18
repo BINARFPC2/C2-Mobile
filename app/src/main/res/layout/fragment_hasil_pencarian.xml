@@ -9,13 +9,13 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:id="@+id/layout_toolbar"
-        android:layout_height="40dp">
+        android:layout_height="80dp">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
-            android:padding="10dp"
+            android:paddingVertical="10dp"
             android:background="@color/darkblue_05"
             android:minHeight="?attr/actionBarSize">
 
@@ -24,44 +24,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:src="@drawable/ic_back"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 />
 
             <TextView
+                android:id="@+id/tv_toolbar"
                 style="@style/TextBody14Medium"
                 android:textColor="@color/white"
-                android:layout_marginStart="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="JKT > MLB  - 2 Penumpang - Economy" />
 
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp">
-
-        <ImageView
-            android:id="@+id/btnFilter"
-            android:layout_marginLeft="15dp"
-            android:layout_width="102dp"
-            android:layout_height="47dp"
-            android:src="@drawable/btnpth" />
-
-        <ImageView
-            android:id="@+id/btnTermurah"
-            android:layout_marginRight="15dp"
-            android:layout_width="121dp"
-            android:layout_height="47dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/btnungu" />
-
-    </RelativeLayout>
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_hasil_pencarian"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

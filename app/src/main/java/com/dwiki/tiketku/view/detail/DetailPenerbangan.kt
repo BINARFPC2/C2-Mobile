@@ -1,60 +1,67 @@
 package com.dwiki.tiketku.view.detail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.dwiki.tiketku.R
+import com.dwiki.tiketku.databinding.FragmentDetailPenerbanganBinding
+import com.dwiki.tiketku.util.Status
+import com.dwiki.tiketku.util.Utill
+import com.dwiki.tiketku.viewmodel.DetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailPenerbangan.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class DetailPenerbangan : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding:FragmentDetailPenerbanganBinding
+    private val detailViewModel:DetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_penerbangan, container, false)
+        binding = FragmentDetailPenerbanganBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailPenerbangan.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailPenerbangan().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val id = arguments?.getString("id")
+        detailViewModel.getDetailTicket(id!!).observe(viewLifecycleOwner){
+            when(it.status){
+                Status.LOADING->{
+                    Log.d("Detail Fragment","Loading")
+                }
+                Status.SUCCESS->{
+                    val detailTicket = it.data
+                    if (detailTicket != null){
+                        binding.apply {
+                            txtBandaraAwal.text = detailTicket.airportFrom
+                            txtBandaraTujuan.text = detailTicket.airportTo
+                            txtKeberangkatan.text = detailTicket.cityFrom
+                            txtTujuan.text = detailTicket.cityTo
+                            txtJamBerangkat.text = detailTicket.dateTakeoff
+                            txtTanggalBerangkat.text = detailTicket.dateDeparture
+                            tvPesawat.text = detailTicket.airlines
+                            tvInformasi.text = detailTicket.information
+                            txtJamDatang.text = detailTicket.dateLanding
+                            txtTanggalSampai.text = detailTicket.dateReturn
+                            val price = Utill.getPriceIdFormat(detailTicket.price)
+                            txtHargaTotal.text = "$price/pax"
+                        }
+                    }
+
+                }
+                Status.ERROR->{
+                    Log.e("Detail Fragment",it.message.toString())
                 }
             }
+        }
     }
+
 }

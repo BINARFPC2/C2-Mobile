@@ -1,5 +1,6 @@
 package com.dwiki.tiketku.view.pilihdestinasi
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -21,6 +23,9 @@ import com.dwiki.tiketku.model.DummyKelas
 import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.HasilKota
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -115,65 +120,7 @@ class PilihDestnasiFragment : Fragment() {
             }
         }
 
-
-//        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-////                if (query != null) {
-////                    berandaViewModel.cityFrom()
-////                    berandaViewModel.getCityFrom.observe(viewLifecycleOwner){
-////                        val list = it
-////                        kotaList = ArrayList()
-////                        for (i in list.indices){
-////                            if (list[i].cityFrom == query){
-////                                Log.d("city",query)
-////                                kotaList.add(HasilKota(query))
-////                                break
-////                            }
-////                        }
-////
-////                        if (kotaList.size  > 0){
-////                            binding.rvHasilPencarian.apply {
-////                                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-////                                adapterPencarian = PencarianFromAdapter(kotaList)
-////                                adapter = adapterPencarian
-////                            }
-////                        } else {
-////                            Toast.makeText(requireContext(), "Hasil Pencarian Tidak ditemuka", Toast.LENGTH_SHORT).show()
-////                        }
-////                    }
-////                }
-//                return false
-//            }
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                if (newText != null) {
-//                    berandaViewModel.cityFrom()
-//                    berandaViewModel.getCityFrom.observe(viewLifecycleOwner){
-//                        val list = it
-//                        kotaList = ArrayList()
-//                        for (i in list.indices){
-//                            if (list[i].cityFrom == newText){
-//                                Log.d("city",newText)
-//                                kotaList.add(HasilKota(newText))
-//                                break
-//                            } else {
-//                                Toast.makeText(requireContext(), "Hasil tidak ditemukan", Toast.LENGTH_SHORT).show()
-//                            }
-//                        }
-//
-//                        if (kotaList.isNotEmpty()){
-//                            binding.rvHasilPencarian.apply {
-//                                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-//                                adapterPencarian = PencarianFromAdapter(kotaList)
-//                                adapter = adapterPencarian
-//                            }
-//                        }
-//                    }
-//                }
-//                return true
-//            }
-//        })
-
-
     }
+
 
 }

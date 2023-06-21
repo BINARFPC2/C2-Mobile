@@ -236,7 +236,7 @@
                                             android:textColor="@color/darkblue_04"/>
 
                                         <View
-                                            android:layout_width="match_parent"
+                                            android:layout_width="120dp"
                                             android:layout_height="1dp"
                                             android:layout_marginTop="10dp"
                                             android:background="#D0D0D0"/>
@@ -249,6 +249,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"
+                                    android:visibility="gone"
                                     android:layout_weight="1">
 
                                     <ImageView
@@ -260,6 +261,7 @@
                                         android:layout_centerVertical="true"/>
 
                                     <LinearLayout
+                                        android:id="@+id/layout_retunr"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:orientation="vertical"

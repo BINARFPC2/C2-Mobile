@@ -100,10 +100,8 @@ class PilihDestnasiFragment : Fragment() {
                     findNavController().navigate(R.id.action_pilihDestnasiFragment_to_berandaFragment)
                 }
 
-
                 binding.etSearch.addTextChangedListener(object : TextWatcher{
                     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
                     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                         cityAdapter.filter.filter(p0)
                         if (p0?.isEmpty()!!){
@@ -111,11 +109,8 @@ class PilihDestnasiFragment : Fragment() {
                         } else {
                             binding.rvHasilPencarian.visibility = View.VISIBLE
                         }
-
                     }
-
                     override fun afterTextChanged(p0: Editable?) {}
-
                 })
             }
         }

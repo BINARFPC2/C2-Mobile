@@ -27,11 +27,11 @@
             android:id="@+id/action_berandaFragment_to_pilihDestnasiFragment"
             app:destination="@id/pilihDestnasiFragment" />
         <action
-            android:id="@+id/action_berandaFragment_to_hasilPencarianEmptyFragment"
-            app:destination="@id/hasilPencarianEmptyFragment" />
-        <action
             android:id="@+id/action_berandaFragment_to_hasilPencarianFragment"
             app:destination="@id/hasilPencarianFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_hasilPencarianPFragment"
+            app:destination="@id/hasilPencarianPFragment" />
     </fragment>
     <fragment
         android:id="@+id/riwayatFragment"
@@ -105,15 +105,6 @@
             app:destination="@id/berandaFragment" />
     </fragment>
     <fragment
-        android:id="@+id/hasilPencarianEmptyFragment"
-        android:name="com.dwiki.tiketku.view.hasilpencarianempty.HasilPencarianEmptyFragment"
-        android:label="fragment_hasil_pencarian_empty"
-        tools:layout="@layout/fragment_hasil_pencarian_empty" >
-        <action
-            android:id="@+id/action_hasilPencarianEmptyFragment_to_berandaFragment"
-            app:destination="@id/berandaFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/hasilPencarianFragment"
         android:name="com.dwiki.tiketku.view.hasilpencarianempty.HasilPencarianFragment"
         android:label="fragment_hasil_pencarian"
@@ -121,10 +112,39 @@
         <action
             android:id="@+id/action_hasilPencarianFragment_to_detailPenerbangan"
             app:destination="@id/detailPenerbangan" />
+        <action
+            android:id="@+id/action_hasilPencarianFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailPenerbangan"
         android:name="com.dwiki.tiketku.view.detail.DetailPenerbangan"
         android:label="fragment_detail_penerbangan"
         tools:layout="@layout/fragment_detail_penerbangan" />
+    <fragment
+        android:id="@+id/hasilPencarianPFragment"
+        android:name="com.dwiki.tiketku.view.hasilpencarianempty.HasilPencarianPFragment"
+        android:label="fragment_hasil_pencarian_p"
+        tools:layout="@layout/fragment_hasil_pencarian_p" >
+        <action
+            android:id="@+id/action_hasilPencarianPFragment_to_hasilPencarianReturnFragment"
+            app:destination="@id/hasilPencarianReturnFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hasilPencarianReturnFragment"
+        android:name="com.dwiki.tiketku.view.hasilpencarianempty.HasilPencarianReturnFragment"
+        android:label="fragment_hasil_pencarian_return"
+        tools:layout="@layout/fragment_hasil_pencarian_return" >
+        <action
+            android:id="@+id/action_hasilPencarianReturnFragment_to_hasilPencarianPFragment"
+            app:destination="@id/hasilPencarianPFragment" />
+        <action
+            android:id="@+id/action_hasilPencarianReturnFragment_to_detailPenerbanganPulangPergi"
+            app:destination="@id/detailPenerbanganPulangPergi" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailPenerbanganPulangPergi"
+        android:name="com.dwiki.tiketku.view.detail.DetailPenerbanganPulangPergi"
+        android:label="fragment_detail_penerbangan_pulang_pergi"
+        tools:layout="@layout/fragment_detail_penerbangan_pulang_pergi" />
 </navigation>

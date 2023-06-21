@@ -43,11 +43,22 @@ interface ApiService {
    fun getTickets():Call<ResponseTicket>
 
    @GET("tickets")
-   fun getTicketsBeranda(
+   fun getTicketsBerandaP(
        @Query("city_from") city_from:String,
        @Query("city_to") city_to:String,
-       @Query("type_seat") type_seat:String
+       @Query("type_seat") type_seat:String,
+       @Query("dateDeparture") dateDeparture: String,
    ):Call<ResponseTicket>
+
+    @GET("tickets")
+    fun getTicketsBeranda(
+        @Query("city_from") city_from:String,
+        @Query("city_to") city_to:String,
+        @Query("type_seat") type_seat:String,
+        @Query("dateDeparture") dateDeparture: String,
+    ):Call<ResponseTicket>
+
+
 
    @FormUrlEncoded
    @PUT("tickets/{id}")
@@ -55,6 +66,14 @@ interface ApiService {
        @Path("id") id:String,
        @Field("dateDeparture") dateDeparture:String,
        @Field("dateReturn") dateReturn:String,
+       @Field("total_passenger") total_passenger:Int,
+   ):Call<ResponseUpdateTicket>
+
+   @FormUrlEncoded
+   @PUT("tickets/{id}")
+   fun updateTicketDeparture(
+       @Path("id") id:String,
+       @Field("dateDeparture") dateDeparture:String,
        @Field("total_passenger") total_passenger:Int
    ):Call<ResponseUpdateTicket>
 

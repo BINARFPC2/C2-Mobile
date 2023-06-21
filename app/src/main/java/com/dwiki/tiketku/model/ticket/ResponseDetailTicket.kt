@@ -1,6 +1,7 @@
 package com.dwiki.tiketku.model.ticket
 
 import com.google.gson.annotations.SerializedName
+import retrofit2.http.Field
 
 data class ResponseDetailTicket(
 
@@ -72,6 +73,10 @@ data class Data(
 
 	@field:SerializedName("dateDeparture")
 	val dateDeparture: String? = null,
+
+	@field:SerializedName("dateEnd")
+	val dateEnd: String? = null,
+
 
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null

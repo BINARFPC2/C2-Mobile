@@ -84,9 +84,12 @@ class BottomSheetKelasFragment : BottomSheetDialogFragment(), SetKelasAdapter.On
 
             //soon update using save args
             binding.btnSimpan.setOnClickListener {
+                Log.d("Kelas", "Clicck")
+                if (findNavController().currentDestination?.id == R.id.bottomSheetKelasFragment){
+                    berandaViewModel.saveKelasPreferences(itemClicked.kelas,2000,itemClicked.isSelected)
+                    findNavController().navigate(R.id.action_bottomSheetKelasFragment_to_berandaFragment)
+                }
 
-                berandaViewModel.saveKelasPreferences(itemClicked.kelas,2000,itemClicked.isSelected)
-                findNavController().navigate(R.id.action_bottomSheetKelasFragment_to_berandaFragment)
             }
 
             Log.d("Harga",itemClicked.harga)

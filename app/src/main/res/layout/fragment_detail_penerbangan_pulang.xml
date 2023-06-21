@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.detail.DetailPenerbanganPulangFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/layout_cv_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginVertical="18dp"
+        tools:visibility="visible"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtKeberangkatan"
+                    android:text="PulangJakarta"
+                    style="@style/TextBody14Bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/darkblue_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text=" -> "
+                    style="@style/TextBody14Bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/darkblue_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/txtTujuan"
+                    android:text="Melbourne "
+                    style="@style/TextBody14Bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/darkblue_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/txtLamaPerjalanan"
+                    android:text="(4h 0m)"
+                    style="@style/TextBody14Bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/layoutDate"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txtJamBerangkat"
+                            style="@style/TextBody14Bold"
+                            android:text="07.00"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txtTanggalBerangkat"
+                            style="@style/TextBody14Regular"
+                            android:text="3 Maret 2023"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txtBandaraAwal"
+                            style="@style/TextBody14Medium"
+                            android:text="Soekarno Hatta - Terminal 1A Domestik"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:text="Keberangkatan"
+                        style="@style/TextBody12Bold"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@color/darkblue_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="360dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/neutral_02" />
+
+                <RelativeLayout
+                    android:paddingVertical="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgLogoMaskapai"
+                        android:src="@drawable/logo_maskapai"
+                        android:layout_marginEnd="8dp"
+                        android:layout_centerVertical="true"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/txtInfo"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@id/imgLogoMaskapai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_pesawat"
+                            style="@style/TextBody14Bold"
+                            android:textColor="@color/black"
+                            android:text="Jet Air - Economy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/tv_airplane_code"
+                            style="@style/TextBody14Bold"
+                            android:textColor="@color/black"
+                            android:text="JT - 203"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            style="@style/TextBody14Bold"
+                            android:textColor="@color/black"
+                            android:text="Informasi:"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/tv_informasi"
+                            style="@style/TextBody14Regular"
+                            android:textColor="@color/black"
+                            android:text="Baggage 20 kg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="360dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/neutral_02" />
+
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txtJamDatang"
+                            style="@style/TextBody14Bold"
+                            android:text="11.00"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txtTanggalSampai"
+                            style="@style/TextBody14Regular"
+                            android:text="3 Maret 2023"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txtBandaraTujuan"
+                            style="@style/TextBody14Medium"
+                            android:text="Melbourne International Airport"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:text="Kedatangan"
+                        style="@style/TextBody12Bold"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@color/darkblue_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

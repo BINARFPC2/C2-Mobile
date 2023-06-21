@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -17,6 +18,8 @@ import com.dwiki.tiketku.R
 import com.dwiki.tiketku.adapter.DestinasiFavoritAdapter
 import com.dwiki.tiketku.databinding.FragmentBerandaBinding
 import com.dwiki.tiketku.util.Status
+import com.dwiki.tiketku.view.bottomsheet.BottomSheetKelasFragment
+import com.dwiki.tiketku.view.bottomsheet.BottomSheetSetPenumpang
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
 import com.dwiki.tiketku.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +39,7 @@ class BerandaFragment : Fragment() {
     private var jumlahPenumpang:Int? = null
     private var tanggalKembali = "Tanggal"
     private var tanggalPergi:String? = null
+    private var isCheck = false
 
 
 
@@ -75,6 +79,7 @@ class BerandaFragment : Fragment() {
 
 
         binding.tvPenumpang.setOnClickListener {
+
             findNavController().navigate(R.id.action_berandaFragment_to_bottomSheetSetPenumpang)
         }
 
@@ -94,44 +99,30 @@ class BerandaFragment : Fragment() {
             findNavController().navigate(R.id.action_berandaFragment_to_pilihDestnasiFragment,bundle)
         }
 
+        binding.swPp.setOnCheckedChangeListener { p0, isChecked ->
 
+            if (isChecked) {
+                berandaViewModel.saveCheckSwitch(true)
+                binding.dateReturn.visibility = View.VISIBLE
 
+            } else {
+                berandaViewModel.saveCheckSwitch(false)
+                binding.dateReturn.visibility = View.GONE
 
+            }
+        }
+
+        val getCheck = berandaViewModel.getCheckSwitch()
+        Log.d("Beranda Fragment","$getCheck")
+        binding.swPp.isChecked = getCheck
 
         binding.btnCari.setOnClickListener {
-
-            val cityFrom = berandaViewModel.getCityFrom()
-            val cityTo = berandaViewModel.getCityTo()
-            val typeSeat = berandaViewModel.getNamaKelas()
-
-            berandaViewModel.ticketsBeranda(cityFrom!!,cityTo!!,typeSeat!!)
-            berandaViewModel.getTicketsBeranda.observe(viewLifecycleOwner){tickets ->
-                val listTicket = tickets.size
-                if (listTicket != 0){
-                    val dewasa = berandaViewModel.getPenumpangDewasa()
-                    val anak = berandaViewModel.getPenumpangAnak()
-                    val bayi = berandaViewModel.getPenumpangBayi()
-                    val totalPassengers = dewasa + anak + bayi
-
-                    for (ticket in tickets.indices){
-                        val idTicket = tickets[ticket].id
-                        val dateDeparture = berandaViewModel.getDepartureDate()
-                        val dateReturn = berandaViewModel.getDatePref()
-                        berandaViewModel.updateTicket(tickets[ticket].id,dateDeparture!!,dateReturn!!,totalPassengers)
-                        berandaViewModel.getResponseUpdateTicket.observe(viewLifecycleOwner){
-                            if (it == "Update Data Ticket Successfully") {
-                                if (findNavController().currentDestination?.id == R.id.berandaFragment){
-                                    findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianFragment)
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianEmptyFragment)
-                }
+            val isSwitchTrue = berandaViewModel.getCheckSwitch()
+            if (isSwitchTrue){
+                findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianPFragment)
+            } else{
+                findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianFragment)
             }
-
-
 
         }
 
@@ -178,7 +169,7 @@ class BerandaFragment : Fragment() {
                 requireContext(),R.style.DateDialogTheme,
                 { _, year, month, dayOfMonth ->
                     val bulan =nameMonth[month]
-                    tanggalPergi = "$dayOfMonth $bulan $year"
+                    tanggalPergi = "$dayOfMonth $bulan+1 $year"
                     binding.tvDepartureDate.setText(tanggalPergi)
                 },
                 year, month, day,
@@ -189,7 +180,7 @@ class BerandaFragment : Fragment() {
                 val month = datePicker.month
                 val tahunDeparture = datePicker.year
                 val hariDeparture = datePicker.dayOfMonth
-                val tanggalDeparture = "$tahunDeparture-$month-$hariDeparture"
+                val tanggalDeparture = "$tahunDeparture-${month+1}-$hariDeparture"
                 berandaViewModel.saveDepartureDate(tanggalDeparture)
                 findNavController().navigate(R.id.berandaFragment)
             }
@@ -210,7 +201,7 @@ class BerandaFragment : Fragment() {
 
             val datePickerDialog = DatePickerDialog(requireContext(),R.style.DateDialogTheme, { _, year, month, dayOfMonth ->
                     val bulan =nameMonth[month]
-                    tanggalPergi = "$dayOfMonth $bulan $year"
+                    tanggalPergi = "$dayOfMonth $bulan+1 $year"
                     binding.tvPilihTanggal.text = tanggalPergi
                 },
                 year, month, day,
@@ -222,7 +213,7 @@ class BerandaFragment : Fragment() {
                 val month = datePicker.month
                 val tahun = datePicker.year
                 val hari = datePicker.dayOfMonth
-                val tanggalPilihan = "$tahun-$month-$hari"
+                val tanggalPilihan = "$tahun-${month+1}-$hari"
                 berandaViewModel.saveDatePref(tanggalPilihan)
                 findNavController().navigate(R.id.berandaFragment)
             }

@@ -16,4 +16,6 @@
     <string name="jkt">Jakarta</string>
     <string name="bandung">Bandung</string>
     <string name="pencarian_terkini">Pencarian terkini</string>
+    <string name="str_pergi">Pergi</string>
+    <string name="str_pulang">Pulang</string>
 </resources>

@@ -36,6 +36,11 @@ interface ApiService {
        @Field("phone") phone:String
    ):Response<ResponseUserRegister>
 
+    @GET("users/{id}")
+    fun getUserItem(
+        @Path("id") id:String
+    ):Call<ResponseUserRegister>
+
    @GET("destfavorite")
    fun getDestinasiFavorit(): Call<ResponseDestinasiFavorit>
 

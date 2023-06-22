@@ -32,7 +32,7 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRegisterBinding.inflate(layoutInflater,container,false)
+        binding = FragmentRegisterBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

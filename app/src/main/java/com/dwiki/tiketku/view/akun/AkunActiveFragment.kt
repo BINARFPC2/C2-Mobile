@@ -29,7 +29,11 @@ class AkunActiveFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginViewModel.getLoginState().observe(this){
+//        loginViewModel.getLoginState().observe(this){
+//        }
+
+        binding.layoutUbahProfil.setOnClickListener {
+            findNavController().navigate(R.id.action_akunActiveFragment_to_ubahProfilFragment)
         }
     }
 }

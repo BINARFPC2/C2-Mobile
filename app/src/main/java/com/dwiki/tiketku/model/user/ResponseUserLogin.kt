@@ -8,7 +8,7 @@ data class ResponseUserLogin(
 	val createdAt: String,
 
 	@field:SerializedName("name")
-	val name: String,
+	val Gaudname: String,
 
 	@field:SerializedName("token")
 	val token: String,

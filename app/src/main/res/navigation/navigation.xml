@@ -147,4 +147,21 @@
         android:name="com.dwiki.tiketku.view.detail.DetailPenerbanganPulangPergi"
         android:label="fragment_detail_penerbangan_pulang_pergi"
         tools:layout="@layout/fragment_detail_penerbangan_pulang_pergi" />
+    <fragment
+        android:id="@+id/akunActiveFragment"
+        android:name="com.dwiki.tiketku.view.akun.AkunActiveFragment"
+        android:label="fragment_akun_active"
+        tools:layout="@layout/fragment_akun_active" >
+        <action
+            android:id="@+id/action_akunActiveFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+        <action
+            android:id="@+id/action_akunActiveFragment_to_ubahProfilFragment"
+            app:destination="@id/ubahProfilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ubahProfilFragment"
+        android:name="com.dwiki.tiketku.view.akun.UbahProfilFragment"
+        android:label="fragment_ubah_profil"
+        tools:layout="@layout/fragment_ubah_profil" />
 </navigation>

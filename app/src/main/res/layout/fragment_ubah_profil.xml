@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:padding="24dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.akun.UbahProfilFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:src="@drawable/arrow_left"
+        android:layout_width="24dp"
+        android:layout_height="24dp"/>
+
+    <TextView
+        style="@style/TextHeading24Bold"
+        android:text="Ubah Profil"
+        android:layout_marginTop="58dp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        style="@style/TextBody12Medium"
+        android:text="Nama"
+        android:textColor="@color/black"
+        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/etNamaProfil"
+        style="@style/EditText"
+        android:hint="Nama Lengkap"
+        android:background="@drawable/shape_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <TextView
+        style="@style/TextBody12Medium"
+        android:text="Email"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/etEmailProfil"
+        style="@style/EditText"
+        android:hint="@string/contoh_joendhoe_gmail_com"
+        android:background="@drawable/shape_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <TextView
+        style="@style/TextBody12Medium"
+        android:text="Nomor telepon"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/etNomorTlpProfil"
+        style="@style/EditText"
+        android:hint="+62"
+        android:inputType="phone"
+        android:background="@drawable/shape_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <TextView
+        style="@style/TextBody12Medium"
+        android:layout_marginTop="16dp"
+        android:text="Buat Password"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        app:hintEnabled="false"
+        app:hintAnimationEnabled="false"
+        app:boxBackgroundMode="outline"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPasswordProfil"
+            android:layout_width="match_parent"
+            android:hint="@string/password"
+            android:padding="10dp"
+            android:background="@drawable/shape_rectangle"
+            android:layout_height="match_parent"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnRegist"
+        style="@style/ButtonPrimary"
+        android:backgroundTint="@color/darkblue_04"
+        android:text="Ubah Profil"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

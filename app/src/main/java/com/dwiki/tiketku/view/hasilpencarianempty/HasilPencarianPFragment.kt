@@ -2,6 +2,7 @@ package com.dwiki.tiketku.view.hasilpencarianempty
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.adapter.TicketAdapter
 import com.dwiki.tiketku.databinding.FragmentHasilPencarianPBinding
+import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
@@ -135,6 +137,14 @@ class HasilPencarianPFragment : Fragment() {
 
         berandaViewModel.ticketsBeranda(cityFrom!!, cityTo!!, seatClass!!, dateDeparture!!)
         berandaViewModel.getTicketsBeranda.observe(viewLifecycleOwner) {
+
+            binding.testButton.setOnClickListener {view ->
+                val listTicket:kotlin.collections.List<DataItemTicket> = it
+                val filterTicket = filterTicketByPricingAsc(listTicket)
+                filterTicket.forEach{
+                    Log.d("Hasil Pencarian","Airline : ${it.airlines}, Price : ${it.price}")
+                }
+            }
             binding.rvDeparture.apply {
 //                binding.emptyResult.visibility = View.GONE
                 layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -158,6 +168,12 @@ class HasilPencarianPFragment : Fragment() {
 //            if (msg == "No tickets found") binding.emptyResult.visibility = View.VISIBLE
         }
 
+    }
+
+    fun filterTicketByPricingAsc(ticket:kotlin.collections.List<DataItemTicket>):kotlin.collections.List<DataItemTicket>{
+        return ticket.sortedBy {
+            it.price
+        }
     }
 
 }

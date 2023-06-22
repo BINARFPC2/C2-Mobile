@@ -38,6 +38,10 @@ class AkunFragment : Fragment() {
             loginViewModel.logoutPref()
             findNavController().navigate(R.id.action_akunFragment_to_berandaFragment)
         }
+
+        binding.layoutUbahProfil.setOnClickListener {
+            findNavController().navigate(R.id.action_akunFragment_to_ubahProfilFragment)
+        }
     }
 
     private fun stateShowLogin(it: Boolean) {

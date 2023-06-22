@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_akunFragment_to_berandaFragment"
             app:destination="@id/berandaFragment" />
+        <action
+            android:id="@+id/action_akunFragment_to_ubahProfilFragment"
+            app:destination="@id/ubahProfilFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

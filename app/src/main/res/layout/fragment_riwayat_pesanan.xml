@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_beranda"
+    android:paddingHorizontal="25dp"
+    tools:context=".view.riwayat.RiwayatPesananFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtRiwayatPesanan"
+            style="@style/TextHeading24Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Riwayat Pesanan"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/btnSearch"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/search_black" />
+
+        <TextView
+            android:id="@+id/txtBulan"
+            android:text="Maret 2023"
+            android:textSize="18sp"
+            style="@style/TextBody14Bold"
+            android:textColor="@color/black"
+            android:layout_below="@id/txtRiwayatPesanan"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/btnFilter"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/btnSearch"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_rectangle"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Filter"
+                style="@style/TextBody14Medium"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemRiwayatPesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

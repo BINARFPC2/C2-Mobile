@@ -2,6 +2,8 @@ package com.dwiki.tiketku.network
 
 import com.dwiki.tiketku.model.destinasifavorit.DataItem
 import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
+import com.dwiki.tiketku.model.penumpang.PenumpangRequest
+import com.dwiki.tiketku.model.penumpang.ResponsePenumpang
 import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.ResponseDetailTicket
 import com.dwiki.tiketku.model.ticket.ResponseTicket
@@ -10,9 +12,11 @@ import com.dwiki.tiketku.model.user.ResponseUserLogin
 import com.dwiki.tiketku.model.user.ResponseUserRegister
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -86,6 +90,12 @@ interface ApiService {
     fun getTicketById(
        @Path("id") id:String
    ):Call<ResponseDetailTicket>
+
+    @POST("checkout")
+    fun postCheckoutPenumpang(
+        @Header("Authorization") token:String,
+        @Body requestPenumpang:PenumpangRequest
+    ):Call<ResponsePenumpang>
 
 
 }

@@ -69,6 +69,7 @@ class HasilPencarianFragment : Fragment() {
 
     private fun dateToolbar(dateDeparture: String?) {
         if (dateDeparture != null) {
+
             binding.etDate.setText(dateDeparture)
             binding.etDate.setOnClickListener {
                 val calendar = Calendar.getInstance()
@@ -92,7 +93,9 @@ class HasilPencarianFragment : Fragment() {
                     val hariDeparture = datePicker.dayOfMonth
                     val tanggalDeparture = "$tahunDeparture-${month + 1}-$hariDeparture"
                     berandaViewModel.saveDepartureDate(tanggalDeparture)
-                    findNavController().navigate(R.id.hasilPencarianFragment)
+                    val fragId = findNavController().currentDestination?.id
+                    findNavController().popBackStack(fragId!!,true)
+                    findNavController().navigate(fragId)
                 }
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
                     .setTextColor(resources.getColor(R.color.darkblue_05))

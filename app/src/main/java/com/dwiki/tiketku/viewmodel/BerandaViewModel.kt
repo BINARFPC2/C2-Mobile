@@ -10,6 +10,7 @@ import com.dwiki.tiketku.model.datastore.KelasManager
 import com.dwiki.tiketku.model.datastore.PenumpangManager
 import com.dwiki.tiketku.model.destinasifavorit.DataItem
 import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
+import com.dwiki.tiketku.model.penumpang.PenumpangData
 import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.ResponseTicket
 import com.dwiki.tiketku.model.ticket.ResponseUpdateTicket
@@ -62,6 +63,15 @@ class BerandaViewModel @Inject constructor(
     private val _getErrorTicketBeranda = MutableLiveData<String>()
     val getErrorTicketBeranda:LiveData<String> = _getErrorTicketBeranda
 
+    //test untuk biodata penumpang
+    var penumpangLiveData:MutableLiveData<ArrayList<PenumpangData>> = MutableLiveData()
+
+    fun getPenumpangData(penumpang:PenumpangData){
+        val list = penumpangLiveData.value
+        list?.add(penumpang)
+        penumpangLiveData.value = list!!
+    }
+
 
 
 
@@ -73,6 +83,7 @@ class BerandaViewModel @Inject constructor(
             ) {
                 if (response.isSuccessful){
                     _getTicketsBeranda.value = response.body()?.data
+                    Log.d(TAG,"${response.body()?.data}")
                 } else {
                     _getErrorTicketBeranda.value = response.errorBody()!!.string()
                     Log.d("error get ticket beranda", response.errorBody()!!.string())
@@ -279,6 +290,13 @@ class BerandaViewModel @Inject constructor(
         editor.apply()
     }
 
+    fun saveIdTicket(idTicket:String){
+        val editor =  sharedPreferences.edit()
+        editor.putString("idTicket",idTicket)
+        editor.apply()
+    }
+
+
     fun getCheckSwitch():Boolean{
         return sharedPreferences.getBoolean("check",false)
     }
@@ -310,6 +328,11 @@ class BerandaViewModel @Inject constructor(
     fun getIdReturn():String?{
         return sharedPreferences.getString("idReturn","kosong")
     }
+
+    fun getIdTicket():String?{
+        return sharedPreferences.getString("idTicket","Ticket Id not found")
+    }
+
 
 
    fun getDatePref(): String? {
@@ -384,6 +407,12 @@ class BerandaViewModel @Inject constructor(
         editor.remove("harga")
         editor.remove("isSelected")
         editor.remove("departure")
+        editor.apply()
+    }
+
+    fun deleteTicketId(){
+        val editor = sharedPreferences.edit()
+        editor.remove("idTicket")
         editor.apply()
     }
 

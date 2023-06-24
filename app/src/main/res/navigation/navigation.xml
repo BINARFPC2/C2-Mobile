@@ -123,7 +123,14 @@
         android:id="@+id/detailPenerbangan"
         android:name="com.dwiki.tiketku.view.detail.DetailPenerbangan"
         android:label="fragment_detail_penerbangan"
-        tools:layout="@layout/fragment_detail_penerbangan" />
+        tools:layout="@layout/fragment_detail_penerbangan" >
+        <action
+            android:id="@+id/action_detailPenerbangan_to_bottomSheetCheckUserLogin"
+            app:destination="@id/bottomSheetCheckUserLogin" />
+        <action
+            android:id="@+id/action_detailPenerbangan_to_biodataPemesanFragment"
+            app:destination="@id/biodataPemesanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hasilPencarianPFragment"
         android:name="com.dwiki.tiketku.view.hasilpencarianempty.HasilPencarianPFragment"
@@ -167,4 +174,60 @@
         android:name="com.dwiki.tiketku.view.akun.UbahProfilFragment"
         android:label="fragment_ubah_profil"
         tools:layout="@layout/fragment_ubah_profil" />
+    <dialog
+        android:id="@+id/bottomSheetCheckUserLogin"
+        android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetCheckUserLogin"
+        android:label="fragment_bottom_sheet_check_user_login"
+        tools:layout="@layout/fragment_bottom_sheet_check_user_login" />
+    <fragment
+        android:id="@+id/biodataPemesanFragment"
+        android:name="com.dwiki.tiketku.view.biodatapemesan.BiodataPemesanFragment"
+        android:label="fragment_biodata_pemesan"
+        tools:layout="@layout/fragment_biodata_pemesan" >
+        <action
+            android:id="@+id/action_biodataPemesanFragment_to_biodataPenumpangFragment"
+            app:destination="@id/biodataPenumpangFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/biodataPenumpangFragment"
+        android:name="com.dwiki.tiketku.view.biodatapemesan.BiodataPenumpangFragment"
+        android:label="fragment_biodata_penumpang"
+        tools:layout="@layout/fragment_biodata_penumpang" >
+        <action
+            android:id="@+id/action_biodataPenumpangFragment_to_detailBiodataPenumpangFragment"
+            app:destination="@id/detailBiodataPenumpangFragment" />
+        <action
+            android:id="@+id/action_biodataPenumpangFragment_to_detailBiodataAnak"
+            app:destination="@id/detailBiodataAnak" />
+        <action
+            android:id="@+id/action_biodataPenumpangFragment_to_detailBiodataBayi"
+            app:destination="@id/detailBiodataBayi" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailBiodataPenumpangFragment"
+        android:name="com.dwiki.tiketku.view.biodatapemesan.DetailBiodataPenumpangFragment"
+        android:label="fragment_detail_biodata_penumpang"
+        tools:layout="@layout/fragment_detail_biodata_penumpang" >
+        <action
+            android:id="@+id/action_detailBiodataPenumpangFragment_to_biodataPenumpangFragment"
+            app:destination="@id/biodataPenumpangFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailBiodataAnak"
+        android:name="com.dwiki.tiketku.view.biodatapemesan.DetailBiodataAnak"
+        android:label="fragment_detail_biodata_anak"
+        tools:layout="@layout/fragment_detail_biodata_anak" >
+        <action
+            android:id="@+id/action_detailBiodataAnak_to_biodataPenumpangFragment"
+            app:destination="@id/biodataPenumpangFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailBiodataBayi"
+        android:name="com.dwiki.tiketku.view.biodatapemesan.DetailBiodataBayi"
+        android:label="fragment_detail_biodata_bayi"
+        tools:layout="@layout/fragment_detail_biodata_bayi" >
+        <action
+            android:id="@+id/action_detailBiodataBayi_to_biodataPenumpangFragment"
+            app:destination="@id/biodataPenumpangFragment" />
+    </fragment>
 </navigation>

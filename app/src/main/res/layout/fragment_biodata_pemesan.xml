@@ -1,165 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.biodatapemesan.BiodataPemesanFragment">
 
-    <RelativeLayout
-        android:layout_width="384dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/listitem" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout_toolbar"
+        android:layout_height="40dp">
 
-    <RelativeLayout
-        android:layout_width="384dp"
-        android:layout_height="396dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="45dp"
-        android:background="@drawable/shape_rectangle_ungu">
-
-        <TextView
-            style="@style/TextBody14Bold"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:text="Nama Lengkap"
-            android:textColor="@color/darkblue_05"
-            android:textSize="16dp" />
+            android:id="@+id/toolbar"
+            android:paddingVertical="10dp"
+            android:background="@color/darkblue_05"
+            android:minHeight="?attr/actionBarSize">
 
-        <EditText
-            android:paddingLeft="15dp"
-            android:id="@+id/tvNamaLengkapPemesan"
-            style="@style/TextTitle16Medium"
-            android:hint="Harry"
-            android:textColorHint="@color/black"
-            android:textSize="18dp"
-            android:layout_width="311dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/rectangle"/>
-
-
-        <RelativeLayout
-            android:layout_width="311dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="95dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="20dp"
+                />
 
             <TextView
-                android:id="@+id/tvPulangPergi"
-                style="@style/TextBody14Regular"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_toolbar"
+                style="@style/TextBody14Medium"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Biodata Pemesan" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="10dp"
+        android:layout_gravity="center_horizontal"
+        app:strokeColor="@color/darkblue_03"
+        app:strokeWidth="2dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/layout_header"
+                style="@style/TextTitle16Medium"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:text="Punya nama keluarga"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                android:text="Data Diri Pemesan"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:background="@color/darkblue_03" />
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/switchh"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:checked="true"
-                app:thumbTint="@color/white"
-                app:trackTint="@color/darkblue_05" />
+                android:orientation="vertical"
+                android:padding="20dp"
+                >
 
-        </RelativeLayout>
+                <TextView
+                    style="@style/TextBody14Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Lengkap"
+                    android:textColor="@color/darkblue_05"
+                    android:textSize="16dp" />
 
-        <TextView
-            style="@style/TextBody14Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="145dp"
-            android:text="Nama Keluarga"
-            android:textColor="@color/darkblue_05"
-            android:textSize="16dp" />
-
-        <EditText
-            android:paddingLeft="15dp"
-            android:id="@+id/tvNamaKeluargaPemesan"
-            style="@style/TextTitle16Medium"
-            android:hint="Potter"
-            android:textColorHint="@color/black"
-            android:textSize="18dp"
-            android:layout_width="311dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="175dp"
-            android:background="@drawable/rectangle"/>
+                <EditText
+                    android:paddingLeft="15dp"
+                    android:id="@+id/tvNamaLengkapPemesan"
+                    style="@style/TextTitle16Medium"
+                    android:hint="Harry"
+                    android:textColorHint="@color/neutral_02"
+                    android:textSize="18dp"
+                    android:layout_width="311dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rectangle"/>
 
 
+                <RelativeLayout
+                    android:layout_width="311dp"
+                    android:layout_height="40dp">
 
-        <TextView
-            style="@style/TextBody14Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="225dp"
-            android:text="Nomor Telepon"
-            android:textColor="@color/darkblue_05"
-            android:textSize="16dp" />
+                    <TextView
+                        android:id="@+id/tvPulangPergi"
+                        style="@style/TextBody14Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="Punya nama keluarga"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
 
-        <EditText
-            android:paddingLeft="15dp"
-            android:id="@+id/tvNoTelfonPemesan"
-            style="@style/TextTitle16Medium"
-            android:hint="Potter"
-            android:textColorHint="@color/black"
-            android:textSize="18dp"
-            android:layout_width="311dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="255dp"
-            android:background="@drawable/rectangle"/>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:checked="false"
+                        app:thumbTint="@color/white"
+                        app:trackTint="@color/darkblue_05" />
+
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/TextBody14Bold"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_namaKeluargaPemesan"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Keluarga"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:textColor="@color/darkblue_05"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:paddingLeft="15dp"
+                    android:id="@+id/edt_NamaKeluargaPemesan"
+                    style="@style/TextTitle16Medium"
+                    android:hint="Potter"
+                    android:textColorHint="@color/neutral_02"
+                    android:textSize="18dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="311dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rectangle"/>
+
+                <TextView
+                    style="@style/TextBody14Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Telepon"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/darkblue_05"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:paddingLeft="15dp"
+                    android:id="@+id/tvNoTelfonPemesan"
+                    style="@style/TextTitle16Medium"
+                    android:hint="Potter"
+                    android:textColorHint="@color/neutral_02"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="311dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rectangle"/>
+
+                <TextView
+                    style="@style/TextBody14Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/darkblue_05"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:paddingLeft="15dp"
+                    android:id="@+id/tvEmailPemesan"
+                    android:layout_width="311dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rectangle"
+                    style="@style/TextBody14Regular"
+                    android:layout_marginTop="10dp"
+                    android:text="Contoh: johndoe@gmail.com"
+                    android:textColor="@color/neutral_03"
+                    android:textSize="14dp"/>
 
 
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-        <TextView
-            style="@style/TextBody14Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="305dp"
-            android:text="Email"
-            android:textColor="@color/darkblue_05"
-            android:textSize="16dp" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <EditText
-            android:paddingLeft="15dp"
-            android:id="@+id/tvEmailPemesan"
-            android:layout_width="311dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="335dp"
-            android:background="@drawable/rectangle"
-            style="@style/TextBody14Regular"
-            android:text="Contoh: johndoe@gmail.com"
-            android:textColor="@color/neutral_03"
-            android:textSize="14dp"/>
-
-
-
-
-    </RelativeLayout>
 
     <Button
+        style="@style/ButtonPrimary"
         android:id="@+id/btnSimpanBiodataPemesanan"
-        style="@style/TextTitle16Medium"
         android:layout_gravity="center_horizontal"
-        android:layout_width="389dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginHorizontal="30dp"
         android:backgroundTint="@color/darkblue_04"
         android:text="@string/btn_simpan" />
 
-</FrameLayout>
+</LinearLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.caririwayatpesanan.CariRiwayatPesananFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_beranda">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/TextHeading24Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Riwayat Pesanan"
+                android:textColor="@color/black"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"/>
+
+            <ImageView
+                android:id="@+id/ivSearchRiwayatPesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_marginLeft="340dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/searchhh" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivXBesarRiwayatPesanan"
+                android:layout_width="29dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="360dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/x"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputPasswordRiwayatPesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:minHeight="48dp"
+                app:startIconDrawable="@drawable/search"
+                app:hintEnabled="false"
+                app:hintAnimationEnabled="false"
+                app:boxBackgroundMode="outline">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSearchRiwayatPesanan"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="340dp"
+                    android:hint="Maasukkan Nomor Penerbangan"
+                    android:padding="15dp"
+                    android:background="@drawable/shape_rectangle"
+                    android:layout_height="match_parent" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                style="@style/TextBody14Medium"
+                android:layout_width="217dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="80dp"
+                android:text="Pencarian Terkini"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tvHapus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hapus"
+                android:textColor="@color/red_danger"
+                style="@style/TextBody14Medium"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="340dp"
+                android:textSize="18dp"/>
+
+
+            <EditText
+                android:id="@+id/etPencarianTerkiniRiwayatPesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:layout_marginLeft="10dp"
+                android:hint="1234ABC"
+                android:textColorHint="@color/black"/>
+
+            <ImageView
+                android:id="@+id/ivXKecilRiwayatPesanan"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="360dp"
+                android:layout_marginTop="125dp"
+                android:src="@drawable/xkecil"/>
+
+        </RelativeLayout>
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

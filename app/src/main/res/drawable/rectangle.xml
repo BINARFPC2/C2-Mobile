@@ -5,4 +5,6 @@
         android:color="#D0D0D0" />
     <!-- Ubah warna dan ketebalan garis sesuai kebutuhan -->
     <!-- Ubah radius sudut sesuai kebutuhan -->
+    <corners
+        android:radius="3dp"/>
 </shape>

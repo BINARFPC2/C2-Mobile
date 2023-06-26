@@ -43,6 +43,31 @@ class DetailPenerbanganPulangFragment : Fragment() {
                 binding.layoutCvDetail.visibility = View.VISIBLE
                 Log.d("DetailPenerbangan","Berhasil get data")
                 binding.apply {
+                    val timeTakeoff = getDetail.dateTakeoff
+                    val timeLanding = getDetail.dateLanding
+
+                    val takeOffSplit = timeTakeoff?.split(":")
+                    val landingSplit = timeLanding?.split(":")
+
+                    val takeOffHour = takeOffSplit!![0].toInt()
+                    val takeOffMinute = takeOffSplit!![1].toInt()
+
+                    val landingHour = landingSplit!![0].toInt()
+                    val landingMinute = landingSplit!![1].toInt()
+
+                    var hourDiff = landingHour - takeOffHour
+                    var minuteDiff = landingMinute - takeOffMinute
+
+                    if (minuteDiff < 0) {
+                        hourDiff -= 1
+                        minuteDiff += 60
+                    }
+
+                    if (hourDiff < 0) {
+                        hourDiff += 24
+                    }
+
+                    txtLamaPerjalanan.text = "(${hourDiff}h ${minuteDiff}m)"
                     tvAirplaneCode.visibility = View.GONE
                     txtBandaraAwal.text = getDetail!!.airportFrom
                     txtBandaraTujuan.text = getDetail.airportTo

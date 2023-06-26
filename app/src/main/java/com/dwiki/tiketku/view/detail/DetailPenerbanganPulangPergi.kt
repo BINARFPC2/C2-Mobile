@@ -12,7 +12,10 @@ import com.dwiki.tiketku.adapter.SectionPagerAdapter
 import com.dwiki.tiketku.databinding.FragmentDetailPenerbanganPulangPergiBinding
 import com.dwiki.tiketku.util.Utill
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class DetailPenerbanganPulangPergi : Fragment() {
 
     private lateinit var binding:FragmentDetailPenerbanganPulangPergiBinding

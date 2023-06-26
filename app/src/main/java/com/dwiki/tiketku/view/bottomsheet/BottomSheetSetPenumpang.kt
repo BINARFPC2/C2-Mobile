@@ -15,7 +15,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentBottomSheetSetPenumpangBinding
+import com.dwiki.tiketku.model.penumpang.PenumpangData
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
+import com.dwiki.tiketku.viewmodel.TestViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,6 +26,7 @@ class BottomSheetSetPenumpang : BottomSheetDialogFragment() {
 
     private lateinit var binding:FragmentBottomSheetSetPenumpangBinding
     private val berandaViewModel: BerandaViewModel by viewModels()
+    private val testViewModel:TestViewModel by viewModels()
 
 
 
@@ -72,7 +75,13 @@ class BottomSheetSetPenumpang : BottomSheetDialogFragment() {
             val tvBayi = binding.tvPassengerBayi.text.toString()
             val tvAnak = binding.tvPassengerAnak.text.toString()
             berandaViewModel.savePenumpangPreferences(tvDewasa.toInt(), tvAnak.toInt(), tvBayi.toInt())
+//            val dataPenumpang = PenumpangData("Darman1","mr2","darman1@gmail.com")
+//            testViewModel.addData(dataPenumpang)
+//            val penumpangDewasa = ArrayList<PenumpangData>()
+//            val penumpangDewasa = (PenumpangData("Darman2","mr2","darman2@gmail.com"))
+//            berandaViewModel.getPenumpangData(penumpangDewasa)
             findNavController().navigate(R.id.action_bottomSheetSetPenumpang_to_berandaFragment)
+
         }
 
     }

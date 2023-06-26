@@ -10,8 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentAkunActiveBinding
 import com.dwiki.tiketku.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AkunActiveFragment : Fragment() {
 
 

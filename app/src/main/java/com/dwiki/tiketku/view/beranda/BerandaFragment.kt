@@ -10,18 +10,22 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.adapter.DestinasiFavoritAdapter
 import com.dwiki.tiketku.databinding.FragmentBerandaBinding
+import com.dwiki.tiketku.model.penumpang.PenumpangData
 import com.dwiki.tiketku.util.Status
 import com.dwiki.tiketku.view.bottomsheet.BottomSheetKelasFragment
 import com.dwiki.tiketku.view.bottomsheet.BottomSheetSetPenumpang
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
 import com.dwiki.tiketku.viewmodel.LoginViewModel
+import com.dwiki.tiketku.viewmodel.TestViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 import kotlin.math.log
@@ -34,6 +38,7 @@ class BerandaFragment : Fragment() {
     private lateinit var binding: FragmentBerandaBinding
     private val berandaViewModel:BerandaViewModel by viewModels()
     private val loginViewModel: LoginViewModel by viewModels()
+    private val testViewModel:TestViewModel by activityViewModels()
     private lateinit var adapterfavDestinasi:DestinasiFavoritAdapter
     private var kelas:String? = null
     private var jumlahPenumpang:Int? = null
@@ -117,10 +122,19 @@ class BerandaFragment : Fragment() {
         binding.swPp.isChecked = getCheck
 
         binding.btnCari.setOnClickListener {
+
+
+
+
             val isSwitchTrue = berandaViewModel.getCheckSwitch()
             if (isSwitchTrue){
+//                val data = "Data Fragment Pertama"
+//                val dataPenumpang = PenumpangData("Darman1","mr1","darman@gmail.com","indo","GG","bro")
+//                testViewModel.addData(dataPenumpang)
                 findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianPFragment)
             } else{
+//                val dataPenumpang = PenumpangData("Darman1","mr1","darman@gmail.com","indo","GG","bro")
+//                testViewModel.addData(dataPenumpang)
                 findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianFragment)
             }
 
@@ -182,7 +196,9 @@ class BerandaFragment : Fragment() {
                 val hariDeparture = datePicker.dayOfMonth
                 val tanggalDeparture = "$tahunDeparture-${month+1}-$hariDeparture"
                 berandaViewModel.saveDepartureDate(tanggalDeparture)
-                findNavController().navigate(R.id.berandaFragment)
+                val id = findNavController().currentDestination?.id
+                findNavController().popBackStack(id!!,true)
+                findNavController().navigate(id)
             }
             datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.darkblue_05))
             datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.darkblue_05))
@@ -233,6 +249,9 @@ class BerandaFragment : Fragment() {
         val anak = berandaViewModel.getPenumpangAnak()
         val bayi = berandaViewModel.getPenumpangBayi()
         val total = dewasa + anak + bayi
+        for(i in 1..total){
+            Log.d("Beranda Fragment"," Penumpang $i")
+        }
         binding.tvPenumpang.text = "$total Penumpang"
     }
 

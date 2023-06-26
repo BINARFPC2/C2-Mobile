@@ -8,25 +8,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.adapter.TicketAdapter
 import com.dwiki.tiketku.databinding.FragmentHasilPencarianPBinding
+import com.dwiki.tiketku.model.Penumpang
+import com.dwiki.tiketku.model.penumpang.PenumpangData
 import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
+import com.dwiki.tiketku.viewmodel.TestViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 import org.json.JSONTokener
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.List
 
 @AndroidEntryPoint
 class HasilPencarianPFragment : Fragment() {
 
     private lateinit var binding:FragmentHasilPencarianPBinding
     private val berandaViewModel: BerandaViewModel by viewModels()
+     private val testViewModel:TestViewModel by activityViewModels()
     private lateinit var ticketAdapter:TicketAdapter
 
     override fun onCreateView(
@@ -40,6 +48,13 @@ class HasilPencarianPFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        testViewModel = ViewModelProvider(requireActivity()).get(TestViewModel::class.java)
+//        testViewModel.getNameData().observe(viewLifecycleOwner){
+//            Log.d("Hasil Pencarian", "$it")
+//        }
+
+
+
         activity?.window!!.statusBarColor = ContextCompat.getColor(requireContext(),R.color.darkblue_05)
         val cityFrom = berandaViewModel.getCityFrom()
         val cityTo = berandaViewModel.getCityTo()
@@ -83,7 +98,9 @@ class HasilPencarianPFragment : Fragment() {
                     val tanggalDeparture = "$tahunDeparture-${month + 1}-$hariDeparture"
                     berandaViewModel.saveDepartureDate(tanggalDeparture)
                     binding.etDate.setText(tanggalDeparture)
-                    findNavController().navigate(R.id.hasilPencarianPFragment)
+                    val fragId = findNavController().currentDestination?.id
+                    findNavController().popBackStack(fragId!!,true)
+                    findNavController().navigate(fragId)
                 }
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
                     .setTextColor(resources.getColor(R.color.darkblue_05))
@@ -119,6 +136,8 @@ class HasilPencarianPFragment : Fragment() {
                     val tanggalReturn = "$tahunDeparture-${month + 1}-$hariDeparture"
                     binding.etDateReturn.setText(tanggalReturn)
                     berandaViewModel.saveDatePref(tanggalReturn)
+//                    val dataPenumpang = PenumpangData("darman4","mr4","darman4@gmail.com")
+//                    testViewModel.addData(dataPenumpang)
                 }
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
                     .setTextColor(resources.getColor(R.color.darkblue_05))
@@ -138,12 +157,15 @@ class HasilPencarianPFragment : Fragment() {
         berandaViewModel.ticketsBeranda(cityFrom!!, cityTo!!, seatClass!!, dateDeparture!!)
         berandaViewModel.getTicketsBeranda.observe(viewLifecycleOwner) {
 
-            binding.testButton.setOnClickListener {view ->
-                val listTicket:kotlin.collections.List<DataItemTicket> = it
-                val filterTicket = filterTicketByPricingAsc(listTicket)
-                filterTicket.forEach{
-                    Log.d("Hasil Pencarian","Airline : ${it.airlines}, Price : ${it.price}")
-                }
+            binding.testButton.setOnClickListener {
+//                val listTicket:kotlin.collections.List<DataItemTicket> = it
+//                val filterTicket = filterTicketByPricingAsc(listTicket)
+//                filterTicket.forEach{
+//                    Log.d("Hasil Pencarian","Airline : ${it.airlines}, Price : ${it.price}")
+//                }
+                val dataList = testViewModel.getDataList()
+                Log.d("Hasil Pencarian","$dataList")
+
             }
             binding.rvDeparture.apply {
 //                binding.emptyResult.visibility = View.GONE
@@ -155,6 +177,8 @@ class HasilPencarianPFragment : Fragment() {
                     berandaViewModel.saveIdDeparture(id)
                     bundle.putString("idDep", id)
                     bundle.putInt("pricePergi",hargaPergi)
+//                    val dataPenumpang = PenumpangData("darmnan3","mr3","darman3@gmail.com")
+//                    testViewModel.addData(dataPenumpang)
                     findNavController().navigate(R.id.action_hasilPencarianPFragment_to_hasilPencarianReturnFragment,bundle)
                 }
                 adapter = ticketAdapter

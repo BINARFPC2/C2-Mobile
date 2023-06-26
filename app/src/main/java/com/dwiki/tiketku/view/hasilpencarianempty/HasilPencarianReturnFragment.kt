@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.adapter.TicketAdapter
 import com.dwiki.tiketku.databinding.FragmentHasilPencarianReturnBinding
+import com.dwiki.tiketku.util.Utill
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
+import com.dwiki.tiketku.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 import org.json.JSONTokener
@@ -25,6 +27,7 @@ class HasilPencarianReturnFragment : Fragment() {
 
     private lateinit var binding:FragmentHasilPencarianReturnBinding
     private val berandaViewModel: BerandaViewModel by viewModels()
+    private val detailViewModel:DetailViewModel by viewModels()
     private lateinit var ticketAdapter:TicketAdapter
 
     override fun onCreateView(
@@ -50,10 +53,63 @@ class HasilPencarianReturnFragment : Fragment() {
 
         binding.tvToolbar.text = "$cityFrom <> $cityTo - $totalPassengers Penumpang - $seatClass"
 
+        val idDeparture = arguments?.getString("idDep")
+
         dateToolbarDeparture(dateDeparture)
         dateToolbarReturn(dateRetun)
         returnOnly(cityFrom, cityTo, seatClass, dateRetun)
+        getDepartureTicket(idDeparture)
 
+        binding.btnGanti.setOnClickListener {
+            if (findNavController().currentDestination?.id == R.id.hasilPencarianReturnFragment) {
+//                val fragId = findNavController().currentDestination?.id
+//                findNavController().popBackStack(fragId!!,true)
+                findNavController().navigate(R.id.action_hasilPencarianReturnFragment_to_hasilPencarianPFragment)
+            }
+
+        }
+
+    }
+
+    private fun getDepartureTicket(idDeparture: String?) {
+        detailViewModel.detailTicket(idDeparture!!)
+        detailViewModel.getDetailTicket.observe(viewLifecycleOwner){it ->
+            val dataItemTicket = it.data
+
+            val timeTakeoff = dataItemTicket?.dateTakeoff
+            val timeLanding = dataItemTicket?.dateLanding
+
+            val takeOffSplit = timeTakeoff?.split(":")
+            val landingSplit = timeLanding?.split(":")
+
+            val takeOffHour = takeOffSplit!![0].toInt()
+            val takeOffMinute = takeOffSplit!![1].toInt()
+
+            val landingHour = landingSplit!![0].toInt()
+            val landingMinute = landingSplit!![1].toInt()
+
+            var hourDiff = landingHour - takeOffHour
+            var minuteDiff = landingMinute - takeOffMinute
+
+            if (minuteDiff < 0) {
+                hourDiff -= 1
+                minuteDiff += 60
+            }
+
+            if (hourDiff < 0) {
+                hourDiff += 24
+            }
+
+            binding.tvDurasi.text = "${hourDiff}h ${minuteDiff}m"
+            binding.tvJamKeberangkatan.text = dataItemTicket.dateTakeoff
+            binding.tvJamSampai.text = dataItemTicket.dateLanding
+            binding.tvKotaKeberangkatan.text = dataItemTicket.cityFrom
+            binding.tvKotaSampai.text = dataItemTicket.cityTo
+            val getPrice = arguments?.getInt("pricePergi")
+            val price = Utill.getPriceIdFormat(getPrice!!)
+            binding.tvHarga.text = price
+            binding.tvPesawat.text = dataItemTicket.airlines
+        }
     }
 
     private fun dateToolbarDeparture(dateDeparture: String?) {
@@ -80,6 +136,7 @@ class HasilPencarianReturnFragment : Fragment() {
                     val tahunDeparture = datePicker.year
                     val hariDeparture = datePicker.dayOfMonth
                     val tanggalDeparture = "$tahunDeparture-${month + 1}-$hariDeparture"
+
                     berandaViewModel.saveDepartureDate(tanggalDeparture)
                     binding.etDate.setText(tanggalDeparture)
                     findNavController().navigate(R.id.action_hasilPencarianReturnFragment_to_hasilPencarianPFragment)
@@ -118,7 +175,9 @@ class HasilPencarianReturnFragment : Fragment() {
                     val tanggalReturn = "$tahunDeparture-${month + 1}-$hariDeparture"
                     binding.etDateReturn.setText(tanggalReturn)
                     berandaViewModel.saveDatePref(tanggalReturn)
-                    findNavController().navigate(R.id.hasilPencarianReturnFragment)
+                    val fragId = findNavController().currentDestination?.id
+                    findNavController().popBackStack(fragId!!,true)
+                    findNavController().navigate(fragId)
                 }
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
                     .setTextColor(resources.getColor(R.color.darkblue_05))

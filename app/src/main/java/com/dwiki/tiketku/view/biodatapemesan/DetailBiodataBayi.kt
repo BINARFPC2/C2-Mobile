@@ -1,33 +1,33 @@
-package com.dwiki.tiketku.view.splash
+package com.dwiki.tiketku.view.biodatapemesan
 
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import com.dwiki.tiketku.R
-import com.dwiki.tiketku.databinding.FragmentSplashBinding
+import com.dwiki.tiketku.databinding.FragmentDetailBiodataBayiBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class SplashFragment : Fragment() {
 
-    private lateinit var binding:FragmentSplashBinding
+@AndroidEntryPoint
+class DetailBiodataBayi : Fragment() {
+
+    private lateinit var binding:FragmentDetailBiodataBayiBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSplashBinding.inflate(inflater, container, false)
+        binding = FragmentDetailBiodataBayiBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler().postDelayed({
-            Navigation.findNavController(binding.root).navigate(R.id.action_splashFragment_to_berandaFragment)
-        },2000)
+        val penumpang = arguments?.getString("penumpang")
+        binding.tvToolbar.text = penumpang
     }
 
 

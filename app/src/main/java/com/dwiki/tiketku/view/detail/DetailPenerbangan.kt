@@ -7,13 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentDetailPenerbanganBinding
 import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.DetailTicket
 import com.dwiki.tiketku.util.Status
 import com.dwiki.tiketku.util.Utill
+import com.dwiki.tiketku.viewmodel.BerandaViewModel
+import com.dwiki.tiketku.viewmodel.BiodataViewModel
 import com.dwiki.tiketku.viewmodel.DetailViewModel
+import com.dwiki.tiketku.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +25,8 @@ class DetailPenerbangan : Fragment() {
 
     private lateinit var binding:FragmentDetailPenerbanganBinding
     private val detailViewModel:DetailViewModel by viewModels()
+    private val loginViewModel:LoginViewModel by viewModels()
+    private val berandaViewModel:BerandaViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +39,8 @@ class DetailPenerbangan : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = arguments?.getString("id")
-        detailViewModel.detailTicket(id!!)
+        val idTicket = arguments?.getString("id")
+        detailViewModel.detailTicket(idTicket!!)
         detailViewModel.getDetailTicket.observe(viewLifecycleOwner) { detailTicket ->
 
             val getDetail = detailTicket.data
@@ -43,6 +49,31 @@ class DetailPenerbangan : Fragment() {
                 binding.layoutTotal.visibility = View.VISIBLE
                 Log.d("DetailPenerbangan","Berhasil get data")
                 binding.apply {
+                    val timeTakeoff = getDetail.dateTakeoff
+                    val timeLanding = getDetail.dateLanding
+
+                    val takeOffSplit = timeTakeoff?.split(":")
+                    val landingSplit = timeLanding?.split(":")
+
+                    val takeOffHour = takeOffSplit!![0].toInt()
+                    val takeOffMinute = takeOffSplit!![1].toInt()
+
+                    val landingHour = landingSplit!![0].toInt()
+                    val landingMinute = landingSplit!![1].toInt()
+
+                    var hourDiff = landingHour - takeOffHour
+                    var minuteDiff = landingMinute - takeOffMinute
+
+                    if (minuteDiff < 0) {
+                        hourDiff -= 1
+                        minuteDiff += 60
+                    }
+
+                    if (hourDiff < 0) {
+                        hourDiff += 24
+                    }
+
+                    txtLamaPerjalanan.text = "(${hourDiff}h ${minuteDiff}m)"
                     tvAirplaneCode.visibility = View.GONE
                     txtBandaraAwal.text = getDetail!!.airportFrom
                     txtBandaraTujuan.text = getDetail.airportTo
@@ -62,5 +93,25 @@ class DetailPenerbangan : Fragment() {
             }
 
         }
-    }
+
+        binding.btnPilih.setOnClickListener {
+            berandaViewModel.saveIdTicket(idTicket)
+            loginViewModel.getLoginState().observe(viewLifecycleOwner){
+                if (it) {
+                    if (findNavController().currentDestination!!.id == R.id.detailPenerbangan){
+
+                        findNavController().navigate(R.id.action_detailPenerbangan_to_biodataPenumpangFragment)
+                    }
+
+                } else {
+                    val fragId = findNavController().currentDestination?.id
+                    findNavController().popBackStack(fragId!!,true)
+                    findNavController().navigate(R.id.bottomSheetCheckUserLogin)
+                }
+
+                }
+
+            }
+        }
+
 }

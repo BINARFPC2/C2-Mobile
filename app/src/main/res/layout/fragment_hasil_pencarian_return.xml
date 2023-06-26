@@ -100,6 +100,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
+
                     <LinearLayout
                         android:id="@+id/layout_return"
                         android:layout_width="match_parent"
@@ -153,11 +154,188 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_selected_departure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:layout_below="@id/layout_toolbar"
+        android:background="@color/darkblue_02"
+        >
+
+        <LinearLayout
+            android:id="@+id/layout_keberangkatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_jam_keberangkatan"
+                style="@style/TextBody14Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="07:00"
+                android:textColor="@color/darkblue_05"
+                />
+
+            <TextView
+                android:id="@+id/tv_kota_keberangkatan"
+                style="@style/TextBody12Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JKT"
+                android:textColor="@color/darkblue_05"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/layout_keberangkatan">
+
+            <TextView
+                android:id="@+id/tv_durasi"
+                style="@style/TextBody12Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4h 0m"
+                android:textColor="@color/darkblue_05"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/darkblue_05"
+                android:layout_marginVertical="2dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_arah"
+                style="@style/TextBody12Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Direct"
+                android:textColor="@color/darkblue_05"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_sampai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/layout_duration">
+
+            <TextView
+                android:id="@+id/tv_jam_sampai"
+                style="@style/TextBody14Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:00"
+                android:textColor="@color/darkblue_05"
+                />
+
+            <TextView
+                android:id="@+id/tv_kota_sampai"
+                style="@style/TextBody12Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MLB"
+                android:textColor="@color/darkblue_05"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_harga"
+            style="@style/TextTitle16Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IDR 4.950.000"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/darkblue_04"
+            />
+
+        <View
+            android:id="@+id/grid_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_duration"
+            android:background="@color/darkblue_05"
+            />
+
+        <ImageView
+            android:id="@+id/iv_maskapain"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/logo_maskapai"
+            app:layout_constraintTop_toBottomOf="@id/grid_line"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/layout_layanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toBottomOf="@id/grid_line"
+            app:layout_constraintLeft_toRightOf="@id/iv_maskapain">
+
+            <TextView
+                android:id="@+id/tv_pesawat"
+                style="@style/TextBody12Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jet Air - Economy"
+                android:textColor="@color/darkblue_05"
+                />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_koper"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_ganti"
+            style="@style/ButtonPrimarySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ganti"
+            app:layout_constraintTop_toBottomOf="@id/grid_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@id/layout_toolbar">
+        android:layout_below="@id/layout_selected_departure">
 
         <TextView
             android:layout_width="wrap_content"

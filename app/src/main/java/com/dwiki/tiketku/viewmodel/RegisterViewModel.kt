@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import com.dwiki.tiketku.model.user.ResponseResetPassword
 import com.dwiki.tiketku.model.user.ResponseUserLogin
 import com.dwiki.tiketku.model.user.ResponseUserRegister
 import com.dwiki.tiketku.network.ApiService
@@ -50,6 +51,24 @@ class RegisterViewModel @Inject constructor(private val api:ApiService):ViewMode
         } catch (e:Exception){
             emit(Resources.error(e.message.toString(),null))
             Log.e("Regis View model","Error Exception login : ${e.cause.toString()}")
+        }
+    }
+
+
+    fun resetPassword(password:String,confirmPassword:String):LiveData<Resources<ResponseResetPassword>> = liveData {
+        emit(Resources.loading(null))
+        try {
+            val response = api.resetPassword(password,confirmPassword)
+            if (response.isSuccessful){
+                emit(Resources.success(response.body()))
+                Log.d("Regis View model","success reset password ${response.message()}")
+            } else {
+                emit(Resources.error(response.errorBody()?.string(),null))
+                Log.e("Regis View model","Error reset password : ${response.errorBody()?.string()}")
+            }
+        }catch (e:Exception){
+            emit(Resources.error(e.message.toString(),null))
+            Log.e("Regis View model","Error Exception reset Password : ${e.cause.toString()}")
         }
     }
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.riwayatpesanankosong.RiwayatPesananKosongFragment">
+
+    <TextView
+        style="@style/TextHeading24Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Riwayat Pesanan"
+        android:textColor="@color/black"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"/>
+
+    <ImageView
+        android:id="@+id/ivSearchRiwayatPesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/searchhh" />
+
+    <ImageView
+        android:id="@+id/btnFilterRiwayatPesanan"
+        android:layout_marginLeft="300dp"
+        android:layout_width="102dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="90dp"
+        android:src="@drawable/btnpth" />
+
+    <ImageView
+        android:layout_width="276dp"
+        android:layout_height="222dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/ilustrasi_search_" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="420dp"
+        android:text="Oops! Riwayat pesanan kosong!"
+        android:textColor="@color/darkblue_04"
+        android:layout_gravity="center_horizontal"
+        style="@style/TextBody14Medium"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
+        android:text="Anda belum melakukan pemesanan"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        style="@style/TextBody14Medium"/>
+
+</FrameLayout>

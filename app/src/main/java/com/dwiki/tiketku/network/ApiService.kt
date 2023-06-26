@@ -8,6 +8,7 @@ import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.ResponseDetailTicket
 import com.dwiki.tiketku.model.ticket.ResponseTicket
 import com.dwiki.tiketku.model.ticket.ResponseUpdateTicket
+import com.dwiki.tiketku.model.user.ResponseResetPassword
 import com.dwiki.tiketku.model.user.ResponseUserLogin
 import com.dwiki.tiketku.model.user.ResponseUserRegister
 import retrofit2.Call
@@ -96,6 +97,13 @@ interface ApiService {
         @Header("Authorization") token:String,
         @Body requestPenumpang:PenumpangRequest
     ):Call<ResponsePenumpang>
+
+    @FormUrlEncoded
+    @PUT("reset-password")
+    suspend fun resetPassword(
+        @Field("password") password: String,
+        @Field("confirmPassword") confirmPassword:String
+    ):Response<ResponseResetPassword>
 
 
 }

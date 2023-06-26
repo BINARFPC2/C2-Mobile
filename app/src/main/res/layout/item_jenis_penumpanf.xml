@@ -17,8 +17,8 @@
         
         <ImageView
             android:id="@+id/iv_penumpang"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_people_departure"
             android:layout_gravity="center_vertical"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/tv_jenis_penumpang"
-            style="@style/TextTitle16Medium"
+            style="@style/TextBody14Medium"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

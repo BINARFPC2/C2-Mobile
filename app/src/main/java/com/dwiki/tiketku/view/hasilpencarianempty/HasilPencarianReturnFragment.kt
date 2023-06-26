@@ -60,6 +60,15 @@ class HasilPencarianReturnFragment : Fragment() {
         returnOnly(cityFrom, cityTo, seatClass, dateRetun)
         getDepartureTicket(idDeparture)
 
+        binding.btnGanti.setOnClickListener {
+            if (findNavController().currentDestination?.id == R.id.hasilPencarianReturnFragment) {
+//                val fragId = findNavController().currentDestination?.id
+//                findNavController().popBackStack(fragId!!,true)
+                findNavController().navigate(R.id.action_hasilPencarianReturnFragment_to_hasilPencarianPFragment)
+            }
+
+        }
+
     }
 
     private fun getDepartureTicket(idDeparture: String?) {

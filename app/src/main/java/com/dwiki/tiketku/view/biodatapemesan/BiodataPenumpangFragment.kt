@@ -9,12 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiki.tiketku.R
-import com.dwiki.tiketku.adapter.biodata.AnakAdapter
-import com.dwiki.tiketku.adapter.biodata.BayiAdapter
 import com.dwiki.tiketku.adapter.biodata.DewasaAdapter
 import com.dwiki.tiketku.databinding.FragmentBiodataPenumpangBinding
 import com.dwiki.tiketku.model.penumpang.*
@@ -32,8 +29,6 @@ class BiodataPenumpangFragment : Fragment() {
     private val berandaViewModel:BerandaViewModel by viewModels()
     private  val testViewModel: TestViewModel by activityViewModels()
     private lateinit var dewasaAdapter:DewasaAdapter
-    private lateinit var anakAdapter: AnakAdapter
-    private lateinit var bayiAdapter: BayiAdapter
     private val biodataViewModel:BiodataViewModel by viewModels()
     private val loginViewModel: LoginViewModel by viewModels()
 
@@ -55,12 +50,10 @@ class BiodataPenumpangFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initDewasaAdapter()
-        initAnakAdapter()
-        initBayiAdapter()
 
 
 
-        binding.btnLogin.setOnClickListener {
+        binding.btnLanjut.setOnClickListener {
             val idTicket = berandaViewModel.getIdTicket()
             val dewasa = berandaViewModel.getPenumpangDewasa()
             val anak = berandaViewModel.getPenumpangAnak()
@@ -68,89 +61,78 @@ class BiodataPenumpangFragment : Fragment() {
             val total = dewasa + anak + bayi
 
             val dataList = testViewModel.getDataList()
-            Log.d("Hasil Pencarian","$dataList")
+            Log.d("Hasil Pencarian", "$dataList")
 
-            val penumpangData = PenumpangRequest(idTicket!!,dataList,total)
+            val penumpangData = PenumpangRequest(idTicket!!, dataList, total)
 
             val token = loginViewModel.getTokenPreferences()
-            biodataViewModel.biodataPenumpang(penumpangData,token!!)
-            biodataViewModel.getBiodataPenumpangResponse.observe(viewLifecycleOwner){
-                if (it.status == "Success"){
-                    Toast.makeText(requireContext(), "Berhasil Menambahkan data penumpang", Toast.LENGTH_SHORT).show()
-                    berandaViewModel.deleteTicketId()
+            biodataViewModel.biodataPenumpang(penumpangData, token!!)
+            biodataViewModel.getBiodataPenumpangResponse.observe(viewLifecycleOwner) {
+                if (it.status == "Success") {
+                    Toast.makeText(
+                        requireContext(),
+                        "Berhasil Menambahkan data penumpang",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
 
+        binding.switchh.setOnCheckedChangeListener { p0, isChecked ->
 
-    }
+            if (isChecked) {
+                binding.tvNamaKeluargaPemesan.visibility = View.VISIBLE
+                binding.edtNamaKeluargaPemesan.visibility = View.VISIBLE
 
-    private fun initBayiAdapter() {
-        val jumlahBayi = berandaViewModel.getPenumpangBayi()
-        val listBayi: ArrayList<PenumpangBayi> = ArrayList()
-        for (i in 1..jumlahBayi) {
-            listBayi.add(PenumpangBayi("Bayi $i"))
-        }
-        binding.rvBayi.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            bayiAdapter = BayiAdapter(listBayi)
-            adapter = bayiAdapter
-            bayiAdapter.setOnItemClickListener(object : BayiAdapter.OnItemClickListener{
-                override fun onItemClick(position: Int,bayi: PenumpangBayi) {
-                    val bundle = Bundle()
-                    bundle.putString("penumpang", bayi.penumpang)
-                    findNavController().navigate(R.id.action_biodataPenumpangFragment_to_detailBiodataBayi,bundle)
-                    Toast.makeText(requireContext(), "posisi card ini $position", Toast.LENGTH_SHORT).show()
-                }
-            })
-            setHasFixedSize(true)
+            } else {
+                binding.tvNamaKeluargaPemesan.visibility = View.GONE
+                binding.edtNamaKeluargaPemesan.visibility = View.GONE
+
+            }
         }
     }
 
-
-    private fun initAnakAdapter() {
-        val jumlahAnak = berandaViewModel.getPenumpangAnak()
-        val listAnak: ArrayList<PenumpangAnak> = ArrayList()
-        for (i in 1..jumlahAnak) {
-            listAnak.add(PenumpangAnak("Anak $i"))
-        }
-        binding.rvAnak.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            anakAdapter = AnakAdapter(listAnak)
-            adapter = anakAdapter
-            anakAdapter.setOnItemClickListener(object : AnakAdapter.OnItemClickListener{
-                override fun onItemClick(position: Int,anak: PenumpangAnak) {
-                    val bundle = Bundle()
-                    bundle.putString("penumpang", anak.penumpang)
-                    findNavController().navigate(R.id.action_biodataPenumpangFragment_to_detailBiodataAnak,bundle)
-                    Toast.makeText(requireContext(), "posisi card ini $position", Toast.LENGTH_SHORT).show()
-                }
-
-            })
-            setHasFixedSize(true)
-        }
-    }
 
 
     private fun initDewasaAdapter() {
+        val dewasa = berandaViewModel.getPenumpangDewasa()
+        val anak = berandaViewModel.getPenumpangAnak()
+        val bayi = berandaViewModel.getPenumpangBayi()
+        val total = dewasa + anak + bayi
         val jumlahDewasa = berandaViewModel.getPenumpangDewasa()
-        val listDewasa: ArrayList<PenumpangDewasa> = ArrayList()
-        for (i in 1..jumlahDewasa) {
-            listDewasa.add(PenumpangDewasa("Dewasa $i"))
+
+        val listDewasa: ArrayList<Penumpang> = ArrayList()
+        //get Penumpang Dewasa
+        for (i in 1..dewasa) {
+            listDewasa.add(Penumpang("Dewasa $i"))
         }
+        //get Penumpang Anak
+        for (i in 1..anak){
+            listDewasa.add(Penumpang("Anak $i"))
+        }
+        //get Penumpang Bayi
+        for(i in 1..bayi){
+            listDewasa.add(Penumpang("Bayi $i"))
+        }
+
+
+
         binding.rvDewasa.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             dewasaAdapter = DewasaAdapter(listDewasa)
             adapter = dewasaAdapter
             dewasaAdapter.setOnItemClickListener(object :DewasaAdapter.OnItemClickListener{
-                override fun onItemClick(position: Int,dewasa: PenumpangDewasa) {
+                override fun onItemClick(position: Int) {
                     Toast.makeText(requireContext(), "posisi card ini $position", Toast.LENGTH_SHORT).show()
                     val bundle = Bundle()
-                    bundle.putString("penumpang", dewasa.penumpang)
+                    val name = listDewasa[position].penumpang
+                    bundle.putInt("index",position)
+                    bundle.putString("penumpang",name)
                     findNavController().navigate(R.id.action_biodataPenumpangFragment_to_detailBiodataPenumpangFragment,bundle)
                 }
             })
+            isNestedScrollingEnabled = false
             setHasFixedSize(true)
         }
     }

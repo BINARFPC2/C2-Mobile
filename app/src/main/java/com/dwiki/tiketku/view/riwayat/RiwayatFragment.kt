@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentRiwayat2Binding
+import com.dwiki.tiketku.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -17,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class RiwayatFragment : Fragment() {
 
     private lateinit var binding: FragmentRiwayat2Binding
+    private val loginViewModel:LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +31,17 @@ class RiwayatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         login()
+
+        loginViewModel.getLoginState().observe(viewLifecycleOwner){
+            if (it){
+                binding.layoutRiwayat.visibility = View.VISIBLE
+                binding.layoutNoLogin.visibility = View.GONE
+            } else{
+                binding.layoutRiwayat.visibility = View.GONE
+                binding.layoutNoLogin.visibility = View.VISIBLE
+            }
+        }
+
     }
 
     private fun login() {

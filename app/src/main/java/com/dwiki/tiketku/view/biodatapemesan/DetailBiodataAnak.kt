@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentDetailBiodataAnakBinding
+import com.dwiki.tiketku.viewmodel.TestViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -14,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailBiodataAnak : Fragment() {
 
     private lateinit var binding:FragmentDetailBiodataAnakBinding
+    private val testViewModel: TestViewModel by activityViewModels()
 
 
 
@@ -29,7 +32,13 @@ class DetailBiodataAnak : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val penumpang = arguments?.getString("penumpang")
+        val indexPenumpang = arguments?.getInt("index")
         binding.tvToolbar.text = penumpang
+
+        val dataList = testViewModel.getDataList()
+
+
+
     }
 
 }

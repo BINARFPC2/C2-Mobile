@@ -77,6 +77,10 @@ class LoginFragment : Fragment() {
         binding.txtDaftar.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
+
+        binding.txtLupaPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
+        }
     }
 
     fun errorLogin(view: EditText){

@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dwiki.tiketku.databinding.ItemJenisPenumpanfBinding
-import com.dwiki.tiketku.model.penumpang.PenumpangDewasa
+import com.dwiki.tiketku.model.penumpang.Penumpang
 
-class DewasaAdapter(private val listDewasa:List<PenumpangDewasa>):RecyclerView.Adapter<DewasaAdapter.ViewHolder>() {
+
+class DewasaAdapter(private val listDewasa:List<Penumpang>):RecyclerView.Adapter<DewasaAdapter.ViewHolder>() {
 
     private var listener:OnItemClickListener? =null
 
@@ -15,14 +16,14 @@ class DewasaAdapter(private val listDewasa:List<PenumpangDewasa>):RecyclerView.A
     }
 
     interface OnItemClickListener{
-        fun onItemClick(position: Int,dewasa: PenumpangDewasa)
+        fun onItemClick(position: Int)
     }
 
     inner class ViewHolder (private val binding:ItemJenisPenumpanfBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(dewasa: PenumpangDewasa){
+        fun bind(dewasa: Penumpang){
             binding.tvJenisPenumpang.text = dewasa.penumpang
             binding.cvItemJenisPenumpang.setOnClickListener {
-               listener?.onItemClick(adapterPosition,dewasa)
+               listener?.onItemClick(adapterPosition)
             }
         }
     }

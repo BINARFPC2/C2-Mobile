@@ -38,7 +38,7 @@ class BiodataPemesanFragment : Fragment() {
         }
 
         binding.btnSimpanBiodataPemesanan.setOnClickListener {
-            findNavController().navigate(R.id.action_biodataPemesanFragment_to_biodataPenumpangFragment)
+//            findNavController().navigate(R.id.action_biodataPemesanFragment_to_biodataPenumpangFragment)
         }
 
     }

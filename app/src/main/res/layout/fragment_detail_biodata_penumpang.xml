@@ -64,17 +64,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:textSize="16dp" />
 
-            <EditText
-                android:paddingLeft="15dp"
-                android:id="@+id/edt_title"
-                style="@style/TextTitle16Medium"
-                android:hint="Indonesia"
-                android:textColorHint="@color/neutral_02"
-                android:textSize="18dp"
-                android:layout_marginTop="10dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/form_title"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/rectangle"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rectangle"
+                    android:inputType="none"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 style="@style/TextBody14Bold"
@@ -132,7 +136,7 @@
                 android:id="@+id/tv_namaKeluargaPemesan"
                 android:layout_height="wrap_content"
                 android:text="Nama Keluarga"
-                android:layout_marginTop="10dp"
+                android:visibility="gone"
                 android:textColor="@color/darkblue_05"
                 android:textSize="16dp" />
 
@@ -141,6 +145,7 @@
                 android:id="@+id/edt_NamaKeluargaPemesan"
                 style="@style/TextTitle16Medium"
                 android:hint="Potter"
+                android:visibility="gone"
                 android:textColorHint="@color/neutral_02"
                 android:textSize="18dp"
                 android:layout_marginTop="10dp"
@@ -171,7 +176,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDateReturn"
+                    android:id="@+id/edt_date_of_birth"
                     android:layout_width="match_parent"
                     android:hint="Masukan Tanggal"
                     android:padding="2dp"
@@ -232,30 +237,9 @@
                 android:layout_height="48dp"
                 android:background="@drawable/rectangle"/>
 
-            <TextView
-                style="@style/TextBody14Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Negara Penerbit"
-                android:textColor="@color/darkblue_05"
-                android:textSize="16dp" />
-
-            <EditText
-                android:paddingLeft="15dp"
-                android:id="@+id/edt_negara_peenrbit"
-                style="@style/TextTitle16Medium"
-                android:hint="Indonesia"
-                android:textColorHint="@color/neutral_02"
-                android:textSize="18dp"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/rectangle"/>
-
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btn_simpan"
                 style="@style/ButtonPrimary"
                 android:backgroundTint="@color/darkblue_04"
                 android:text="Simpan"

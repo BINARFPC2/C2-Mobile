@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.biodatapemesan.BiodataPemesan">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="40dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:paddingVertical="10dp"
+            android:background="@color/darkblue_05"
+            android:minHeight="?attr/actionBarSize">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="20dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_toolbar"
+                style="@style/TextBody14Medium"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Biodata Pemesana" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="10dp"
+        android:layout_gravity="center_horizontal"
+        app:strokeColor="@color/darkblue_03"
+        app:strokeWidth="2dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/layout_header"
+                style="@style/TextTitle16Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data Diri Pemesan"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:background="@color/darkblue_03" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    style="@style/TextBody14Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Lengkap"
+                    android:textColor="@color/darkblue_05"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/tvNamaLengkapPemesan"
+                    style="@style/TextTitle16Medium"
+                    android:layout_width="311dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rectangle"
+                    android:hint="Harry"
+                    android:paddingLeft="15dp"
+                    android:textColorHint="@color/neutral_02" />
+
+
+                <RelativeLayout
+                    android:layout_width="311dp"
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tvPulangPergi"
+                        style="@style/TextBody14Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="Punya nama keluarga"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:checked="false"
+                        app:thumbTint="@color/white"
+                        app:trackTint="@color/darkblue_05" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_namaKeluargaPemesan"
+                    style="@style/TextBody14Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Nama Keluarga"
+                    android:textColor="@color/darkblue_05"
+                    android:textSize="16dp"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/edt_NamaKeluargaPemesan"
+                    style="@style/TextTitle16Medium"
+                    android:layout_width="311dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle"
+                    android:hint="Potter"
+                    android:paddingLeft="15dp"
+                    android:textColorHint="@color/neutral_02"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    style="@style/TextBody14Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Nomor Telepon"
+                    android:textColor="@color/darkblue_05"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/tvNoTelfonPemesan"
+                    style="@style/TextTitle16Medium"
+                    android:layout_width="311dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle"
+                    android:hint="Potter"
+                    android:paddingLeft="15dp"
+                    android:textColorHint="@color/neutral_02" />
+
+                <TextView
+                    style="@style/TextBody14Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Email"
+                    android:textColor="@color/darkblue_05"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/tvEmailPemesan"
+                    style="@style/TextTitle16Medium"
+                    android:layout_width="311dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle"
+                    android:paddingLeft="15dp"
+                    android:hint="Contoh: johndoe@gmail.com"
+                    android:textColorHint="@color/neutral_02" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/btn_simpan"
+        style="@style/ButtonPrimary"
+        android:backgroundTint="@color/darkblue_04"
+        android:text="Simpan"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

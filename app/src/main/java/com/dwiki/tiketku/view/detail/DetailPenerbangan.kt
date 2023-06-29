@@ -40,9 +40,9 @@ class DetailPenerbangan : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val idTicket = arguments?.getString("id")
+
         detailViewModel.detailTicket(idTicket!!)
         detailViewModel.getDetailTicket.observe(viewLifecycleOwner) { detailTicket ->
-
             val getDetail = detailTicket.data
             if (getDetail != null){
                 binding.layoutCvDetail.visibility = View.VISIBLE
@@ -99,8 +99,7 @@ class DetailPenerbangan : Fragment() {
             loginViewModel.getLoginState().observe(viewLifecycleOwner){
                 if (it) {
                     if (findNavController().currentDestination!!.id == R.id.detailPenerbangan){
-
-                        findNavController().navigate(R.id.action_detailPenerbangan_to_biodataPenumpangFragment)
+                        findNavController().navigate(R.id.action_detailPenerbangan_to_biodataPemesan)
                     }
 
                 } else {

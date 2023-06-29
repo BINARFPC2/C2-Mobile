@@ -22,6 +22,10 @@ class TestViewModel:ViewModel() {
 //        }
 //    }
 
+    fun removeData(): List<PenumpangData> {
+        dataList.clear()
+        return dataList
+    }
     fun getDataList(): List<PenumpangData> {
         return dataList
     }

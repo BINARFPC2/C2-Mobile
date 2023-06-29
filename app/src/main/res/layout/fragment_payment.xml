@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:orientation="vertical"
-    android:paddingHorizontal="10dp"
-    android:paddingVertical="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,16 +8,58 @@
     tools:context=".view.payment.PaymentFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="40dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:paddingVertical="10dp"
+            android:background="@color/darkblue_05"
+            android:minHeight="?attr/actionBarSize">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="20dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_toolbar"
+                style="@style/TextBody14Medium"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Rincian Penerbangan" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
         app:cardCornerRadius="12dp"
         app:cardElevation="5dp"
         android:layout_margin="10dp"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
+        android:id="@+id/cv_tiket"
+        app:strokeColor="@color/darkblue_02"
+        app:strokeWidth="2dp"
+        app:layout_constraintTop_toBottomOf="@id/layout_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -31,7 +71,7 @@
                 <TextView
                     android:paddingHorizontal="10dp"
                     android:text="Passengers :"
-                    style="@style/TextBody14Medium"
+                    style="@style/TextBody14Regular"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -40,7 +80,7 @@
                     android:id="@+id/tv_passenger"
                     android:text="2 Adults, 1 Baby"
                     style="@style/TextBody14Bold"
-                    android:textColor="@color/darkblue_04"
+                    android:textColor="@color/darkblue_05"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -74,7 +114,7 @@
                     <TextView
                         android:id="@+id/tgl_keberangkatan"
                         android:text="5 Maret 2023"
-                        style="@style/TextBody14Regular"
+                        style="@style/TextBody12Medium"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -82,7 +122,7 @@
                     <TextView
                         android:id="@+id/jam_keberangkatan"
                         android:text="19:10"
-                        style="@style/TextBody14Regular"
+                        style="@style/TextBody12Medium"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -101,13 +141,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4h 0m"
-                        android:textColor="@color/neutral_03"
+                        android:textColor="@color/neutral_04"
                         />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/neutral_03"
+                        android:background="@color/neutral_05"
                         android:layout_marginVertical="2dp"/>
 
                 </LinearLayout>
@@ -135,7 +175,7 @@
                     <TextView
                         android:id="@+id/tgl_kedatangan"
                         android:text="5 Maret 2023"
-                        style="@style/TextBody14Regular"
+                        style="@style/TextBody12Medium"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -143,7 +183,7 @@
                     <TextView
                         android:id="@+id/jam_kedatangan"
                         android:text="23:10"
-                        style="@style/TextBody14Regular"
+                        style="@style/TextBody12Medium"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -154,9 +194,9 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_marginVertical="10dp"
-                android:background="@color/neutral_03"/>
+                android:background="@color/neutral_02"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -171,7 +211,7 @@
                     <TextView
                         android:id="@+id/tv_BookingCode"
                         android:text="Booking Code:"
-                        style="@style/TextBody14Bold"
+                        style="@style/TextBody12Bold"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -179,7 +219,7 @@
                     <TextView
                         android:id="@+id/tv_Code"
                         android:text="453653657"
-                        style="@style/TextBody14Regular"
+                        style="@style/TextBody12Regular"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -194,7 +234,7 @@
 
                     <TextView
                         android:text="Class :"
-                        style="@style/TextBody14Bold"
+                        style="@style/TextBody12Bold"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -202,7 +242,7 @@
                     <TextView
                         android:id="@+id/tv_Class"
                         android:text="Economy"
-                        style="@style/TextBody14Regular"
+                        style="@style/TextBody12Regular"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -217,16 +257,17 @@
 
                     <TextView
                         android:text="Total"
-                        style="@style/TextBody14Bold"
+                        style="@style/TextBody12Bold"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
+                        android:layout_gravity="end"
                         android:layout_height="wrap_content"/>
 
                     <TextView
                         android:id="@+id/tv_Harga"
                         android:text="IDR 4.000.000"
-                        style="@style/TextTitle18Bold"
-                        android:textColor="@color/darkblue_04"
+                        style="@style/TextTitle16Medium"
+                        android:textColor="@color/darkblue_05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -236,12 +277,15 @@
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <RelativeLayout
-        android:layout_margin="10dp"
+        android:id="@+id/box_card"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"
         android:background="@drawable/shape_rectangle_darkblue"
         android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_tiket"
         android:layout_height="wrap_content">
 
         <TextView
@@ -263,10 +307,16 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/layout_kredit_card"
         android:orientation="vertical"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/box_card"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        >
 
         <TextView
             android:text="Card Number"
@@ -281,6 +331,7 @@
             android:hint="4480 000 000 000 000"
             style="@style/TextBody14Medium"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"/>
 
         <TextView
@@ -354,7 +405,10 @@
     <LinearLayout
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_kredit_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         
@@ -387,10 +441,12 @@
     <Button
         android:id="@+id/btnBayar"
         style="@style/ButtonPrimary"
+        android:layout_marginHorizontal="20dp"
         android:backgroundTint="@color/darkblue_04"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
         android:text="Bayar"
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

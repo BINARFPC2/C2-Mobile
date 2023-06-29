@@ -157,16 +157,16 @@ class HasilPencarianPFragment : Fragment() {
         berandaViewModel.ticketsBeranda(cityFrom!!, cityTo!!, seatClass!!, dateDeparture!!)
         berandaViewModel.getTicketsBeranda.observe(viewLifecycleOwner) {
 
-            binding.testButton.setOnClickListener {
-//                val listTicket:kotlin.collections.List<DataItemTicket> = it
-//                val filterTicket = filterTicketByPricingAsc(listTicket)
-//                filterTicket.forEach{
-//                    Log.d("Hasil Pencarian","Airline : ${it.airlines}, Price : ${it.price}")
-//                }
-                val dataList = testViewModel.getDataList()
-                Log.d("Hasil Pencarian","$dataList")
-
-            }
+//            binding.testButton.setOnClickListener {
+////                val listTicket:kotlin.collections.List<DataItemTicket> = it
+////                val filterTicket = filterTicketByPricingAsc(listTicket)
+////                filterTicket.forEach{
+////                    Log.d("Hasil Pencarian","Airline : ${it.airlines}, Price : ${it.price}")
+////                }
+//                val dataList = testViewModel.getDataList()
+//                Log.d("Hasil Pencarian","$dataList")
+//
+//            }
             binding.rvDeparture.apply {
 //                binding.emptyResult.visibility = View.GONE
                 layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -176,7 +176,8 @@ class HasilPencarianPFragment : Fragment() {
                     val bundle = Bundle()
                     berandaViewModel.saveIdDeparture(id)
                     bundle.putString("idDep", id)
-                    bundle.putInt("pricePergi",hargaPergi)
+//                    bundle.putInt("pricePergi",hargaPergi)
+                    berandaViewModel.savePriceDep(hargaPergi)
 //                    val dataPenumpang = PenumpangData("darmnan3","mr3","darman3@gmail.com")
 //                    testViewModel.addData(dataPenumpang)
                     findNavController().navigate(R.id.action_hasilPencarianPFragment_to_hasilPencarianReturnFragment,bundle)
@@ -189,7 +190,7 @@ class HasilPencarianPFragment : Fragment() {
 
             val jsonObject = JSONTokener(it).nextValue() as JSONObject
             val msg = jsonObject.getString("message")
-//            if (msg == "No tickets found") binding.emptyResult.visibility = View.VISIBLE
+            if (msg == "No tickets found") binding.emptyResult.visibility = View.VISIBLE
         }
 
     }

@@ -241,6 +241,18 @@ class BerandaViewModel @Inject constructor(
         editor.apply()
     }
 
+    fun saveTotalOne(price: Int){
+        val editor = sharedPreferences.edit()
+        editor.putInt("total",price)
+        editor.apply()
+    }
+
+    fun saveTotalTwo(price: Int){
+        val editor = sharedPreferences.edit()
+        editor.putInt("totalTwo",price)
+        editor.apply()
+    }
+
     fun saveIdDeparture(idDep:String){
         val editor = sharedPreferences.edit()
         editor.putString("idDep",idDep)
@@ -294,6 +306,25 @@ class BerandaViewModel @Inject constructor(
         val editor =  sharedPreferences.edit()
         editor.putString("idTicket",idTicket)
         editor.apply()
+    }
+
+    fun savePriceDep(price:Int){
+        val editor =  sharedPreferences.edit()
+        editor.putInt("priceDep",price)
+        editor.apply()
+    }
+
+
+    fun getPriceDep():Int{
+        return sharedPreferences.getInt("priceDep",0)
+    }
+
+    fun getPriceTotalOne():Int{
+        return sharedPreferences.getInt("total",0)
+    }
+
+    fun getPriceTotalTwo():Int{
+        return sharedPreferences.getInt("totalTwo",0)
     }
 
 

@@ -134,8 +134,8 @@
             android:id="@+id/action_detailPenerbangan_to_bottomSheetCheckUserLogin"
             app:destination="@id/bottomSheetCheckUserLogin" />
         <action
-            android:id="@+id/action_detailPenerbangan_to_biodataPenumpangFragment"
-            app:destination="@id/biodataPenumpangFragment" />
+            android:id="@+id/action_detailPenerbangan_to_biodataPemesan"
+            app:destination="@id/biodataPemesan" />
     </fragment>
     <fragment
         android:id="@+id/hasilPencarianPFragment"
@@ -162,7 +162,14 @@
         android:id="@+id/detailPenerbanganPulangPergi"
         android:name="com.dwiki.tiketku.view.detail.DetailPenerbanganPulangPergi"
         android:label="fragment_detail_penerbangan_pulang_pergi"
-        tools:layout="@layout/fragment_detail_penerbangan_pulang_pergi" />
+        tools:layout="@layout/fragment_detail_penerbangan_pulang_pergi" >
+        <action
+            android:id="@+id/action_detailPenerbanganPulangPergi_to_biodataPemesan"
+            app:destination="@id/biodataPemesan" />
+        <action
+            android:id="@+id/action_detailPenerbanganPulangPergi_to_bottomSheetCheckUserLogin"
+            app:destination="@id/bottomSheetCheckUserLogin" />
+    </fragment>
     <fragment
         android:id="@+id/akunActiveFragment"
         android:name="com.dwiki.tiketku.view.akun.AkunActiveFragment"
@@ -194,11 +201,11 @@
             android:id="@+id/action_biodataPenumpangFragment_to_detailBiodataPenumpangFragment"
             app:destination="@id/detailBiodataPenumpangFragment" />
         <action
-            android:id="@+id/action_biodataPenumpangFragment_to_detailBiodataAnak"
-            app:destination="@id/detailBiodataAnak" />
+            android:id="@+id/action_biodataPenumpangFragment_to_checkout2"
+            app:destination="@id/checkout2" />
         <action
-            android:id="@+id/action_biodataPenumpangFragment_to_detailBiodataBayi"
-            app:destination="@id/detailBiodataBayi" />
+            android:id="@+id/action_biodataPenumpangFragment_to_checkoutRoundTripFragment"
+            app:destination="@id/checkoutRoundTripFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailBiodataPenumpangFragment"
@@ -207,24 +214,6 @@
         tools:layout="@layout/fragment_detail_biodata_penumpang" >
         <action
             android:id="@+id/action_detailBiodataPenumpangFragment_to_biodataPenumpangFragment"
-            app:destination="@id/biodataPenumpangFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailBiodataAnak"
-        android:name="com.dwiki.tiketku.view.biodatapemesan.DetailBiodataAnak"
-        android:label="fragment_detail_biodata_anak"
-        tools:layout="@layout/fragment_detail_biodata_anak" >
-        <action
-            android:id="@+id/action_detailBiodataAnak_to_biodataPenumpangFragment"
-            app:destination="@id/biodataPenumpangFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailBiodataBayi"
-        android:name="com.dwiki.tiketku.view.biodatapemesan.DetailBiodataBayi"
-        android:label="fragment_detail_biodata_bayi"
-        tools:layout="@layout/fragment_detail_biodata_bayi" >
-        <action
-            android:id="@+id/action_detailBiodataBayi_to_biodataPenumpangFragment"
             app:destination="@id/biodataPenumpangFragment" />
     </fragment>
     <fragment
@@ -248,5 +237,59 @@
         <action
             android:id="@+id/action_resetPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkout2"
+        android:name="com.dwiki.tiketku.view.checkout.checkout"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" >
+        <action
+            android:id="@+id/action_checkout2_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutRoundTripFragment"
+        android:name="com.dwiki.tiketku.view.checkout.CheckoutRoundTripFragment"
+        android:label="fragment_checkout_round_trip"
+        tools:layout="@layout/fragment_checkout_round_trip" >
+        <action
+            android:id="@+id/action_checkoutRoundTripFragment_to_paymentRoundTripFragment"
+            app:destination="@id/paymentRoundTripFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.dwiki.tiketku.view.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_bottomSheetSuksesBayarFragment"
+            app:destination="@id/bottomSheetSuksesBayarFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/bottomSheetSuksesBayarFragment"
+        android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetSuksesBayarFragment"
+        android:label="fragment_bottom_sheet_sukses_bayar"
+        tools:layout="@layout/fragment_bottom_sheet_sukses_bayar" >
+        <action
+            android:id="@+id/action_bottomSheetSuksesBayarFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/paymentRoundTripFragment"
+        android:name="com.dwiki.tiketku.view.payment.PaymentRoundTripFragment"
+        android:label="fragment_paymen_round_trip"
+        tools:layout="@layout/fragment_paymen_round_trip" >
+        <action
+            android:id="@+id/action_paymentRoundTripFragment_to_bottomSheetSuksesBayarFragment"
+            app:destination="@id/bottomSheetSuksesBayarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/biodataPemesan"
+        android:name="com.dwiki.tiketku.view.biodatapemesan.BiodataPemesan"
+        android:label="fragment_biodata_pemesan2"
+        tools:layout="@layout/fragment_biodata_pemesan2" >
+        <action
+            android:id="@+id/action_biodataPemesan_to_biodataPenumpangFragment"
+            app:destination="@id/biodataPenumpangFragment" />
     </fragment>
 </navigation>

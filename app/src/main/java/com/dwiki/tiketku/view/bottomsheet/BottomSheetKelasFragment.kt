@@ -80,7 +80,7 @@ class BottomSheetKelasFragment : BottomSheetDialogFragment(), SetKelasAdapter.On
            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<ConstraintLayout>(R.id.layout_set_kelas).setBackgroundResource(R.drawable.curved_bg_set_kelas)
            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<ImageView>(R.id.succes_klik).visibility = View.VISIBLE
            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<TextView>(R.id.tv_class).setTextColor(resources.getColor(R.color.white))
-            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<TextView>(R.id.tv_price).setTextColor(resources.getColor(R.color.white))
+//            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<TextView>(R.id.tv_price).setTextColor(resources.getColor(R.color.white))
 
             //soon update using save args
             binding.btnSimpan.setOnClickListener {
@@ -99,7 +99,7 @@ class BottomSheetKelasFragment : BottomSheetDialogFragment(), SetKelasAdapter.On
             rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<ConstraintLayout>(R.id.layout_set_kelas).setBackgroundResource(R.drawable.curve_set_kelas_stroke)
             rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<ImageView>(R.id.succes_klik).visibility = View.GONE
             rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<TextView>(R.id.tv_class).setTextColor(resources.getColor(R.color.black))
-            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<TextView>(R.id.tv_price).setTextColor(resources.getColor(R.color.darkblue_05))
+//            rvKelas.getChildAt(rvKelas.indexOfChild(v)).findViewById<TextView>(R.id.tv_price).setTextColor(resources.getColor(R.color.darkblue_05))
         }
     }
 

@@ -122,19 +122,10 @@ class BerandaFragment : Fragment() {
         binding.swPp.isChecked = getCheck
 
         binding.btnCari.setOnClickListener {
-
-
-
-
             val isSwitchTrue = berandaViewModel.getCheckSwitch()
             if (isSwitchTrue){
-//                val data = "Data Fragment Pertama"
-//                val dataPenumpang = PenumpangData("Darman1","mr1","darman@gmail.com","indo","GG","bro")
-//                testViewModel.addData(dataPenumpang)
                 findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianPFragment)
             } else{
-//                val dataPenumpang = PenumpangData("Darman1","mr1","darman@gmail.com","indo","GG","bro")
-//                testViewModel.addData(dataPenumpang)
                 findNavController().navigate(R.id.action_berandaFragment_to_hasilPencarianFragment)
             }
 

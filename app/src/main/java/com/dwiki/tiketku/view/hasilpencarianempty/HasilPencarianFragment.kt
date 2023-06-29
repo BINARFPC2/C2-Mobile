@@ -105,40 +105,7 @@ class HasilPencarianFragment : Fragment() {
         }
     }
 
-//    private fun pulangPergi(
-//        cityFrom: String?,
-//        cityTo: String?,
-//        totalPassengers: Int,
-//        seatClass: String?,
-//        dateRetun: String?
-//    ) {
-//        val isPulangPergi = berandaViewModel.getCheckSwitch()
-//        if (isPulangPergi) {
-//            binding.tvToolbar.text =
-//                "$cityFrom < > $cityTo - $totalPassengers Penumpang - $seatClass"
-//            binding.tvTiketKembali.visibility = View.VISIBLE
-//            berandaViewModel.ticketBerandaP(cityTo!!, cityFrom!!, seatClass!!, dateRetun!!)
-//            berandaViewModel.getTicketsBerandaP.observe(viewLifecycleOwner) {
-//                binding.rvHasilPencarianP.apply {
-//                    layoutManager =
-//                        LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-//                    ticketAdapter = TicketAdapter(it) { itemTicket ->
-//                        val id = itemTicket.id
-//                        val bundle = Bundle()
-//                        bundle.putString("id", id)
-//                        findNavController().navigate(
-//                            R.id.action_hasilPencarianFragment_to_detailPenerbangan,
-//                            bundle
-//                        )
-//                    }
-//                    adapter = ticketAdapter
-//                    isNestedScrollingEnabled = false
-//                }
-//            }
-//        } else {
-//            binding.tvToolbar.text = "$cityFrom > $cityTo - $totalPassengers Penumpang - $seatClass"
-//        }
-//    }
+
 
     private fun departureOnly(
         cityFrom: String?,

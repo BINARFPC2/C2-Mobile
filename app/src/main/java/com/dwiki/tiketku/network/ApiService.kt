@@ -2,12 +2,16 @@ package com.dwiki.tiketku.network
 
 import com.dwiki.tiketku.model.destinasifavorit.DataItem
 import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
+import com.dwiki.tiketku.model.history.ResponseRiwayat
+import com.dwiki.tiketku.model.notifikasi.ResponseNotifikasi
+import com.dwiki.tiketku.model.payment.ResponsePayment
 import com.dwiki.tiketku.model.penumpang.PenumpangRequest
 import com.dwiki.tiketku.model.penumpang.ResponsePenumpang
 import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.ResponseDetailTicket
 import com.dwiki.tiketku.model.ticket.ResponseTicket
 import com.dwiki.tiketku.model.ticket.ResponseUpdateTicket
+import com.dwiki.tiketku.model.user.ResponseProfile
 import com.dwiki.tiketku.model.user.ResponseResetPassword
 import com.dwiki.tiketku.model.user.ResponseUserLogin
 import com.dwiki.tiketku.model.user.ResponseUserRegister
@@ -104,6 +108,31 @@ interface ApiService {
         @Field("password") password: String,
         @Field("confirmPassword") confirmPassword:String
     ):Response<ResponseResetPassword>
+
+    @FormUrlEncoded
+    @POST("payment")
+    fun postPayment(
+        @Header("Authorization") token:String,
+        @Field("cardNumber") cardNumber:String,
+        @Field("cardHolderName") cardHolderName:String,
+        @Field("cvc") cvc:Int,
+        @Field("expiration") expiration:String
+    ):Call<ResponsePayment>
+
+    @GET("whoami")
+    fun checkProfile(
+        @Header("Authorization") token:String
+    ):Call<ResponseProfile>
+
+    @GET("transaction")
+    fun getHistoryTransaction(
+        @Header("Authorization") token:String
+    ):Call<ResponseRiwayat>
+
+    @GET("notif")
+    fun getNotifikasi(
+        @Header("Authorization") token:String
+    ):Call<ResponseNotifikasi>
 
 
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".view.bottomsheet.BottomSheetSuksesBayarFragment">
+
+   <ImageView
+       android:layout_width="230dp"
+       android:layout_height="230dp"
+       android:layout_marginTop="20dp"
+       android:src="@drawable/ic_succes_bayar_"
+       android:layout_gravity="center" />
+
+    <TextView
+        style="@style/TextBody14Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/darkblue_04"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Selamat" />
+
+    <TextView
+        style="@style/TextBody14Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:text="Transaksi Pembayaran Tiket Sukses!" />
+
+    <Button
+        android:id="@+id/btn_cetak"
+        style="@style/ButtonPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terbitkan Tiket"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/darkblue_04" />
+
+</LinearLayout>

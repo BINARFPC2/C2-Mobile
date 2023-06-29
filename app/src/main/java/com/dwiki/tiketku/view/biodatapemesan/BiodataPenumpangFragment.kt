@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.adapter.biodata.DewasaAdapter
@@ -49,52 +50,82 @@ class BiodataPenumpangFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initDewasaAdapter()
-
-
-
+        initAdapter()
         binding.btnLanjut.setOnClickListener {
             val idTicket = berandaViewModel.getIdTicket()
+            val idDep = berandaViewModel.getIdDep()
+            val idReturn = berandaViewModel.getIdReturn()
             val dewasa = berandaViewModel.getPenumpangDewasa()
             val anak = berandaViewModel.getPenumpangAnak()
             val bayi = berandaViewModel.getPenumpangBayi()
             val total = dewasa + anak + bayi
-
             val dataList = testViewModel.getDataList()
             Log.d("Hasil Pencarian", "$dataList")
-
-            val penumpangData = PenumpangRequest(idTicket!!, dataList, total)
-
-            val token = loginViewModel.getTokenPreferences()
-            biodataViewModel.biodataPenumpang(penumpangData, token!!)
-            biodataViewModel.getBiodataPenumpangResponse.observe(viewLifecycleOwner) {
-                if (it.status == "Success") {
-                    Toast.makeText(
-                        requireContext(),
-                        "Berhasil Menambahkan data penumpang",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+            if (dataList.isEmpty()) {
+                Toast.makeText(requireContext(), "Tolong isi biodata penumpang terlebih dahulu", Toast.LENGTH_SHORT).show()
+            } else {
+                val isRoundTrip = berandaViewModel.getCheckSwitch()
+                if (isRoundTrip) twoWay(idDep, idReturn, dataList, total)  else  oneWay(idTicket, dataList, total)
             }
         }
 
-        binding.switchh.setOnCheckedChangeListener { p0, isChecked ->
+    }
 
-            if (isChecked) {
-                binding.tvNamaKeluargaPemesan.visibility = View.VISIBLE
-                binding.edtNamaKeluargaPemesan.visibility = View.VISIBLE
-
+    private fun oneWay(
+        idTicket: String?,
+        dataList: List<PenumpangData>,
+        total: Int
+    ) {
+        val penumpangData = PenumpangRequest(idTicket!!, null, dataList, total)
+        val token = loginViewModel.getTokenPreferences()
+        biodataViewModel.biodataPenumpang(penumpangData, token!!)
+        biodataViewModel.getBiodataPenumpangResponse.observe(viewLifecycleOwner) {
+            if (it.status == "Success") {
+                Toast.makeText(
+                    requireContext(),
+                    "Berhasil Menambahkan data penumpang",
+                    Toast.LENGTH_SHORT
+                ).show()
+                findNavController().navigate(R.id.action_biodataPenumpangFragment_to_checkout2)
             } else {
-                binding.tvNamaKeluargaPemesan.visibility = View.GONE
-                binding.edtNamaKeluargaPemesan.visibility = View.GONE
+                Toast.makeText(
+                    requireContext(),
+                    "Pastikan data yang anda masukan benar",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
 
+    private fun twoWay(
+        idDep: String?,
+        idReturn: String?,
+        dataList: List<PenumpangData>,
+        total: Int
+    ) {
+        val penumpangData = PenumpangRequest(idDep!!, idReturn!!, dataList, total)
+        val token = loginViewModel.getTokenPreferences()
+        biodataViewModel.biodataPenumpang(penumpangData, token!!)
+        biodataViewModel.getBiodataPenumpangResponse.observe(viewLifecycleOwner) {
+            if (it.status == "Success") {
+                Toast.makeText(
+                    requireContext(),
+                    "Berhasil Menambahkan data penumpang",
+                    Toast.LENGTH_SHORT
+                ).show()
+                findNavController().navigate(R.id.action_biodataPenumpangFragment_to_checkoutRoundTripFragment)
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Pastikan data yang anda masukan benar",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
 
-
-    private fun initDewasaAdapter() {
+    private fun initAdapter() {
         val dewasa = berandaViewModel.getPenumpangDewasa()
         val anak = berandaViewModel.getPenumpangAnak()
         val bayi = berandaViewModel.getPenumpangBayi()
@@ -118,8 +149,7 @@ class BiodataPenumpangFragment : Fragment() {
 
 
         binding.rvDewasa.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             dewasaAdapter = DewasaAdapter(listDewasa)
             adapter = dewasaAdapter
             dewasaAdapter.setOnItemClickListener(object :DewasaAdapter.OnItemClickListener{

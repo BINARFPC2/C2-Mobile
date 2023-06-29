@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    app:cardCornerRadius="12dp"
-    android:layout_margin="20dp"
+<com.google.android.material.card.MaterialCardView app:cardCornerRadius="12dp"
     app:cardElevation="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_margin="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:orientation="vertical"
@@ -18,12 +18,12 @@
             android:id="@+id/keterangan"
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
-            android:background="@drawable/shape_rectangle_red"
+            android:background="@drawable/shape_rectangle_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="Unpaid"
+                android:text="Success"
                 style="@style/TextBody14Regular"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
@@ -39,8 +39,8 @@
 
             <ImageView
                 android:src="@drawable/place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -100,8 +100,8 @@
             <ImageView
                 android:src="@drawable/place"
                 android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -137,11 +137,121 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/layout_return"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/keberangkatanReturn"
+                    android:text="Jakarta"
+                    style="@style/TextBody14Bold"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tgl_keberangkatanReturn"
+                    android:text="5 Maret 2023"
+                    style="@style/TextBody14Regular"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/jam_keberangkatanReturn"
+                    android:text="19:10"
+                    style="@style/TextBody14Regular"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_durasiReturn"
+                    style="@style/TextBody12Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4h 0m"
+                    android:textColor="@color/neutral_03"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/neutral_03"
+                    android:layout_marginVertical="2dp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:src="@drawable/place"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/kedatanganReturn"
+                    android:text="Melbourne"
+                    style="@style/TextBody14Bold"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tgl_kedatanganReturn"
+                    android:text="5 Maret 2023"
+                    style="@style/TextBody14Regular"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/jam_kedatanganReturn"
+                    android:text="23:10"
+                    style="@style/TextBody14Regular"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_marginVertical="10dp"
-            android:background="@color/neutral_03"/>
+            android:background="@color/neutral_02"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -164,6 +274,27 @@
                 <TextView
                     android:id="@+id/tv_Code"
                     android:text="453653657"
+                    style="@style/TextBody14Regular"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_BookingCodeReturn"
+                    android:text="Booking Code:"
+                    style="@style/TextBody14Bold"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_CodeReturn"
+                    android:text="453653657"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     style="@style/TextBody14Regular"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
@@ -207,4 +338,4 @@
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

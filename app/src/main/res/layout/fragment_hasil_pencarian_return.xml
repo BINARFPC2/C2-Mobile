@@ -346,6 +346,29 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
             />
+        <LinearLayout
+            android:id="@+id/empty_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="276dp"
+                android:layout_height="222dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ilustrasi_search_" />
+
+            <ImageView
+                android:layout_width="287dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/empty"/>
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_departure"
@@ -355,5 +378,8 @@
             />
 
     </LinearLayout>
+
+
+
 
 </RelativeLayout>

@@ -7,10 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.adapter.SectionPagerAdapter
 import com.dwiki.tiketku.databinding.FragmentDetailPenerbanganPulangPergiBinding
 import com.dwiki.tiketku.util.Utill
+import com.dwiki.tiketku.viewmodel.BerandaViewModel
+import com.dwiki.tiketku.viewmodel.LoginViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +23,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailPenerbanganPulangPergi : Fragment() {
 
     private lateinit var binding:FragmentDetailPenerbanganPulangPergiBinding
+    private val berandaViewModel:BerandaViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -32,9 +38,10 @@ class DetailPenerbanganPulangPergi : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val idDeparture = arguments?.getString("idDeparture")
-        val idReturn = arguments?.getString("idReturn")
-        val hargaPergi = arguments?.getInt("hargaPergi")
+//        val idDeparture = arguments?.getString("idDeparture")
+//        val idReturn = arguments?.getString("idReturn")
+//        val hargaPergi = arguments?.getInt("hargaPergi")
+        val hargaPergi = berandaViewModel.getPriceDep()
         val hargaPulang = arguments?.getInt("hargaPulang")
 
         Log.d("DetailPenerbanganPulangPergi", "Harga: $hargaPergi")
@@ -51,7 +58,29 @@ class DetailPenerbanganPulangPergi : Fragment() {
         }.attach()
 
         val priceTotal = hargaPergi?.plus(hargaPulang!!)
-        binding.txtHargaTotal.text = Utill.getPriceIdFormat(priceTotal!!)
+        val idrPrice = Utill.getPriceIdFormat(priceTotal!!)
+        binding.txtHargaTotal.text = "$idrPrice/pax"
+
+//        binding.btnPilih.setOnClickListener {
+////            findNavController().navigate(R.id.action_detailPenerbanganPulangPergi_to_biodataPenumpangFragment)
+//        }
+        binding.btnPilih.setOnClickListener {
+            loginViewModel.getLoginState().observe(viewLifecycleOwner){
+                Log.d("DetailPenerbanganPulangPergi", "Login: $it")
+                if (it) {
+
+                    if (findNavController().currentDestination!!.id == R.id.detailPenerbanganPulangPergi){
+                        findNavController().navigate(R.id.action_detailPenerbanganPulangPergi_to_biodataPemesan)
+                    }
+                } else {
+                    val fragId = findNavController().currentDestination?.id
+                    findNavController().popBackStack(fragId!!,true)
+                    findNavController().navigate(R.id.bottomSheetCheckUserLogin)
+                }
+
+            }
+
+        }
     }
     companion object{
         private val TAB_TITLES = intArrayOf(

@@ -1,7 +1,5 @@
 package com.dwiki.tiketku.model.penumpang
 
-import com.google.gson.annotations.SerializedName
-
 data class PenumpangData (
     var ktppaspor: String,
     var dateofbirth: String,
@@ -12,7 +10,8 @@ data class PenumpangData (
 )
 
 data class PenumpangRequest(
-    var ticketsId:String,
+    var departureTicketsId:String,
+    var returnTicketsId: String?,
     var passengers:List<PenumpangData>,
     var total_passenger:Int
 )

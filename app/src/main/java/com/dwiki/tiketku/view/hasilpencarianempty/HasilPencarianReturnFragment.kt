@@ -2,6 +2,7 @@ package com.dwiki.tiketku.view.hasilpencarianempty
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -53,12 +54,14 @@ class HasilPencarianReturnFragment : Fragment() {
 
         binding.tvToolbar.text = "$cityFrom <> $cityTo - $totalPassengers Penumpang - $seatClass"
 
-        val idDeparture = arguments?.getString("idDep")
+//        val idDeparture = arguments?.getString("idDep")
+        val idDep = berandaViewModel.getIdDep()
+        Log.d("Hasil Pencarian Return",idDep!!)
 
         dateToolbarDeparture(dateDeparture)
         dateToolbarReturn(dateRetun)
         returnOnly(cityFrom, cityTo, seatClass, dateRetun)
-        getDepartureTicket(idDeparture)
+        getDepartureTicket(idDep)
 
         binding.btnGanti.setOnClickListener {
             if (findNavController().currentDestination?.id == R.id.hasilPencarianReturnFragment) {
@@ -74,6 +77,8 @@ class HasilPencarianReturnFragment : Fragment() {
     private fun getDepartureTicket(idDeparture: String?) {
         detailViewModel.detailTicket(idDeparture!!)
         detailViewModel.getDetailTicket.observe(viewLifecycleOwner){it ->
+
+            Log.d("Hasil Pencarian Return",it.toString())
             val dataItemTicket = it.data
 
             val timeTakeoff = dataItemTicket?.dateTakeoff
@@ -105,7 +110,8 @@ class HasilPencarianReturnFragment : Fragment() {
             binding.tvJamSampai.text = dataItemTicket.dateLanding
             binding.tvKotaKeberangkatan.text = dataItemTicket.cityFrom
             binding.tvKotaSampai.text = dataItemTicket.cityTo
-            val getPrice = arguments?.getInt("pricePergi")
+//            val getPrice = arguments?.getInt("pricePergi")
+            val getPrice = dataItemTicket.price
             val price = Utill.getPriceIdFormat(getPrice!!)
             binding.tvHarga.text = price
             binding.tvPesawat.text = dataItemTicket.airlines
@@ -204,15 +210,15 @@ class HasilPencarianReturnFragment : Fragment() {
                 ticketAdapter = TicketAdapter(it) { itemTicket ->
                     val idReturn = itemTicket.id
                     val priceReturn = itemTicket.price
-                    val idDeparture = arguments?.getString("idDep")
-                    val hargaPergi = arguments?.getInt("pricePergi")
+//                    val idDeparture = arguments?.getString("idDep")
+//                    val hargaPergi = arguments?.getInt("pricePergi")
                     val bundle = Bundle()
                     berandaViewModel.saveIdReturn(idReturn)
-                    bundle.putString("idReturn", idReturn)
-                    bundle.putString("idDeparture",idDeparture)
-                    if (hargaPergi != null) {
-                        bundle.putInt("hargaPergi",hargaPergi)
-                    }
+//                    bundle.putString("idReturn", idReturn)
+//                    bundle.putString("idDeparture",idDeparture)
+//                    if (hargaPergi != null) {
+//                        bundle.putInt("hargaPergi",hargaPergi)
+//                    }
                     bundle.putInt("hargaPulang",priceReturn)
                     findNavController().navigate(R.id.action_hasilPencarianReturnFragment_to_detailPenerbanganPulangPergi,bundle)
                 }
@@ -224,7 +230,7 @@ class HasilPencarianReturnFragment : Fragment() {
 
             val jsonObject = JSONTokener(it).nextValue() as JSONObject
             val msg = jsonObject.getString("message")
-//            if (msg == "No tickets found") binding.emptyResult.visibility = View.VISIBLE
+            if (msg == "No tickets found") binding.emptyResult.visibility = View.VISIBLE
         }
 
     }

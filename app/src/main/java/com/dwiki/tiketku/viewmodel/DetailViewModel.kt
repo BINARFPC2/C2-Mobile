@@ -21,6 +21,9 @@ class DetailViewModel @Inject constructor(private val apiService: ApiService):Vi
     private val _getDetailTicket = MutableLiveData<ResponseDetailTicket>()
     val getDetailTicket:LiveData<ResponseDetailTicket> = _getDetailTicket
 
+    private val _getDetailTicketReturn = MutableLiveData<ResponseDetailTicket>()
+    val getDetailTicketReturn:LiveData<ResponseDetailTicket> = _getDetailTicketReturn
+
     fun detailTicket(id:String){
         apiService.getTicketById(id).enqueue(object : Callback<ResponseDetailTicket>{
 
@@ -30,6 +33,28 @@ class DetailViewModel @Inject constructor(private val apiService: ApiService):Vi
             ) {
                 if (response.isSuccessful){
                     _getDetailTicket.value = response.body()
+                } else{
+                    Log.e(TAG,"Error get ticket by id")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseDetailTicket>, t: Throwable) {
+                Log.e(TAG,"Failure get ticket by id")
+            }
+
+        })
+    }
+
+
+    fun detailTicketReturn(id:String){
+        apiService.getTicketById(id).enqueue(object : Callback<ResponseDetailTicket>{
+
+            override fun onResponse(
+                call: Call<ResponseDetailTicket>,
+                response: Response<ResponseDetailTicket>
+            ) {
+                if (response.isSuccessful){
+                    _getDetailTicketReturn.value = response.body()
                 } else{
                     Log.e(TAG,"Error get ticket by id")
                 }

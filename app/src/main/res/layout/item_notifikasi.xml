@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    >
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="30dp"
+        android:src="@drawable/notifikasi" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notifikasi"
+        android:textColor="@color/neutral_03"
+        style="@style/TextBody10Regular"
+        android:layout_marginLeft="60dp"/>
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="20 Maret,14:04"-->
+    <!--            android:textColor="@color/neutral_03"-->
+    <!--            style="@style/TextBody10Regular"-->
+    <!--            android:layout_marginLeft="250dp"/>-->
+
+    <!--        <ImageView-->
+    <!--            android:layout_width="15dp"-->
+    <!--            android:layout_height="15dp"-->
+    <!--            android:layout_alignParentRight="true"-->
+    <!--            android:layout_marginRight="0dp"-->
+    <!--            android:src="@drawable/bulet_ijo" />-->
+
+    <TextView
+        android:id="@+id/tv_notifikasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dapatkan Potongan 50% Tiket"
+        android:textColor="@color/black"
+        style="@style/TextBody14Regular"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="60dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Syarat dan Ketentuan berlaku!"
+        android:textColor="@color/neutral_03"
+        style="@style/TextBody10Regular"
+        android:layout_below="@+id/tv_notifikasi"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="60dp"/>
+
+</RelativeLayout>

@@ -5,8 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".view.notifikasi.NotifikasiFragment">
 
+<RelativeLayout
+    android:id="@+id/layout_notifikasi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_marginTop="18dp"
         android:layout_marginLeft="25dp"
         style="@style/TextHeading24Bold"
@@ -15,60 +20,62 @@
         android:text="Notifikasi"
         android:textColor="@color/black" />
 
-    <RelativeLayout
-        android:layout_width="380dp"
-        android:layout_height="80dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="103dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notifikasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        tools:listitem="@layout/item_notifikasi"
+        />
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:src="@drawable/notifikasi" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Promosi"
-            android:textColor="@color/neutral_03"
-            style="@style/TextBody10Regular"
-            android:layout_marginLeft="60dp"/>
+</RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20 Maret,14:04"
-            android:textColor="@color/neutral_03"
-            style="@style/TextBody10Regular"
-            android:layout_marginLeft="285dp"/>
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="0dp"
-            android:src="@drawable/bulet_ijo" />
+    <LinearLayout
+        android:id="@+id/layout_no_login"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="18dp"
+        android:paddingHorizontal="25dp"
+        android:layout_height="match_parent">
 
         <TextView
+            style="@style/TextHeading24Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dapatkan Potongan 50% Tiket"
+            android:text="Notifikasi"
+            android:textColor="@color/black" />
+
+        <TextView
+            style="@style/TextBody14Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maaf, Anda harus login terlebih dahulu"
             android:textColor="@color/black"
-            style="@style/TextBody14Regular"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="60dp"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="107dp" />
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
+            android:layout_height="290dp"
+            android:src="@drawable/ic_no_login"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Syarat dan Ketentuan berlaku!"
-            android:textColor="@color/neutral_03"
-            style="@style/TextBody10Regular"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="60dp"/>
+            android:layout_marginTop="50dp"
+            android:text="Masuk"
+            android:backgroundTint="@color/darkblue_04"
+
+            />
 
 
-    </RelativeLayout>
+    </LinearLayout>
+
 
         
 

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:strokeColor="@color/darkblue_02"
+    android:layout_marginTop="10dp"
+    app:strokeWidth="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkblue_02"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TextBody14Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mr"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/TextBody14Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="Darman"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkblue_01"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextBody14Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kewarganegaraan"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/neutral_03"
+                />
+
+            <TextView
+                android:id="@+id/tv_kewarganegaraan"
+                style="@style/TextBody14Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="Indonesia"
+                android:layout_gravity="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/neutral_04" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkblue_01"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                style="@style/TextBody14Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KTP"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/neutral_03"
+                />
+
+            <TextView
+                android:id="@+id/tv_ktp"
+                style="@style/TextBody14Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="123456789"
+                android:layout_gravity="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/neutral_04" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>

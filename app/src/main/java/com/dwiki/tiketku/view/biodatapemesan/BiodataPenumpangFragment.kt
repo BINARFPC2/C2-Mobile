@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.adapter.biodata.DewasaAdapter
+import com.dwiki.tiketku.adapter.biodata.PenumpangAdapter
 import com.dwiki.tiketku.databinding.FragmentBiodataPenumpangBinding
 import com.dwiki.tiketku.model.penumpang.*
 import com.dwiki.tiketku.viewmodel.BerandaViewModel
@@ -30,6 +31,7 @@ class BiodataPenumpangFragment : Fragment() {
     private val berandaViewModel:BerandaViewModel by viewModels()
     private  val testViewModel: TestViewModel by activityViewModels()
     private lateinit var dewasaAdapter:DewasaAdapter
+    private lateinit var penumpangAdapter: PenumpangAdapter
     private val biodataViewModel:BiodataViewModel by viewModels()
     private val loginViewModel: LoginViewModel by viewModels()
 
@@ -66,6 +68,16 @@ class BiodataPenumpangFragment : Fragment() {
             } else {
                 val isRoundTrip = berandaViewModel.getCheckSwitch()
                 if (isRoundTrip) twoWay(idDep, idReturn, dataList, total)  else  oneWay(idTicket, dataList, total)
+            }
+        }
+
+        val dataList = testViewModel.getDataList()
+        if (dataList.isNotEmpty()){
+            binding.rvDetailPenumpang.visibility = View.VISIBLE
+            binding.rvDetailPenumpang.apply {
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                penumpangAdapter = PenumpangAdapter(dataList)
+                adapter = penumpangAdapter
             }
         }
 

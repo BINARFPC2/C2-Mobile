@@ -66,6 +66,16 @@
                 />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_detail_penumpang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_card_biodata"
+                android:layout_marginHorizontal="30dp"
+                android:visibility="gone"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_dewasa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

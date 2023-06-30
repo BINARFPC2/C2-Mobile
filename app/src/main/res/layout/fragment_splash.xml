@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     android:orientation="vertical"
-    android:background="@drawable/bcg_tiketku"
+    android:background="@drawable/bcg_splash"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.splash.SplashFragment">
-    
-    <ImageView
-        android:src="@drawable/illustration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
     <ImageView
-        android:layout_gravity="center"
-        android:src="@drawable/logo"
-        android:layout_width="192dp"
-        android:layout_height="99dp"/>
-    
+        android:layout_width="195dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="400dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ticket_go" />
+
     <ImageView
         android:id="@+id/btnSplash"
-        android:layout_gravity="end"
-        android:layout_marginTop="178dp"
-        android:layout_marginEnd="44dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="30dp"
         android:src="@drawable/vector_right"
         android:background="@drawable/button"
         android:padding="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-</LinearLayout>
+</RelativeLayout>

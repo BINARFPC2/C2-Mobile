@@ -99,7 +99,11 @@
         android:id="@+id/registerFragment"
         android:name="com.dwiki.tiketku.view.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <dialog
         android:id="@+id/datePickerDialog"
         android:name="com.dwiki.tiketku.view.dialog.DatePickerDialog"

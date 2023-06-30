@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentRegisterBinding
 import com.dwiki.tiketku.util.Status
@@ -62,6 +63,7 @@ class RegisterFragment : Fragment() {
                             when(it.status){
                                 Status.SUCCESS -> {
                                     FancyToast.makeText(requireContext(),"Berhasil Register",FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,false).show()
+                                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                                 }
                                 Status.ERROR -> {
                                     val jsonObject = JSONTokener(it.message).nextValue() as JSONObject

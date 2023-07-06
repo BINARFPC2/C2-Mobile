@@ -233,7 +233,11 @@
         android:id="@+id/notifikasiFragment"
         android:name="com.dwiki.tiketku.view.notifikasi.NotifikasiFragment"
         android:label="fragment_notifikasi_login"
-        tools:layout="@layout/fragment_notifikasi_login" />
+        tools:layout="@layout/fragment_notifikasi_login" >
+        <action
+            android:id="@+id/action_notifikasiFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.dwiki.tiketku.ResetPassword.ResetPasswordFragment"

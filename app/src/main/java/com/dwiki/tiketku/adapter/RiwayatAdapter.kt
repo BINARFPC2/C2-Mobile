@@ -28,8 +28,8 @@ class RiwayatAdapter(private val listRiwayat:List<DataItemRiwayat>):RecyclerView
                 if (data.returnTicket != null){
                     binding.apply {
                         layoutReturn.visibility = View.VISIBLE
-                        tvBookingCodeReturn.visibility = View.VISIBLE
-                        tvCodeReturn.visibility = View.VISIBLE
+                        tvBookingCode.visibility = View.VISIBLE
+                        tvCode.visibility = View.VISIBLE
 
                         keberangkatanReturn.text = data.returnTicket.cityFrom
                         tglKeberangkatanReturn.text = data.returnTicket.dateDeparture
@@ -37,7 +37,7 @@ class RiwayatAdapter(private val listRiwayat:List<DataItemRiwayat>):RecyclerView
                         kedatanganReturn.text = data.returnTicket.cityTo
                         tglKedatanganReturn.text = data.returnTicket.dateEnd
                         jamKedatanganReturn.text = data.returnTicket.dateLanding
-                        tvCodeReturn.text = data.returnTicket.bookingCode
+                        tvCode.text = data.returnTicket.bookingCode
                     }
                 }
             }

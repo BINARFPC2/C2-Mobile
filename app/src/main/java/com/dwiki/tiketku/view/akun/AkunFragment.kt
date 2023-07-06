@@ -42,6 +42,10 @@ class AkunFragment : Fragment() {
         binding.layoutUbahProfil.setOnClickListener {
             findNavController().navigate(R.id.action_akunFragment_to_ubahProfilFragment)
         }
+
+        binding.btnLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_akunFragment_to_loginFragment)
+        }
     }
 
     private fun stateShowLogin(it: Boolean) {

@@ -1,20 +1,15 @@
 package com.dwiki.tiketku.viewmodel
 
-import android.app.Service
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.dwiki.tiketku.model.user.ResponseResetPassword
-import com.dwiki.tiketku.model.user.ResponseUserLogin
+import com.dwiki.tiketku.model.resetpassword.ResponseResetPassword
 import com.dwiki.tiketku.model.user.ResponseUserRegister
 import com.dwiki.tiketku.network.ApiService
 import com.dwiki.tiketku.util.Resources
 import dagger.hilt.android.lifecycle.HiltViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 
@@ -55,10 +50,10 @@ class RegisterViewModel @Inject constructor(private val api:ApiService):ViewMode
     }
 
 
-    fun resetPassword(password:String,confirmPassword:String):LiveData<Resources<ResponseResetPassword>> = liveData {
+    fun resetPassword(email: String):LiveData<Resources<ResponseResetPassword>> = liveData {
         emit(Resources.loading(null))
         try {
-            val response = api.resetPassword(password,confirmPassword)
+            val response = api.resetPassword(email)
             if (response.isSuccessful){
                 emit(Resources.success(response.body()))
                 Log.d("Regis View model","success reset password ${response.message()}")

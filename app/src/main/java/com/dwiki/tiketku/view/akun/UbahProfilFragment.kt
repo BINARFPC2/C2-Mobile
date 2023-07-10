@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.dwiki.tiketku.databinding.FragmentUbahProfilBinding
 import com.dwiki.tiketku.viewmodel.LoginViewModel
+import com.dwiki.tiketku.viewmodel.ProfileViewModel
 import com.dwiki.tiketku.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,6 +18,7 @@ class UbahProfilFragment : Fragment() {
     lateinit var binding: FragmentUbahProfilBinding
     private val loginViewModel: LoginViewModel by viewModels()
     private val registerViewModel: RegisterViewModel by viewModels()
+    private val profileViewModel:ProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +37,12 @@ class UbahProfilFragment : Fragment() {
     }
 
     private fun userData(token: String) {
-        loginViewModel.getTokenPreferences()
-        registerViewModel.getResponseRegister.observe(viewLifecycleOwner) { user ->
+        profileViewModel.profileData(token)
+        profileViewModel.getProfileData.observe(viewLifecycleOwner){
             binding.apply {
-                etNamaProfil.setText(user.data.name)
-                etEmailProfil.setText(user.data.email)
-                etPasswordProfil.setText(user.data.password)
-                etNomorTlpProfil.setText(user.data.phone)
+                etNamaProfil.setText(it.name)
+                etEmailProfil.setText(it.email)
+                etNomorTlpProfil.setText(it.phone)
             }
         }
     }

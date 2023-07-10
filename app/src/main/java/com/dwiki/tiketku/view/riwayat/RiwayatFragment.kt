@@ -61,7 +61,14 @@ class RiwayatFragment : Fragment() {
         riwayatViewModel.getRiwayatTransaction.observe(viewLifecycleOwner) { listRiwayat ->
             binding.itemRiwayatPesanan.apply {
                 layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-                riwayatAdapter = RiwayatAdapter(listRiwayat)
+                riwayatAdapter = RiwayatAdapter(listRiwayat){
+                    val id = it.id
+                    val bundle = Bundle()
+                    bundle.putString("idRiwayat",id)
+                    findNavController().navigate(
+                        R.id.action_riwayatFragment_to_detailRiwayatPesananFragment,bundle
+                    )
+                }
                 adapter = riwayatAdapter
                 setHasFixedSize(true)
             }

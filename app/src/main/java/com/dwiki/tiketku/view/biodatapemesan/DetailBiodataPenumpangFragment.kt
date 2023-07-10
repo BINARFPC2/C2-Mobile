@@ -18,6 +18,7 @@ import com.dwiki.tiketku.databinding.FragmentBiodataPenumpangBinding
 import com.dwiki.tiketku.databinding.FragmentDetailBiodataPenumpangBinding
 import com.dwiki.tiketku.model.penumpang.PenumpangData
 import com.dwiki.tiketku.viewmodel.TestViewModel
+import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -143,10 +144,15 @@ class DetailBiodataPenumpangFragment : Fragment() {
             val kewarganegaraan = binding.edtKewarganegaraan.text.toString()
             val ktp = binding.edtKtp.text.toString()
 
-            val dataPenumpang =
-                PenumpangData(ktp, tanggalLahir, namaKeluarga, kewarganegaraan, name, titleAd!!)
-            testViewModel.addData(dataPenumpang)
-            findNavController().navigate(R.id.action_detailBiodataPenumpangFragment_to_biodataPenumpangFragment)
+            if (name.isNotEmpty()||namaKeluarga.isNotEmpty()||tanggalLahir.isNotEmpty()||kewarganegaraan.isNotEmpty()||ktp.isNotEmpty()){
+                val dataPenumpang = PenumpangData(ktp, tanggalLahir, namaKeluarga, kewarganegaraan, name, titleAd!!)
+                testViewModel.addData(dataPenumpang)
+                findNavController().navigate(R.id.action_detailBiodataPenumpangFragment_to_biodataPenumpangFragment)
+            } else {
+                FancyToast.makeText(requireContext(),"Mohon isi lengkapi data terlebih dahulu",FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show()
+            }
+
+
 
         }
     }

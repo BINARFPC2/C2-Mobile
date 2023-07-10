@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentDetailPenerbanganPulangBinding
 import com.dwiki.tiketku.databinding.FragmentDetailPergiBinding
@@ -40,6 +41,8 @@ class DetailPergiFragment : Fragment() {
 
             val getDetail = detailTicket.data
             if (getDetail != null){
+                binding.tvAirplaneCode.text = getDetail.code
+                Glide.with(requireContext()).load(getDetail.logo).into(binding.imgLogoMaskapai)
                 binding.layoutCvDetail.visibility = View.VISIBLE
                 Log.d("DetailPenerbangan","Berhasil get data")
                 binding.apply {
@@ -68,7 +71,6 @@ class DetailPergiFragment : Fragment() {
                     }
 
                     txtLamaPerjalanan.text = "(${hourDiff}h ${minuteDiff}m)"
-                    tvAirplaneCode.visibility = View.GONE
                     txtBandaraAwal.text = getDetail!!.airportFrom
                     txtBandaraTujuan.text = getDetail.airportTo
                     txtKeberangkatan.text = getDetail.cityFrom

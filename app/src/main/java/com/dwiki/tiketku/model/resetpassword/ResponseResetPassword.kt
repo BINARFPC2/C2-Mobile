@@ -1,4 +1,4 @@
-package com.dwiki.tiketku.model.user
+package com.dwiki.tiketku.model.resetpassword
 
 import com.google.gson.annotations.SerializedName
 

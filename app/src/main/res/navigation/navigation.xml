@@ -46,6 +46,9 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/loginFragment"
             />
+        <action
+            android:id="@+id/action_riwayatFragment_to_detailRiwayatPesananFragment"
+            app:destination="@id/detailRiwayatPesananFragment" />
     </fragment>
     <fragment
         android:id="@+id/akunFragment"
@@ -195,7 +198,11 @@
         android:id="@+id/bottomSheetCheckUserLogin"
         android:name="com.dwiki.tiketku.view.bottomsheet.BottomSheetCheckUserLogin"
         android:label="fragment_bottom_sheet_check_user_login"
-        tools:layout="@layout/fragment_bottom_sheet_check_user_login" />
+        tools:layout="@layout/fragment_bottom_sheet_check_user_login" >
+        <action
+            android:id="@+id/action_bottomSheetCheckUserLogin_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </dialog>
     <fragment
         android:id="@+id/biodataPenumpangFragment"
         android:name="com.dwiki.tiketku.view.biodatapemesan.BiodataPenumpangFragment"
@@ -245,6 +252,9 @@
         <action
             android:id="@+id/action_resetPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_resetPasswordFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
     </fragment>
     <fragment
         android:id="@+id/checkout2"
@@ -300,4 +310,9 @@
             android:id="@+id/action_biodataPemesan_to_biodataPenumpangFragment"
             app:destination="@id/biodataPenumpangFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailRiwayatPesananFragment"
+        android:name="com.dwiki.tiketku.view.detailriwayatpesanan.DetailRiwayatPesananFragment"
+        android:label="fragment_detail_riwayat_pesanan"
+        tools:layout="@layout/fragment_detail_riwayat_pesanan" />
 </navigation>

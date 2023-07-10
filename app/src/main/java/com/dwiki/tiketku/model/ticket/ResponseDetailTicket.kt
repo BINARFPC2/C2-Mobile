@@ -79,5 +79,12 @@ data class Data(
 
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String? = null
+	val updatedAt: String? = null,
+
+	@field:SerializedName("code")
+	val code:String? = null,
+
+	@field:SerializedName("logo")
+	val logo: String? = null,
+
 )

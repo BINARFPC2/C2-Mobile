@@ -4,14 +4,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.dwiki.tiketku.databinding.ItemPencarianKotaBinding
 import com.dwiki.tiketku.databinding.ItemRiwayatPesananBinding
 import com.dwiki.tiketku.model.history.DataItemRiwayat
 import com.dwiki.tiketku.util.Utill
 
-class RiwayatAdapter(private val listRiwayat:List<DataItemRiwayat>):RecyclerView.Adapter<RiwayatAdapter.ViewHolder>() {
+class RiwayatAdapter(
+    private val listRiwayat:List<DataItemRiwayat>,
+    private val onSelect:(DataItemRiwayat) -> Unit
+
+    ):RecyclerView.Adapter<RiwayatAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding:ItemRiwayatPesananBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(data:DataItemRiwayat){
+        fun bind(data:DataItemRiwayat,onSelect: (DataItemRiwayat) -> Unit){
             binding.apply {
                 keberangkatan.text = data.departureTicket!!.cityFrom
                 tglKeberangkatan.text = data.departureTicket.dateDeparture
@@ -30,7 +35,8 @@ class RiwayatAdapter(private val listRiwayat:List<DataItemRiwayat>):RecyclerView
                         layoutReturn.visibility = View.VISIBLE
                         tvBookingCode.visibility = View.VISIBLE
                         tvCode.visibility = View.VISIBLE
-
+                        tvBookingCodeReturn.visibility = View.VISIBLE
+                        tvCodeReturn.visibility = View.VISIBLE
                         keberangkatanReturn.text = data.returnTicket.cityFrom
                         tglKeberangkatanReturn.text = data.returnTicket.dateDeparture
                         jamKeberangkatanReturn.text = data.returnTicket.dateTakeoff
@@ -39,6 +45,9 @@ class RiwayatAdapter(private val listRiwayat:List<DataItemRiwayat>):RecyclerView
                         jamKedatanganReturn.text = data.returnTicket.dateLanding
                         tvCode.text = data.returnTicket.bookingCode
                     }
+                }
+                binding.cvRiwayat.setOnClickListener {
+                    onSelect(data)
                 }
             }
         }
@@ -50,7 +59,7 @@ class RiwayatAdapter(private val listRiwayat:List<DataItemRiwayat>):RecyclerView
     }
 
     override fun onBindViewHolder(holder: RiwayatAdapter.ViewHolder, position: Int) {
-        holder.bind(listRiwayat[position])
+        holder.bind(listRiwayat[position],onSelect)
     }
 
     override fun getItemCount(): Int  = listRiwayat.size

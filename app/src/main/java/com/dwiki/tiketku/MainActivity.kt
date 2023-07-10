@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
       navController.addOnDestinationChangedListener{ _, destination, _ ->
           when(destination.id){
                 R.id.loginFragment, R.id.registerFragment,R.id.biodataPenumpangFragment,R.id.detailBiodataPenumpangFragment,R.id.splashFragment,R.id.hasilPencarianPFragment,R.id.hasilPencarianReturnFragment,R.id.hasilPencarianFragment,R.id.detailPenerbangan,
-                R.id.detailBiodataPenumpangFragment,R.id.biodataPenumpangFragment,R.id.detailPenerbanganPulangPergi,R.id.checkout2,R.id.checkoutRoundTripFragment,R.id.paymentFragment -> {
+                R.id.detailBiodataPenumpangFragment,R.id.biodataPenumpangFragment,R.id.detailPenerbanganPulangPergi,R.id.checkout2,R.id.checkoutRoundTripFragment,R.id.paymentFragment,R.id.resetPasswordFragment -> {
                    binding.bottomNav.visibility = View.GONE
                 }
               else ->{

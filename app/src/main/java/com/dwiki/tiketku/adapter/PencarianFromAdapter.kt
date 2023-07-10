@@ -8,7 +8,10 @@ import com.dwiki.tiketku.databinding.ItemPencarianKotaBinding
 import com.dwiki.tiketku.model.ticket.DataItemTicket
 import com.dwiki.tiketku.model.ticket.HasilKota
 
-class PencarianFromAdapter(private val listKota: List<HasilKota>):RecyclerView.Adapter<PencarianFromAdapter.ViewHolder>() {
+class PencarianFromAdapter(
+    private val listKota: List<HasilKota>,
+
+    ):RecyclerView.Adapter<PencarianFromAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding:ItemPencarianKotaBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(hasilKota: HasilKota){

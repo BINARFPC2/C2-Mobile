@@ -71,34 +71,6 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"/>
 
-    <TextView
-        style="@style/TextBody12Medium"
-        android:layout_marginTop="16dp"
-        android:text="Buat Password"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        app:hintEnabled="false"
-        app:hintAnimationEnabled="false"
-        app:boxBackgroundMode="outline"
-        app:endIconMode="password_toggle">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPasswordProfil"
-            android:layout_width="match_parent"
-            android:hint="@string/password"
-            android:padding="10dp"
-            android:background="@drawable/shape_rectangle"
-            android:layout_height="match_parent"
-            android:inputType="textPassword" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnRegist"

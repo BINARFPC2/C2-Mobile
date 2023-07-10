@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.dwiki.tiketku.R
 import com.dwiki.tiketku.databinding.FragmentDetailPenerbanganBinding
 import com.dwiki.tiketku.model.ticket.DataItemTicket
@@ -73,8 +74,10 @@ class DetailPenerbangan : Fragment() {
                         hourDiff += 24
                     }
 
+
+                    tvAirplaneCode.text = getDetail.code
+                    Glide.with(requireContext()).load(getDetail.logo).into(imgLogoMaskapai)
                     txtLamaPerjalanan.text = "(${hourDiff}h ${minuteDiff}m)"
-                    tvAirplaneCode.visibility = View.GONE
                     txtBandaraAwal.text = getDetail!!.airportFrom
                     txtBandaraTujuan.text = getDetail.airportTo
                     txtKeberangkatan.text = getDetail.cityFrom

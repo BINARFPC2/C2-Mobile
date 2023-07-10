@@ -1,18 +1,20 @@
 package com.dwiki.tiketku.network
 
-import com.dwiki.tiketku.model.destinasifavorit.DataItem
 import com.dwiki.tiketku.model.destinasifavorit.ResponseDestinasiFavorit
+import com.dwiki.tiketku.model.history.DataItemRiwayat
 import com.dwiki.tiketku.model.history.ResponseRiwayat
 import com.dwiki.tiketku.model.notifikasi.ResponseNotifikasi
 import com.dwiki.tiketku.model.payment.ResponsePayment
 import com.dwiki.tiketku.model.penumpang.PenumpangRequest
 import com.dwiki.tiketku.model.penumpang.ResponsePenumpang
-import com.dwiki.tiketku.model.ticket.DataItemTicket
+import com.dwiki.tiketku.model.resetpassword.ResponseResetPassword
+import com.dwiki.tiketku.model.riwayat.DataItemDetailRiwayat
+import com.dwiki.tiketku.model.riwayat.ResponseDetailRiwayat
 import com.dwiki.tiketku.model.ticket.ResponseDetailTicket
+import com.dwiki.tiketku.model.ticket.ResponseEticket
 import com.dwiki.tiketku.model.ticket.ResponseTicket
 import com.dwiki.tiketku.model.ticket.ResponseUpdateTicket
 import com.dwiki.tiketku.model.user.ResponseProfile
-import com.dwiki.tiketku.model.user.ResponseResetPassword
 import com.dwiki.tiketku.model.user.ResponseUserLogin
 import com.dwiki.tiketku.model.user.ResponseUserRegister
 import retrofit2.Call
@@ -103,10 +105,9 @@ interface ApiService {
     ):Call<ResponsePenumpang>
 
     @FormUrlEncoded
-    @PUT("reset-password")
+    @POST("forget-password")
     suspend fun resetPassword(
-        @Field("password") password: String,
-        @Field("confirmPassword") confirmPassword:String
+        @Field("email") email: String,
     ):Response<ResponseResetPassword>
 
     @FormUrlEncoded
@@ -133,6 +134,17 @@ interface ApiService {
     fun getNotifikasi(
         @Header("Authorization") token:String
     ):Call<ResponseNotifikasi>
+
+    @GET("checkout/{id}")
+    fun getDetailRiwayat(
+        @Header("Authorization") token: String,
+        @Path("id") id:String
+    ):Call<ResponseDetailRiwayat>
+
+    @GET("eticket")
+    fun getEticket(
+        @Header("Authorization") token: String
+    ):Call<ResponseEticket>
 
 
 }

@@ -40,38 +40,44 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmailLogin.text.toString()
             val password = binding.etPassword.text.toString()
-            loginViewModel.loginResult(email,password).observe(viewLifecycleOwner){
-                when(it.status){
-                    Status.SUCCESS ->{
-                        val loginResponse = it.data
-                        if (loginResponse != null){
-                            loginViewModel.saveLoginState(true)
-                            loginViewModel.saveTokenPreferences(loginResponse.token)
-                            findNavController().navigate(R.id.action_loginFragment_to_berandaFragment)
-                        }
-                    }
-                    Status.LOADING -> {
-                        Log.d("Login Fragment", "Loading Login")
-                    }
-                    Status.ERROR ->{
-                        val jsonObject = JSONTokener(it.message).nextValue() as JSONObject
-                        val msg = jsonObject.getString("message")
-                        Log.e("Login Fragment", msg)
-                        when(msg){
-                            "Pasword salah!" -> {
-                                errorLogin(binding.etPassword)
-                                FancyToast.makeText(requireContext(),"Maaf, kata sandi salah",FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show()
-
-                            }
-                            "Email tidak ditemukan" -> {
-                                errorLogin(binding.etEmailLogin)
-                                FancyToast.makeText(requireContext(),"Alamat email tidak terdaftar!",FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show()
+            if (email.isNotEmpty() ||  password.isNotEmpty()){
+                loginViewModel.loginResult(email,password).observe(viewLifecycleOwner){
+                    when(it.status){
+                        Status.SUCCESS ->{
+                            val loginResponse = it.data
+                            if (loginResponse != null){
+                                loginViewModel.saveLoginState(true)
+                                loginViewModel.saveTokenPreferences(loginResponse.token)
+                                findNavController().navigate(R.id.action_loginFragment_to_berandaFragment)
                             }
                         }
+                        Status.LOADING -> {
+                            Log.d("Login Fragment", "Loading Login")
+                        }
+                        Status.ERROR ->{
+                            val jsonObject = JSONTokener(it.message).nextValue() as JSONObject
+                            val msg = jsonObject.getString("message")
+                            Log.e("Login Fragment", msg)
+                            when(msg){
+                                "Pasword salah!" -> {
+                                    errorLogin(binding.etPassword)
+                                    FancyToast.makeText(requireContext(),"Maaf, kata sandi salah",FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show()
 
+                                }
+                                "Email not found" -> {
+                                    Log.d("Login Fragment", "Email not found")
+                                    errorLogin(binding.etEmailLogin)
+                                    FancyToast.makeText(requireContext(),"Alamat email tidak terdaftar!",FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show()
+                                }
+                            }
+
+                        }
                     }
                 }
+            } else {
+                FancyToast.makeText(requireContext(),"Mohon isi lengkapi data terlebih dahulu",FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show()
             }
+
         }
 
         binding.txtDaftar.setOnClickListener {

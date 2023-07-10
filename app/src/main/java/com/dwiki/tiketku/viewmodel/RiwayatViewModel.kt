@@ -1,5 +1,6 @@
 package com.dwiki.tiketku.viewmodel
 
+import android.provider.ContactsContract.Data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +9,8 @@ import com.dwiki.tiketku.model.history.DataItemRiwayat
 import com.dwiki.tiketku.model.history.ResponseRiwayat
 import com.dwiki.tiketku.model.notifikasi.DataItemNotifikasi
 import com.dwiki.tiketku.model.notifikasi.ResponseNotifikasi
+import com.dwiki.tiketku.model.riwayat.DataItemDetailRiwayat
+import com.dwiki.tiketku.model.riwayat.ResponseDetailRiwayat
 import com.dwiki.tiketku.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
@@ -20,6 +23,10 @@ class RiwayatViewModel @Inject constructor(private val apiService: ApiService):V
 
     private val _getRiwayatTransaction = MutableLiveData<List<DataItemRiwayat>>()
     val getRiwayatTransaction:LiveData<List<DataItemRiwayat>> = _getRiwayatTransaction
+
+    private val _getDetailRiwayat = MutableLiveData<ResponseDetailRiwayat>()
+    val getDetailRiwayat:LiveData<ResponseDetailRiwayat> = _getDetailRiwayat
+
 
     private val _getNotifikasi = MutableLiveData<List<DataItemNotifikasi>>()
     val getNotifikasi:LiveData<List<DataItemNotifikasi>> = _getNotifikasi
@@ -38,6 +45,46 @@ class RiwayatViewModel @Inject constructor(private val apiService: ApiService):V
             }
 
             override fun onFailure(call: Call<ResponseRiwayat>, t: Throwable) {
+                Log.e("RiwayatViewModel", " Error onFailure: ${t.cause}")
+            }
+
+        })
+    }
+
+//    fun getDetailRiwayat(token: String,id:String){
+//        apiService.getDetailRiwayat("Bearer $token",id).enqueue(object : Callback<ResponseDetailRiwayat>{
+//            override fun onResponse(
+//                call: Call<ResponseDetailRiwayat>,
+//                response: Response<ResponseDetailRiwayat>
+//            ) {
+//                if (response.isSuccessful){
+//                    _getDetailRiwayat.value = response.body()?.data
+//                } else {
+//                    Log.e("RiwayatViewModel", " Error onResponse: ${response.errorBody()!!.string()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseDetailRiwayat>, t: Throwable) {
+//                Log.e("RiwayatViewModel", " Error onFailure: ${t.cause}")
+//            }
+//
+//        })
+//    }
+
+    fun detailRiwayat(token: String,id:String){
+        apiService.getDetailRiwayat("Bearer $token",id).enqueue(object :Callback<ResponseDetailRiwayat>{
+            override fun onResponse(
+                call: Call<ResponseDetailRiwayat>,
+                response: Response<ResponseDetailRiwayat>
+            ) {
+                if (response.isSuccessful){
+                    _getDetailRiwayat.value = response.body()
+                } else {
+                    Log.e("RiwayatViewModel", " Error onResponse: ${response.errorBody()!!.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseDetailRiwayat>, t: Throwable) {
                 Log.e("RiwayatViewModel", " Error onFailure: ${t.cause}")
             }
 
